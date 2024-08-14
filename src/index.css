@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS file (e.g., styles.css) or Tailwind's custom CSS */
+.underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  border-radius: 100px;
+  background-color: #EF4444;
+  left: var(--underline-left, 0);
+  width: var(--underline-width, 0);
+  transition: left 0.3s ease, width 0.3s ease;
+  z-index: 10;
+  
+}
+
+.active-category {
+  color: #EF4444;
+}
+
+
