@@ -1,16 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, MutableRefObject } from 'react';
 import { useTheme } from '../Hook/ThemeContext';
 import Header from './Header';
-import Main from './Main';
+import StoreItem from './StoreItem';
 import { storeData } from '../data';
 import '../../src/index.css'; // Ensure you have this file set up
+import CategoryList from './CategoryList';
 
 const App: React.FC = () => {
   const { theme, setTheme, toggle, handleToggle } = useTheme();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All category');
-  const categoryRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
+  const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  const categories = ['All category', 'chair', 'table', 'bed', 'shelve'];
+  const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
 
   useEffect(() => {
     const activeIndex = categories.findIndex(
@@ -31,35 +32,27 @@ const App: React.FC = () => {
   };
 
   const filteredStoreData = React.useMemo(() => {
-    return selectedCategory === 'All category'
+    return selectedCategory === 'All Category'
       ? storeData
       : storeData.filter(item => item.category.toLowerCase() === selectedCategory.toLowerCase());
   }, [selectedCategory]);
 
   return (
-    <div className="bg-Light h-screen font-Nunito px-5">
+    <div className="bg-Light h-screen font-Nunito px-5 overflow-x-auto">
       <Header />
-      <div>
-        <ul className="relative flex justify-center items-center gap-5 text-Dark 
-          font-semibold text-sm leading-none bg-Lightest p-3 rounded-lg">
-          {categories.map((category, index) => (
-            <li
-              key={category}
-              ref={(el) => (categoryRefs.current[index] = el)}
-              className={`cursor-pointer ${
-                selectedCategory.toLowerCase() === category.toLowerCase() ? 'active-category ' : ''
-              }`}
-              onClick={() => handleCategoryClick(category)}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </li>
+      <main>
+        <CategoryList
+          categories={categories}
+          categoryRefs={categoryRefs}
+          selectedCategory={selectedCategory}
+          handleCategoryClick={handleCategoryClick}
+        />
+        <div className='mt-8'>
+          {filteredStoreData.map((item) => (
+            <StoreItem key={item.id} item={item} />
           ))}
-          <li className="underline"></li>
-        </ul>
-        {filteredStoreData.map((item) => (
-          <Main key={item.id} item={item} />
-        ))}
-      </div>
+        </div>
+      </main>
     </div>
   );
 };
