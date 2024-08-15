@@ -21,11 +21,14 @@ export type ThreeStoreData = {
   description: string;
   category: string;
   details: string;
+  quantity?: number;
+  isAdd: boolean;
 };
 
 export const storeData: ThreeStoreData[] = [
   {
-    id: 5,
+    id: 5,  
+    isAdd: false,
     name: 'Bed-two',
     image: [bedTwo, altImgOne, altImgTwo],
     price: 550.00,
@@ -34,7 +37,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'bed',
   },
   {
-    id: 1,
+    id: 1,  
+    isAdd: false,
     name: 'Chair-one',
     image: [chairOne, altImgOne, altImgTwo],
     price: 98.80,
@@ -43,7 +47,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'chair',
   },
   {
-    id: 7,
+    id: 7,  
+    isAdd: false,
     name: 'Table-one',
     image: [tableOne, altImgOne, altImgTwo],
     price: 220.00,
@@ -52,7 +57,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'table',
   },
   {
-    id: 4,
+    id: 4,  
+    isAdd: false,
     name: 'Bed-one',
     image: [bedOne, altImgOne, altImgTwo],
     price: 450.00,
@@ -61,7 +67,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'bed',
   },
   {
-    id: 11,
+    id: 11,  
+    isAdd: false,
     name: 'Shelve-two',
     image: [shelveTwo, altImgOne, altImgTwo],
     price: 89.99,
@@ -70,7 +77,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'shelve',
   },
   {
-    id: 3,
+    id: 3,  
+    isAdd: false,
     name: 'Chair-three',
     image: [chairThree, altImgOne, altImgTwo],
     price: 85.00,
@@ -79,7 +87,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'chair',
   },
   {
-    id: 2,
+    id: 2,  
+    isAdd: false,
     name: 'Chair-two',
     image: [chairTwo, altImgOne, altImgTwo],
     price: 120.50,
@@ -88,7 +97,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'chair',
   },
   {
-    id: 12,
+    id: 12,  
+    isAdd: false,
     name: 'Shelve-three',
     image: [shelveThree, altImgOne, altImgTwo],
     price: 120.00,
@@ -97,7 +107,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'shelve',
   },
   {
-    id: 10,
+    id: 10,  
+    isAdd: false,
     name: 'Shelve-one',
     image: [shelveOne, altImgOne, altImgTwo],
     price: 99.99,
@@ -106,7 +117,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'shelve',
   },
   {
-    id: 8,
+    id: 8,  
+    isAdd: false,
     name: 'Table-two',
     image: [tableTwo, altImgOne, altImgTwo],
     price: 300.00,
@@ -115,7 +127,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'table',
   },
   {
-    id: 6,
+    id: 6,  
+    isAdd: false,
     name: 'Bed-three',
     image: [bedThree, altImgOne, altImgTwo],
     price: 380.00,
@@ -124,7 +137,8 @@ export const storeData: ThreeStoreData[] = [
     category: 'bed',
   },
   {
-    id: 9,
+    id: 9,  
+    isAdd: false,
     name: 'Table-three',
     image: [tableThree, altImgOne, altImgTwo],
     price: 175.00,
