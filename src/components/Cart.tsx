@@ -24,10 +24,11 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
           <p className='pt-4'>Your Cart Is Empty</p>
         </div>
       ) : (
-        <div className="w-full bg-Lightest shadow-xl shadow-Mid/50 p-5 rounded-lg overflow-x-hidden">
+        <div className="w-full bg-Lightest shadow-xl shadow-Mid/50 p-5 py-4 rounded-lg overflow-x-hidden">
           {cart.map((item) => (
-            <div key={item.id} className={`${isRemoving[item.id] && "animate-slideOut"}`} >
-              <div className='flex items-center py-2 border-b-2 border-Mid/25'>
+            <div key={item.id} 
+              className={`${isRemoving[item.id] && "animate-slideOut"}`} >
+              <div className='flex items-center py-2  border-b-2 border-Mid/25'>
                 <img 
                   src={item.image[0]} 
                   alt={item.name} 
@@ -51,7 +52,7 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
               </div>
             </div>
           ))}
-          <h4 className='flex items-center py-4 pb-5 text-2xl font-bold text-Dark'>Order Total <span className='ml-auto'>${totalPrice}</span></h4>
+          <h4 className='flex items-center py-6 pb-6 text-xl font-bold text-Dark'>Order Total <span className='ml-auto'>${totalPrice}</span></h4>
           <button className='bg-Brand w-full text-Lightest py-2 text-xl rounded-lg font-bold'>Confirm Order</button>
         </div>
       )}

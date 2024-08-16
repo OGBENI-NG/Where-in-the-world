@@ -14,7 +14,7 @@ const CategoryList: React.FC<CategoryListProps> = ({
   handleCategoryClick,
 }) => {
   return (
-    <ul className="relative flex justify-center items-center gap-5 text-Dark font-semibold text-sm leading-none bg-Lightest p-3 rounded-lg">
+    <ul className="relative flex justify-center items-center gap-5 text-Dark font-bold text-base leading-none bg-Lightest p-3 rounded-lg">
       {categories.map((category, index) => (
         <li
           key={category}
