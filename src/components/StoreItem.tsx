@@ -37,9 +37,9 @@ const StoreItem: React.FC<StoreItemProps> = ({
     ${isHovered ? 'opacity-0' : 'opacity-100'}`
 
   return (
-    <section>
+    <section >
       <article>
-        <div className='relative bg-Lightest mt-3 pt-4 rounded-lg'>
+        <div className='relative bg-Lightest mt-5 pt-3 rounded-lg'>
           <div className='flex flex-col justify-center items-center group'>
             <div 
               className='size-[200px] cursor-pointer'
@@ -95,7 +95,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
                   type='button' 
                   className={`flex items-center gap-[8px] w-full h-full
                   text-base font-semibold overflow-x-hidden
-                  border-[1.5px] border-Brand/80 bg-Lightest py-1 px-4 rounded-lg `}>
+                  border-[1.5px] border-Brand/80 bg-Lightest py-1 px-4 rounded-lg`}>
                   <MdAddShoppingCart className='size-[20px] text-Brand'/> 
                   Add to cart
                 </button>

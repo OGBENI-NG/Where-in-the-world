@@ -124,7 +124,7 @@ const App: React.FC = () => {
         removeFromCart={removeItemFromCart}
         isRemoving={isRemoving}
       />
-      <main>
+      <main className='overflow-x-hidden'>
         <CategoryList
           categories={categories}
           categoryRefs={categoryRefs}
