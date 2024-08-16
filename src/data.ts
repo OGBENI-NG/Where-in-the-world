@@ -13,7 +13,7 @@ import shelveThree from './assets/img/shelves-three.png';
 import altImgOne from './assets/img/alt-one.png';
 import altImgTwo from './assets/img/alt-two.png';
 
-export type ThreeStoreData = {
+export type ThirteenStoreData = {
   id: number;
   name: string;
   image: [] | string[];
@@ -25,7 +25,7 @@ export type ThreeStoreData = {
   isAdd: boolean;
 };
 
-export const storeData: ThreeStoreData[] = [
+export const storeData: ThirteenStoreData[] = [
   {
     id: 5,  
     isAdd: false,

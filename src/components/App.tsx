@@ -2,26 +2,33 @@ import React, { useState, useRef, useEffect, MutableRefObject } from 'react';
 import { useTheme } from '../Hook/ThemeContext';
 import Header from './Header';
 import StoreItem from './StoreItem';
-import { storeData, ThreeStoreData } from '../data';
+import { storeData, ThirteenStoreData } from '../data';
 import '../../src/index.css'; // Ensure you have this file set up
 import CategoryList from './CategoryList';
+
 
 const App: React.FC = () => {
   const { theme, setTheme, toggle, handleToggle } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
   const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
   // State to store items in the cart
-  const [cart, setCart] = useState<ThreeStoreData[]>([]);
+  const [cart, setCart] = useState<ThirteenStoreData[]>([]);
   // State to show increment button for each item
   const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>({});
   //state to add animation to remove item from cart
   const [isRemoving, setIsRemoving] = useState<{[key: string]: boolean}>({});
+  // State to show the cart
+  const [toggleCart, setToggleCart] = useState<boolean>(false)
 
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
   // Calculate total price of items in the cart
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
   // Calculate total quantity of items in the cart
   const totalCartItem = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+  function handleToggleCart() {
+    setToggleCart(!toggleCart);
+  }
 
   useEffect(() => {
     const activeIndex = categories.findIndex(
@@ -48,7 +55,7 @@ const App: React.FC = () => {
   }, [selectedCategory]);
 
   // Function to add item to the cart
-  function addToCart(item: ThreeStoreData) {
+  function addToCart(item: ThirteenStoreData) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
       updateItemQuantity(item);
@@ -56,10 +63,11 @@ const App: React.FC = () => {
       setCart([{ ...item, quantity: 1 }, ...cart]);
       setShowIncrement({ ...showIncrement, [item.id]: true });
     }
+    setToggleCart(false)
   }
 
   // Function to update item quantity in the cart
-  function updateItemQuantity(item: ThreeStoreData) {
+  function updateItemQuantity(item: ThirteenStoreData) {
     setCart(
       cart.map(cartItem =>
         cartItem.id === item.id
@@ -67,10 +75,11 @@ const App: React.FC = () => {
           : cartItem
       )
     );
+    setToggleCart(false)
   }
 
    // Function to remove or decrement item quantity in the cart
-   function removeItemQuantity(item: ThreeStoreData) {
+   function removeItemQuantity(item: ThirteenStoreData) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
       const newQuantity = (existingItem.quantity || 1) - 1;
@@ -83,6 +92,7 @@ const App: React.FC = () => {
           )
         );
       } else {
+        setToggleCart(false)
         setIsRemoving((prev) => ({ ...prev, [item.id]: true }));
         setShowIncrement({ ...showIncrement, [item.id]: false });
         setTimeout(() => {
@@ -93,10 +103,26 @@ const App: React.FC = () => {
     }
   }
 
+  // Function to remove item from the cart
+  function removeItemFromCart(item: ThirteenStoreData) {
+    setIsRemoving((prev) => ({ ...prev, [item.id]: true }));
+    setTimeout(() => {
+      setShowIncrement({ ...showIncrement, [item.id]: false });
+      setCart(cart.filter(cartItem => cartItem.id !== item.id));
+      setIsRemoving((prev) => ({ ...prev, [item.id]: false }));
+    }, 300);
+  }
+
   return (
     <div className="bg-Light h-screen font-Nunito px-5 overflow-x-auto">
       <Header 
         totalCartItem={totalCartItem}
+        handleToggleCart={handleToggleCart}
+        toggleCart={toggleCart}
+        cart={cart}
+        totalPrice={totalPrice}
+        removeFromCart={removeItemFromCart}
+        isRemoving={isRemoving}
       />
       <main>
         <CategoryList
@@ -119,6 +145,7 @@ const App: React.FC = () => {
           ))}
         </div>
       </main>
+      
     </div>
   );
 };
