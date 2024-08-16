@@ -32,7 +32,7 @@ const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart, toggleCar
         </div>
       </div>
         <div className={`absolute z-50 bottom-0 top-20 w-full right-0 left-0  
-          ${toggleCart ? "animate-fadeForward" : "opacity-0 -z-0 transition-opacity duration-300"}`}>
+          ${toggleCart ? "animate-fadeForward" : "hidden"}`}>
           <Cart 
             cart={cart}
             totalPrice={totalPrice}
