@@ -28,7 +28,7 @@ const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart, toggleCar
         <LuShoppingCart className='size-9 '/>
         <div className='absolute w-[25px] h-[18px] overflow-hidden bg-Brand 
           flex -top-[2px] left-4 rounded-full'>
-          <p className='m-auto text-[14px] size-4 text-center pt-[1.4px] font-bold text-Light leading-none'>{totalCartItem}</p>
+          <p className='m-auto text-[13px] size-[18px] text-center pt-[2.8px] font-bold text-Light leading-none'>{totalCartItem}</p>
         </div>
       </div>
         <div className={`absolute z-50 bottom-0 top-20 w-full right-0 left-0  
