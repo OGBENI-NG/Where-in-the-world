@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {RefObject} from 'react'
 import { LuShoppingCart } from "react-icons/lu";
 import { ThirteenStoreData } from '../data';
 import Cart from './Cart';
@@ -12,10 +12,11 @@ type priceProp = {
   totalPrice: string;
   removeFromCart: (item: ThirteenStoreData) => void;
   isRemoving: { [key: string]: boolean } 
+  cartRef: RefObject<HTMLDivElement>; 
  
 }
 
-const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart, toggleCart, totalPrice, cart, removeFromCart, isRemoving}) => {
+const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart, toggleCart, totalPrice, cart, removeFromCart, isRemoving, cartRef}) => {
   return (
     <header className=' relative flex items-center justify-between py-8'>
       <h1 className='text-2xl font-bold text-Brand'>Thirteen
@@ -31,7 +32,7 @@ const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart, toggleCar
           <p className='m-auto text-[13px] size-[18px] text-center pt-[2.8px] font-bold text-Light leading-none'>{totalCartItem}</p>
         </div>
       </div>
-        <div className={`absolute z-50 bottom-0 top-20 w-full right-0 left-0  
+        <div ref={cartRef} className={`absolute z-50 bottom-0 top-20 w-full right-0 left-0  
           ${toggleCart ? "animate-fadeForward" : "hidden"}`}>
           <Cart 
             cart={cart}

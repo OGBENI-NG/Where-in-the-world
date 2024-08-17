@@ -45,7 +45,7 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
                 <button 
                   type='button' 
                   onClick={() => removeFromCart(item)} 
-                  className=" ml-auto text-Dark"
+                  className=" ml-auto text-Dark/80"
                 >
                   <RiDeleteBin2Line className='size-7'/>
                 </button>

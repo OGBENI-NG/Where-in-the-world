@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [isRemoving, setIsRemoving] = useState<{[key: string]: boolean}>({});
   // State to show the cart
   const [toggleCart, setToggleCart] = useState<boolean>(false)
+  const cartRef = useRef<HTMLDivElement>(null)
 
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
   // Calculate total price of items in the cart
@@ -29,6 +30,20 @@ const App: React.FC = () => {
   function handleToggleCart() {
     setToggleCart(!toggleCart);
   }
+
+  useEffect(() => {
+    // Handle click outside the cart modal
+    const handleClickOutsideCartModal = (event: MouseEvent) => {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        setToggleCart(false); // Close the cart if the click is outside
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutsideCartModal);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideCartModal);
+    };
+  }, [cartRef]);
 
   useEffect(() => {
     const activeIndex = categories.findIndex(
@@ -123,6 +138,7 @@ const App: React.FC = () => {
         totalPrice={totalPrice}
         removeFromCart={removeItemFromCart}
         isRemoving={isRemoving}
+        cartRef={cartRef}
       />
       <main className='overflow-x-hidden'>
         <CategoryList
