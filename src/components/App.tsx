@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect, MutableRefObject } from 'react';
+import React, { useState, useRef, useEffect, RefObject, MutableRefObject } from 'react';
 import { useTheme } from '../Hook/ThemeContext';
 import Header from './Header';
 import StoreItem from './StoreItem';
 import { storeData, ThirteenStoreData } from '../data';
 import '../../src/index.css'; // Ensure you have this file set up
 import CategoryList from './CategoryList';
+import Cart from './Cart';
 
 
 const App: React.FC = () => {
@@ -27,9 +28,10 @@ const App: React.FC = () => {
   // Calculate total quantity of items in the cart
   const totalCartItem = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
-  function handleToggleCart() {
-    setToggleCart(!toggleCart);
-  }
+   // Toggle Cart State Function
+   const handleToggleCart = () => {
+    setToggleCart(prevState => !prevState);
+  };
 
   useEffect(() => {
     // Handle click outside the cart modal
@@ -43,7 +45,8 @@ const App: React.FC = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutsideCartModal);
     };
-  }, [cartRef]);
+  }, [cartRef, toggleCart]);
+
 
   useEffect(() => {
     const activeIndex = categories.findIndex(
@@ -129,18 +132,24 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="bg-Light h-screen font-Nunito px-5 overflow-x-auto">
-      <Header 
-        totalCartItem={totalCartItem}
-        handleToggleCart={handleToggleCart}
-        toggleCart={toggleCart}
-        cart={cart}
-        totalPrice={totalPrice}
-        removeFromCart={removeItemFromCart}
-        isRemoving={isRemoving}
-        cartRef={cartRef}
-      />
-      <main className='overflow-x-hidden'>
+    <div  className="bg-Light h-screen font-Nunito px-5 overflow-x-auto">
+      <div  className='relative' ref={cartRef}>
+        <Header 
+          totalCartItem={totalCartItem}
+          handleToggleCart={handleToggleCart}
+        />
+        <div className={`absolute z-50 bottom-0 top-20 w-full right-0 left-0  
+          ${toggleCart ? "animate-fadeForward" : "hidden "}`}>
+          <Cart 
+            cart={cart}
+            totalPrice={totalPrice}
+            toggleCart={toggleCart}
+            removeFromCart={removeItemFromCart}
+            isRemoving={isRemoving}
+          />
+        </div>
+      </div>
+      <main  className='overflow-x-hidden'>
         <CategoryList
           categories={categories}
           categoryRefs={categoryRefs}

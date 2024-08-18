@@ -67,7 +67,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
               <div className='h-[1px] w-full bg-Brand/80 mt-8'></div>
             </div>
             <div className={`${isHoverStyle} 
-              -mt-[20px] relative z-20 w-[145px] h-10 #j`}>
+              -mt-[20px] relative z-20 w-[148px] h-10 #j`}>
               {showIncrement[item.id] ? (
                 <div className={`flex items-center justify-center gap-8 bg-Brand
                   z-50 relative py-[7px] px-[10px] rounded-lg text-Lightest 
