@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { MdAddShoppingCart } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
-import { HiPlus, HiMinus} from "react-icons/hi";
 import { ThirteenStoreData } from '../data';
+import CartBtn from './CartBtn';
 
 type StoreItemProps = {
   item: ThirteenStoreData;
@@ -11,6 +10,7 @@ type StoreItemProps = {
   addToCart: (item: ThirteenStoreData) => void; // Function to add item to the cart
   updateItemQuantity: (item: ThirteenStoreData) => void; // Function to increase the item quantity in the cart
   removeFromCart: (item: ThirteenStoreData) => void; // Function to decrease the item quantity in the cart
+  handleShowReview: (item: ThirteenStoreData) => void
 };
 
 const StoreItem: React.FC<StoreItemProps> = ({ 
@@ -20,9 +20,10 @@ const StoreItem: React.FC<StoreItemProps> = ({
   addToCart,
   updateItemQuantity,
   removeFromCart,
+  handleShowReview
  }) => {
 
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -34,7 +35,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
   };
 
   const isHoverStyle =  `transition-opacity duration-300  
-    ${isHovered ? 'opacity-0' : 'opacity-100'}`
+  ${isHovered ? 'opacity-0' : 'opacity-100'}`;
 
   return (
     <section >
@@ -55,52 +56,27 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 text-Dark bg-Lightest/70 rounded-t-lg z-10 transition-opacity duration-300
                   ${isHovered ? 'opacity-100' : 'opacity-0'}`}
               >
-                <TbListDetails className='size-12 block m-auto mt-20'/>
+                <button onClick={() => handleShowReview(item)} type='button' className='block m-auto mt-20'>
+                  <TbListDetails className='size-12 '/>
+                </button>
                 <div className='absolute bottom-1 left-5'>
                   <h2 className='text-xl font-medium '>{item.name}</h2>
                   <p className='text-2xl font-medium pt-2'>{item.description}</p>
                 </div>
               </div>
             </div>
-            {/* button line */}
             <div className={`px-5 w-full ${isHoverStyle}`}>
-              <div className='h-[1px] w-full bg-Brand/80 mt-8'></div>
+              <div className='h-[1px] w-full bg-Brand/80 mt-5'></div>
             </div>
-            <div className={`${isHoverStyle} 
-              -mt-[20px] relative z-20 w-[148px] h-10 #j`}>
-              {showIncrement[item.id] ? (
-                <div className={`flex items-center justify-center gap-8 bg-Brand
-                  z-50 relative py-[7px] px-[10px] rounded-lg text-Lightest 
-                  w-full h-full ${showIncrement[item.id] ? "animate-flipinx":"opacity-0 transition-opacity duration-300" }`}>
-                  <button
-                      onClick={() => updateItemQuantity(item)} 
-                      type='button' 
-                      className='rounded-full border-2 border-Lightest p-[1px] '
-                    >
-                    <HiPlus className='size-4'/>
-                  </button>
-                    <span className='text-[14px] font-bold size-4 pt-[2px] leading-none'>
-                      {cart.find(cartItem => cartItem.id === item.id)?.quantity || 1}
-                    </span>
-                  <button
-                    onClick={() => removeFromCart(item)} 
-                    type='button' 
-                    className='rounded-full border-2 border-Lightest p-[1px]'>
-                    <HiMinus className='size-4'/>
-                  </button>
-                </div>
-              ) : (
-                <button 
-                  onClick={() => addToCart(item)}
-                  type='button' 
-                  className={`flex items-center gap-[8px] w-full h-full
-                  text-base font-semibold overflow-x-hidden
-                  border-[1.5px] border-Brand/80 bg-Lightest py-1 px-4 rounded-lg`}>
-                  <MdAddShoppingCart className='size-[20px] text-Brand'/> 
-                  Add to cart
-                </button>
-              )}
-            </div>
+            <CartBtn
+              cart={cart}
+              item={item}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+              updateItemQuantity={updateItemQuantity}
+              showIncrement={showIncrement}
+              isHoverStyle={isHoverStyle}
+            />
           </div>
           <p className='px-5 pb-4 pt-3 text-xl font-bold text-Darkest'>${item.price.toFixed(2)}</p>
         </div>

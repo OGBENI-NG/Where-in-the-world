@@ -9,7 +9,7 @@ export default {
       colors: {
         Brand: "#00884b",
         Darkest: "#18181B",
-        Dark: "#3b3b43",
+        Dark: "#2A2A2A",
         Mid: "#858594",
         Light: "#E2E8F0",
         Lightest: "#FFFFFF",

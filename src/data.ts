@@ -22,13 +22,15 @@ export type ThirteenStoreData = {
   category: string;
   details: string;
   quantity?: number;
-  isAdd: boolean;
+  rating: number;
+  numberOfRating: number
 };
 
 export const storeData: ThirteenStoreData[] = [
   {
     id: 5,  
-    isAdd: false,
+    rating: 4,
+    numberOfRating: 1222,
     name: 'Bed-two',
     image: [bedTwo, altImgOne, altImgTwo],
     price: 550.00,
@@ -38,7 +40,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 1,  
-    isAdd: false,
+    rating: 4,
+    numberOfRating: 672,
     name: 'Chair-one',
     image: [chairOne, altImgOne, altImgTwo],
     price: 98.80,
@@ -48,7 +51,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 7,  
-    isAdd: false,
+    rating: 5,
+    numberOfRating: 850,
     name: 'Table-one',
     image: [tableOne, altImgOne, altImgTwo],
     price: 220.00,
@@ -58,7 +62,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 4,  
-    isAdd: false,
+    rating: 3,
+    numberOfRating: 432,
     name: 'Bed-one',
     image: [bedOne, altImgOne, altImgTwo],
     price: 450.00,
@@ -68,7 +73,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 11,  
-    isAdd: false,
+    rating: 4,
+    numberOfRating: 378,
     name: 'Shelve-two',
     image: [shelveTwo, altImgOne, altImgTwo],
     price: 89.99,
@@ -78,7 +84,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 3,  
-    isAdd: false,
+    rating: 3,
+    numberOfRating: 122,
     name: 'Chair-three',
     image: [chairThree, altImgOne, altImgTwo],
     price: 85.00,
@@ -88,7 +95,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 2,  
-    isAdd: false,
+    rating: 5,
+    numberOfRating: 879,
     name: 'Chair-two',
     image: [chairTwo, altImgOne, altImgTwo],
     price: 120.50,
@@ -98,7 +106,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 12,  
-    isAdd: false,
+    rating: 4,
+    numberOfRating: 642,
     name: 'Shelve-three',
     image: [shelveThree, altImgOne, altImgTwo],
     price: 120.00,
@@ -108,7 +117,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 10,  
-    isAdd: false,
+    rating: 3,
+    numberOfRating: 782,
     name: 'Shelve-one',
     image: [shelveOne, altImgOne, altImgTwo],
     price: 99.99,
@@ -118,7 +128,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 8,  
-    isAdd: false,
+    rating: 5,
+    numberOfRating: 532,
     name: 'Table-two',
     image: [tableTwo, altImgOne, altImgTwo],
     price: 300.00,
@@ -128,7 +139,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 6,  
-    isAdd: false,
+    rating: 5,
+    numberOfRating: 652,
     name: 'Bed-three',
     image: [bedThree, altImgOne, altImgTwo],
     price: 380.00,
@@ -138,7 +150,8 @@ export const storeData: ThirteenStoreData[] = [
   },
   {
     id: 9,  
-    isAdd: false,
+    rating: 3,
+    numberOfRating: 762,
     name: 'Table-three',
     image: [tableThree, altImgOne, altImgTwo],
     price: 175.00,

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, RefObject, MutableRefObject } from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import { useTheme } from '../Hook/ThemeContext';
 import Header from './Header';
 import StoreItem from './StoreItem';
@@ -6,6 +6,8 @@ import { storeData, ThirteenStoreData } from '../data';
 import '../../src/index.css'; // Ensure you have this file set up
 import CategoryList from './CategoryList';
 import Cart from './Cart';
+import Footer from './Footer';
+import Preview from './Preview';
 
 
 const App: React.FC = () => {
@@ -21,7 +23,8 @@ const App: React.FC = () => {
   // State to show the cart
   const [toggleCart, setToggleCart] = useState<boolean>(false)
   const cartRef = useRef<HTMLDivElement>(null)
-
+ 
+  const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
   // Calculate total price of items in the cart
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
@@ -131,14 +134,24 @@ const App: React.FC = () => {
     }, 300);
   }
 
+
+  function handleShowReview(item: ThirteenStoreData) {
+    setSelectedItemForReview(item);
+  }
+
+  function handleBackFromReview() {
+    setSelectedItemForReview(null);
+  }
+
   return (
-    <div  className="bg-Light h-screen font-Nunito px-5 overflow-x-auto">
-      <div  className='relative' ref={cartRef}>
+    <div className="bg-Light h-screen font-Nunito  overflow-x-auto">
+      
+      <header className='relative px-5' ref={cartRef}>
         <Header 
           totalCartItem={totalCartItem}
           handleToggleCart={handleToggleCart}
         />
-        <div className={`absolute z-50 bottom-0 top-20 w-full right-0 left-0  
+        <div className={`px-5 absolute z-50 bottom-0 top-20 w-full right-0 left-0  
           ${toggleCart ? "animate-fadeForward" : "hidden "}`}>
           <Cart 
             cart={cart}
@@ -148,29 +161,45 @@ const App: React.FC = () => {
             isRemoving={isRemoving}
           />
         </div>
-      </div>
+      </header>
       <main  className='overflow-x-hidden'>
-        <CategoryList
-          categories={categories}
-          categoryRefs={categoryRefs}
-          selectedCategory={selectedCategory}
-          handleCategoryClick={handleCategoryClick}
-        />
-        <div className='my-8'>
-          {filteredStoreData.map((item) => (
-            <StoreItem 
-              key={item.id} 
-              item={item} 
-              showIncrement={showIncrement}
-              cart={cart}
-              addToCart={addToCart}
-              updateItemQuantity={updateItemQuantity}
-              removeFromCart={removeItemQuantity}
-            />
-          ))}
-        </div>
+        {selectedItemForReview ? (
+          <Preview 
+            item={selectedItemForReview} 
+            onBack={handleBackFromReview}
+            showIncrement={showIncrement} 
+            updateItemQuantity={updateItemQuantity}
+            addToCart={addToCart}
+            removeFromCart={removeItemQuantity}
+            cart={cart}
+            className=""
+           
+          />
+        ) : (
+        <div className='px-5'>
+          <CategoryList
+            categories={categories}
+            categoryRefs={categoryRefs}
+            selectedCategory={selectedCategory}
+            handleCategoryClick={handleCategoryClick}
+          />
+          <div className='mb-20'>
+            {filteredStoreData.map((item) => (
+              <StoreItem 
+                key={item.id} 
+                item={item} 
+                showIncrement={showIncrement}
+                cart={cart}
+                addToCart={addToCart}
+                updateItemQuantity={updateItemQuantity}
+                removeFromCart={removeItemQuantity}
+                handleShowReview={handleShowReview}
+              />
+            ))}
+          </div>
+        </div>)}
       </main>
-      
+      <Footer/>
     </div>
   );
 };

@@ -8,7 +8,7 @@ type priceProp = {
 
 const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart}) => {
   return (
-    <header className='relative flex items-center justify-between py-8'>
+    <div className='relative flex items-center justify-between py-8'>
       <h1 className='text-2xl font-bold text-Brand'>Thirteen
         <span className='text-Dark font-medium text-xl'>store</span>
       </h1>
@@ -23,7 +23,7 @@ const Header: React.FC<priceProp> = ({totalCartItem, handleToggleCart}) => {
         </div>
       </button>
         
-    </header>
+    </div>
   )
 }
 

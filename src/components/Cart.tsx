@@ -16,15 +16,16 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
     <div className={``}>
       {cart.length === 0 ? (
         <div className={`bg-Lightest px-5 text-Mid/85 
-          h-[310px] w-full z-50 shadow-xl shadow-Mid/50 
-          rounded-lg flex flex-col items-center justify-center
-          gap-5 text-xl font-bold text-[14px] py-4`}>
-          <h3 className='border-b-2 w-full text-center pb-6'>Cart</h3>
-          <GiShoppingCart className='size-28'/>
-          <p className='pt-4'>Your Cart Is Empty</p>
+          h-max w-full z-50 shadow-xl shadow-Mid/50 
+          rounded-lg text-center flex flex-col items-center
+          gap-y-4 text-xl font-bold text-[14px]`}>
+          <h3 className='border-b-2 w-full py-4'>Cart</h3>
+          <GiShoppingCart className='size-28 m-auto'/>
+          <p className='py-4'>Your Cart Is Empty</p>
         </div>
       ) : (
-        <div className="w-full bg-Lightest shadow-xl shadow-Mid/50 p-5 py-4 rounded-lg overflow-x-hidden">
+        <div className="w-full bg-Lightest shadow-xl shadow-Mid/50 p-5 pb-6  rounded-lg overflow-x-hidden">
+          <h4 className="text-center text-xl font-semibold leading-none pb-3 text-Dark">Your Cart Item</h4>
           {cart.map((item) => (
             <div key={item.id} 
               className={`${isRemoving[item.id] && "animate-slideOut"}`} >
