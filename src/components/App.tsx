@@ -59,6 +59,7 @@ const App: React.FC = () => {
     if (activeElement) {
       const left = activeElement.offsetLeft;
       const width = activeElement.offsetWidth;
+     
       // Set the custom CSS properties for underline
       document.documentElement.style.setProperty('--underline-left', `${left}px`);
       document.documentElement.style.setProperty('--underline-width', `${width}px`);
@@ -146,7 +147,7 @@ const App: React.FC = () => {
   return (
     <div className="bg-Light h-screen font-Nunito  overflow-x-auto">
       
-      <header className='relative px-5' ref={cartRef}>
+      <header className='relative px-5 bg-Lightest/85' ref={cartRef}>
         <Header 
           totalCartItem={totalCartItem}
           handleToggleCart={handleToggleCart}
@@ -164,20 +165,21 @@ const App: React.FC = () => {
       </header>
       <main  className='overflow-x-hidden'>
         {selectedItemForReview ? (
-          <Preview 
-            item={selectedItemForReview} 
-            onBack={handleBackFromReview}
-            showIncrement={showIncrement} 
-            updateItemQuantity={updateItemQuantity}
-            addToCart={addToCart}
-            removeFromCart={removeItemQuantity}
-            cart={cart}
-            className=""
-            quantityBtnStyle=""
-           
-          />
+          <div className={`${selectedItemForReview ? "animate-fadeIn" : ""}`}>
+            <Preview 
+              item={selectedItemForReview} 
+              onBack={handleBackFromReview}
+              showIncrement={showIncrement} 
+              updateItemQuantity={updateItemQuantity}
+              addToCart={addToCart}
+              removeFromCart={removeItemQuantity}
+              cart={cart}
+              className=""
+              quantityBtnStyle=""
+            />
+          </div>
         ) : (
-        <div className='px-5'>
+        <div className={`px-5 mt-8 ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
           <CategoryList
             categories={categories}
             categoryRefs={categoryRefs}
@@ -196,6 +198,7 @@ const App: React.FC = () => {
                 removeFromCart={removeItemQuantity}
                 handleShowReview={handleShowReview}
                 quantityBtnStyle=''
+                addToCartBtnInPreview=''
               />
             ))}
           </div>

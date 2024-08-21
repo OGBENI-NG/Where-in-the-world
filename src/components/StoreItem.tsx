@@ -11,7 +11,8 @@ type StoreItemProps = {
   updateItemQuantity: (item: ThirteenStoreData) => void; // Function to increase the item quantity in the cart
   removeFromCart: (item: ThirteenStoreData) => void; // Function to decrease the item quantity in the cart
   handleShowReview: (item: ThirteenStoreData) => void;
-  quantityBtnStyle: string
+  quantityBtnStyle: string;
+  addToCartBtnInPreview: string;
 };
 
 const StoreItem: React.FC<StoreItemProps> = ({ 
@@ -78,6 +79,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
               showIncrement={showIncrement}
               isHoverStyle={isHoverStyle}
               quantityBtnStyle=''
+              addToCartBtnInPreview=''
             />
           </div>
           <p className='px-5 pb-4 pt-3 text-xl font-bold text-Darkest'>${item.price.toFixed(2)}</p>
