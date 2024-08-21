@@ -12,7 +12,7 @@ type CartBtnProps = {
   updateItemQuantity: (item: ThirteenStoreData) => void; 
   removeFromCart: (item: ThirteenStoreData) => void; 
   isHoverStyle: string 
-  quantityBtnStyle?: string;
+  quantityBtnStyle: string;
 }
 
 const CartBtn: React.FC<CartBtnProps> = ({

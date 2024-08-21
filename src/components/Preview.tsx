@@ -95,7 +95,7 @@ const Preview: React.FC<ReviewProps> = ({item, onBack, className, showIncrement,
           showIncrement={showIncrement}
           className="w-full mt-6 h-11"
           isHoverStyle=''
-          quantityBtnStyle='px-6'
+          quantityBtnStyle='px-[18px]'
         />
       </section>
     </article>
