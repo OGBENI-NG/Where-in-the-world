@@ -12,6 +12,7 @@ type CartBtnProps = {
   updateItemQuantity: (item: ThirteenStoreData) => void; 
   removeFromCart: (item: ThirteenStoreData) => void; 
   isHoverStyle: string 
+  quantityBtnStyle?: string;
 }
 
 const CartBtn: React.FC<CartBtnProps> = ({
@@ -22,18 +23,19 @@ const CartBtn: React.FC<CartBtnProps> = ({
   showIncrement,
   removeFromCart,
   updateItemQuantity,
-  isHoverStyle
+  isHoverStyle,
+  quantityBtnStyle
 
   }) => {
 
-  const quantity = cart.find(cartItem => cartItem.id === item.id)?.quantity || 1;
+  const quantity = (cart.find(cartItem => cartItem.id === item.id)?.quantity || 1);
 
   return(
     <div className={`${isHoverStyle} 
       -mt-[20px] relative z-20 w-[145px] h-10 ${className}`}>
       {showIncrement[item.id] ? (
-        <div className={`flex items-center justify-center gap-8 bg-Brand
-          z-50 relative py-[7px] px-[10px] rounded-lg text-Lightest 
+        <div className={`flex items-center justify-between gap-8 bg-Brand
+          z-50 relative py-[7px] px-[10px] rounded-lg text-Lightest ${quantityBtnStyle}
           w-full h-full ${showIncrement[item.id] ? "animate-flipinx":"opacity-0 transition-opacity duration-300" }`}>
           <button
             onClick={() => updateItemQuantity(item)} 
@@ -56,7 +58,7 @@ const CartBtn: React.FC<CartBtnProps> = ({
         <button 
           onClick={() => addToCart(item)}
           type='button' 
-          className={`flex items-center gap-[8px] w-full h-full
+          className={`flex items-center justify-center gap-[8px] w-full h-full
           text-base font-semibold overflow-x-hidden
           border-[1.5px] border-Brand/80 bg-Lightest py-1 px-4 rounded-lg`}>
           <MdAddShoppingCart className='size-[20px] text-Brand'/> 

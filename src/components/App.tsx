@@ -173,6 +173,7 @@ const App: React.FC = () => {
             removeFromCart={removeItemQuantity}
             cart={cart}
             className=""
+            quantityBtnStyle=""
            
           />
         ) : (

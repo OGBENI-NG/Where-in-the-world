@@ -15,10 +15,11 @@ type ReviewProps = {
   cart: ThirteenStoreData[];  
   updateItemQuantity: (item: ThirteenStoreData) => void; 
   removeFromCart: (item: ThirteenStoreData) => void; 
+  quantityBtnStyle: ""
 }
 
-const Preview: React.FC<ReviewProps> = ({item, onBack, className = "", showIncrement, addToCart,
-  cart, updateItemQuantity, removeFromCart, 
+const Preview: React.FC<ReviewProps> = ({item, onBack, className, showIncrement, addToCart,
+  cart, updateItemQuantity, removeFromCart, quantityBtnStyle = ""
 }) => {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
@@ -72,19 +73,19 @@ const Preview: React.FC<ReviewProps> = ({item, onBack, className = "", showIncre
             className='w-full h-full '
           />
         </div>
-        <div className='flex items-center justify-center gap-4 py-5 border-t-2 border-t-Brand/15'>
+        <div className='flex items-center justify-center gap-4 py-4 border-t-2 border-t-Brand/15'>
           {imgThumbnail}
         </div>
       </section> 
       <section className='px-5 bg-Lightest/60 rounded-t-[50px] border-t-[2px]
         border-Brand overflow-x-hidden py-10 -mt-5'>
-        <h2 className='text-2xl font-bold text-Dark'>{item.name}</h2>
-        <h3>${item.price.toFixed(2)}</h3>
-        <p className='flex items-center'>
-          {stars}/{item.numberOfRating} 
+        <h2 className='text-3xl font-bold text-Dark'>{item.name}</h2>
+        <h3 className='text-Brand font-semibold text-2xl py-2'>${item.price.toFixed(2)}</h3>
+        <p className='flex items-center gap-1 pt-1'>
+          {stars} / {item.numberOfRating} 
           <span>ratings</span>
         </p>
-        <p>{item.details}</p>
+        <p className='text-2xl pt-5'>{item.details}</p>
         <CartBtn
           cart={cart}
           item={item}
@@ -92,8 +93,9 @@ const Preview: React.FC<ReviewProps> = ({item, onBack, className = "", showIncre
           removeFromCart={removeFromCart}
           updateItemQuantity={updateItemQuantity}
           showIncrement={showIncrement}
-          className="w-full mt-6"
+          className="w-full mt-6 h-11"
           isHoverStyle=''
+          quantityBtnStyle='px-6'
         />
       </section>
     </article>
