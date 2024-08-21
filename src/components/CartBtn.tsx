@@ -38,7 +38,7 @@ const CartBtn: React.FC<CartBtnProps> = ({
       {showIncrement[item.id] ? (
         <div className={`flex items-center justify-between gap-8 bg-Brand
           z-50 relative py-[7px] px-[10px] rounded-lg text-Lightest ${quantityBtnStyle}
-          w-full h-full ${showIncrement[item.id] ? "animate-flipinx":"opacity-0 transition-opacity duration-300" }`}>
+          w-full h-full ${showIncrement[item.id] && "animate-fadeIn" }`}>
           <button
             onClick={() => removeFromCart(item)} 
             type='button' 
@@ -61,7 +61,7 @@ const CartBtn: React.FC<CartBtnProps> = ({
           onClick={() => addToCart(item)}
           type='button' 
           className={`${addToCartBtnInPreview} flex items-center justify-center 
-            gap-[8px] w-full h-full
+            gap-[8px] w-full h-full ${!showIncrement[item.id] && "animate-fadeInBackWard" }
           text-base font-semibold overflow-x-hidden
           border-[1.5px] border-Brand/80 bg-Lightest py-1 px-4 rounded-lg`}>
           <MdAddShoppingCart className='size-[20px] text-Brand'/> 
