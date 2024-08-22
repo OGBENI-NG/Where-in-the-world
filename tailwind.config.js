@@ -21,8 +21,10 @@ export default {
         flipinx: 'flipinx .3s ease 0s 1 normal forwards',
         fadeForward: 'fadeForward .3s ease 0s 1 normal none',
         slideOut: 'slideOut .3s ease 0s 1 normal none',
-        fadeIn: 'fadeIn 2s ease 0s 1 normal forwards',
-        fadeInBackWard: 'fadeInBackWard 2s ease 0s 1 normal forwards'
+        fadeIn: 'fadeIn .4s ease 0s 1 normal forwards',
+        fadeInBackWard: 'fadeInBackWard .4s ease 0s 1 normal forwards',
+        slideIn: 'slideIn 0.3s ease 0s 1 normal forwards',
+        slideInLeft: 'slideInLeft 0.3s ease 0s 1 normal forwards'
       },
       keyframes: {
         flipinx: {
@@ -70,6 +72,26 @@ export default {
           },
           '100%': {
             opacity: "1",
+          },
+        },
+        slideIn: {
+          '0%': {
+            opacity: "0",
+            transform: "translateX(-20px)"
+          },
+          '100%': {
+            opacity: "1",
+            transform:" translateX(0)"
+          },
+        },
+        slideInLeft: {
+          '0%': {
+            opacity: "0",
+            transform: "translateX(20px)"
+          },
+          '100%': {
+            opacity: "1",
+            transform:" translateX(0)"
           },
         },
         

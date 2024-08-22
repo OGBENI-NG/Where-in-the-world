@@ -77,7 +77,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
         </button>
       </div>
       <section className='bg-Lightest rounded-b-[20px] border-b-[1px]
-        border-Brand/60 overflow-x-hidden p-5'>
+        border-Brand/60 overflow-x-hidden p-5 py-8'>
         <div className={`size-[220px] m-auto pb-5 transition-opacity duration-${transitionDuration} 
           ${isFading ? "opacity-0" : "opacity-100"}`}>
           <img 
@@ -86,7 +86,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
             className='w-full h-full '
           />
         </div>
-        <div className='flex items-center justify-center gap-4 pt-4 border-t-2 border-t-Brand/15'>
+        <div className='flex items-center justify-center gap-4 pt-5 '>
           {imgThumbnail}
         </div>
       </section> 
@@ -107,7 +107,6 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
           updateItemQuantity={updateItemQuantity}
           showIncrement={showIncrement}
           className="w-full mt-6 h-[50px]"
-          isHoverStyle=''
           quantityBtnStyle='px-[15px]'
           addToCartBtnInPreview='text-lg'
         />

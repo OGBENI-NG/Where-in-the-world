@@ -23,6 +23,9 @@ const App: React.FC = () => {
   // State to show the cart
   const [toggleCart, setToggleCart] = useState<boolean>(false)
   const cartRef = useRef<HTMLDivElement>(null)
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isFadingInLeft, setIsFadingInLeft] = useState(false);
+
  
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
@@ -59,7 +62,7 @@ const App: React.FC = () => {
     if (activeElement) {
       const left = activeElement.offsetLeft;
       const width = activeElement.offsetWidth;
-     
+
       // Set the custom CSS properties for underline
       document.documentElement.style.setProperty('--underline-left', `${left}px`);
       document.documentElement.style.setProperty('--underline-width', `${width}px`);
@@ -67,8 +70,16 @@ const App: React.FC = () => {
   }, [selectedCategory, categories]);
 
   const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
+    setIsFadingOut(false);
+    setTimeout(() => {
+      setSelectedCategory(category);
+      setIsFadingOut(true);
+    }, 300); // Match this duration with your CSS animation duration
+    
   };
+  
+  
+  
 
   const filteredStoreData = React.useMemo(() => {
     return selectedCategory === 'All Category'
@@ -153,7 +164,7 @@ const App: React.FC = () => {
           handleToggleCart={handleToggleCart}
         />
         <div className={`px-5 absolute z-50 bottom-0 top-20 w-full right-0 left-0  
-          ${toggleCart ? "animate-fadeForward" : "hidden "}`}>
+          ${toggleCart ? "animate-fadeForward" : "hidden"}`}>
           <Cart 
             cart={cart}
             totalPrice={totalPrice}
@@ -186,7 +197,7 @@ const App: React.FC = () => {
             selectedCategory={selectedCategory}
             handleCategoryClick={handleCategoryClick}
           />
-          <div className='mb-20'>
+          <div className={`pb-20 pt-1 ${isFadingOut && "animate-slideIn"}`}>
             {filteredStoreData.map((item) => (
               <StoreItem 
                 key={item.id} 

@@ -15,7 +15,7 @@ type StoreItemProps = {
   addToCartBtnInPreview: string;
 };
 
-const StoreItem: React.FC<StoreItemProps> = ({ 
+const StoreItem: React.FC<StoreItemProps> = ({
   item,
   showIncrement,
   cart,
@@ -29,63 +29,72 @@ const StoreItem: React.FC<StoreItemProps> = ({
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-   
+
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
 
-  const isHoverStyle =  `transition-opacity duration-300  
+  const isHoverStyle =  `transition-opacity duration-300
   ${isHovered ? 'opacity-0' : 'opacity-100'}`;
 
   return (
-    <section >
-      <article>
-        <div className='relative bg-Lightest mt-5 pt-3 rounded-lg'>
-          <div className='flex flex-col justify-center items-center group'>
-            <div 
-              className='size-[200px] cursor-pointer'
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+    <article>
+      <div className={`relative bg-Lightest mt-5 pt-4 rounded-lg`}>
+        <div className='flex flex-col justify-center gap-5 items-center group'>
+          <div
+            className='size-[220px] cursor-pointer overflow-hidden '
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img
+              src={item.image[0]}
+              alt={`${item.name}-image`}
+              className='h-full w-full object-cover'
+            />
+            <div className={`absolute top-0 left-0 right-0 bottom-[60px] w-full
+              text-Darkest bg-Lightest/65 rounded-t-lg -z-0 transition-opacity duration-300
+                ${isHovered ? 'opacity-100' : 'opacity-0'} overflow-x-hidden `}
             >
-              <img 
-                src={item.image[0]} 
-                alt={`${item.name}-image`}  
-                className='h-full w-full object-cover'
-              />
-              <div className={`absolute top-0 left-0 right-0 bottom-[52px] w-full 
-                text-Dark bg-Lightest/70 rounded-t-lg z-10 transition-opacity duration-300
-                  ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+              <button 
+                onClick={() => handleShowReview(item)} 
+                type='button' 
+                className='block m-auto mt-[75px]'
               >
-                <button onClick={() => handleShowReview(item)} type='button' className='block m-auto mt-20'>
-                  <TbListDetails className='size-12 '/>
-                </button>
-                <div className='absolute bottom-1 left-5'>
-                  <h2 className='text-xl font-medium '>{item.name}</h2>
-                  <p className='text-2xl font-medium pt-2'>{item.description}</p>
-                </div>
+                <TbListDetails className='size-12'/>
+              </button>
+              <div className='absolute bottom-1 left-5 '>
+                <h2 className='text-xl font-medium overflow-hidden'>{item.name}</h2>
+                <p className='text-2xl font-medium pt-2'>{item.description}</p>
               </div>
             </div>
-            <div className={`px-5 w-full ${isHoverStyle}`}>
-              <div className='h-[1px] w-full bg-Brand/80 mt-5'></div>
-            </div>
-            <CartBtn
-              cart={cart}
-              item={item}
-              addToCart={addToCart}
-              removeFromCart={removeFromCart}
-              updateItemQuantity={updateItemQuantity}
-              showIncrement={showIncrement}
-              isHoverStyle={isHoverStyle}
-              quantityBtnStyle=''
-              addToCartBtnInPreview=''
-            />
           </div>
-          <p className='px-5 pb-4 pt-3 text-xl font-bold text-Darkest'>${item.price.toFixed(2)}</p>
+          <div className={`${isHoverStyle}`}>
+            <div className={`w-full flex flex-col items-center justify-center
+              ${!showIncrement[item.id] && "animate-fadeInBackWard" }`}>
+              <div className={`px-5 pt-9 w-[330px] 
+                ${showIncrement[item.id] && "animate-fadeIn" }`}>
+                <div className='h-[1px] w-full bg-Brand/50'></div>
+              </div>
+              <div className='-mt-5'>
+                <CartBtn
+                  cart={cart}
+                  item={item}
+                  addToCart={addToCart}
+                  removeFromCart={removeFromCart}
+                  updateItemQuantity={updateItemQuantity}
+                  showIncrement={showIncrement}
+                  quantityBtnStyle=''
+                  addToCartBtnInPreview=''
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </article>
-    </section>
+        <p className='px-5 pb-5 pt-2 text-xl font-bold text-Darkest'>${item.price.toFixed(2)}</p>
+      </div>
+    </article>
   );
 };
 

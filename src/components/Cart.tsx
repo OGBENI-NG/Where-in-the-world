@@ -15,7 +15,7 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
   return (
     <div className={``}>
       {cart.length === 0 ? (
-        <div className={`bg-Lightest px-5 text-Mid/85 
+        <div className={` bg-Lightest px-5 text-Mid/85 
           h-max w-full z-50 shadow-xl shadow-Mid/50 
           rounded-lg text-center flex flex-col items-center
           gap-y-4 text-xl font-bold text-[14px]`}>
