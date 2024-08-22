@@ -77,7 +77,7 @@ export default {
         slideIn: {
           '0%': {
             opacity: "0",
-            transform: "translateX(-20px)"
+            transform: "translateX(-50px)"
           },
           '100%': {
             opacity: "1",
@@ -87,7 +87,7 @@ export default {
         slideInLeft: {
           '0%': {
             opacity: "0",
-            transform: "translateX(20px)"
+            transform: "translateX(50px)"
           },
           '100%': {
             opacity: "1",

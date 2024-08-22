@@ -24,7 +24,7 @@ const App: React.FC = () => {
   const [toggleCart, setToggleCart] = useState<boolean>(false)
   const cartRef = useRef<HTMLDivElement>(null)
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [isFadingInLeft, setIsFadingInLeft] = useState(false);
+  
 
  
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
@@ -163,7 +163,7 @@ const App: React.FC = () => {
           totalCartItem={totalCartItem}
           handleToggleCart={handleToggleCart}
         />
-        <div className={`px-5 absolute z-50 bottom-0 top-20 w-full right-0 left-0  
+        <div className={`px-3 absolute z-50 bottom-0 top-20 w-full right-0 left-0  
           ${toggleCart ? "animate-fadeForward" : "hidden"}`}>
           <Cart 
             cart={cart}
@@ -197,7 +197,7 @@ const App: React.FC = () => {
             selectedCategory={selectedCategory}
             handleCategoryClick={handleCategoryClick}
           />
-          <div className={`pb-20 pt-1 ${isFadingOut && "animate-slideIn"}`}>
+          <div className={`pb-20 pt-1 ${isFadingOut ? "animate-slideIn" : ""}`}>
             {filteredStoreData.map((item) => (
               <StoreItem 
                 key={item.id} 
