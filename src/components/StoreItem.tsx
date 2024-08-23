@@ -41,8 +41,9 @@ const StoreItem: React.FC<StoreItemProps> = ({
 
   return (
     <article>
-      <div className={`relative bg-Lightest mt-5 pt-4 rounded-lg`}>
-        <div className='flex flex-col justify-center gap-5 items-center group'>
+      <div className={`relative bg-Lightest pt-4 rounded-lg`}>
+        <div className='flex flex-col justify-center gap-5 items-center group
+          '>
           <div
             className='size-[220px] cursor-pointer overflow-hidden '
             onMouseEnter={handleMouseEnter}

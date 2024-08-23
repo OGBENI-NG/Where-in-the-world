@@ -65,7 +65,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
   ));
 
   return (
-    <article >
+    <article className='h-auto'>
       <div className='px-5 pt-12'>
         <button 
           onClick={onBack} 
@@ -76,41 +76,44 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
           <IoArrowBack />Back to store
         </button>
       </div>
-      <section className='bg-Lightest rounded-b-[20px] border-b-[1px]
-        border-Brand/60 overflow-x-hidden p-5 py-8'>
-        <div className={`size-[220px] m-auto pb-5 transition-opacity duration-${transitionDuration} 
-          ${isFading ? "opacity-0" : "opacity-100"}`}>
-          <img 
-            src={item.image[currentIndex]} 
-            alt={`${item.name}-image`} 
-            className='w-full h-full '
+      <div className='md:grid md:grid-cols-2'>
+        <section className='bg-Lightest rounded-b-[20px] border-b-[1px]
+          border-Brand/60 overflow-x-hidden p-5 py-8 md:rounded-r-[20px] md:border-r-[1px]'>
+          <div className={`size-[220px] m-auto pb-5 transition-opacity duration-${transitionDuration} 
+            ${isFading ? "opacity-0" : "opacity-100"}`}>
+            <img 
+              src={item.image[currentIndex]} 
+              alt={`${item.name}-image`} 
+              className='w-full h-full '
+            />
+          </div>
+          <div className='flex items-center justify-center gap-4 pt-5 '>
+            {imgThumbnail}
+          </div>
+        </section> 
+        <section className='px-5 bg-Lightest rounded-t-[20px] border-t-[1px]
+          border-Brand/60 overflow-x-hidden py-10 -mt-[1px]  md:rounded-t-[20px] 
+            md:border-l-[1px]'>
+          <h2 className='text-2xl font-bold text-Dark'>{item.name}</h2>
+          <h3 className='text-Brand font-semibold text-2xl py-2'>${item.price.toFixed(2)}</h3>
+          <p className='flex items-center gap-1 pt-1 text-[14px] text-Mid font-bold'>
+            {stars} <span className='text-xl px-1'> / </span> {item.numberOfRating} 
+            <span>ratings</span>
+          </p>
+          <p className='text-2xl py-4'>{item.details}</p>
+          <CartBtn
+            cart={cart}
+            item={item}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            updateItemQuantity={updateItemQuantity}
+            showIncrement={showIncrement}
+            className="w-full mt-6 h-[50px]"
+            quantityBtnStyle='px-[15px]'
+            addToCartBtnInPreview='text-lg'
           />
-        </div>
-        <div className='flex items-center justify-center gap-4 pt-5 '>
-          {imgThumbnail}
-        </div>
-      </section> 
-      <section className='px-5 bg-Lightest rounded-t-[20px] border-t-[1px]
-        border-Brand/60 overflow-x-hidden py-10 -mt-[1px]'>
-        <h2 className='text-2xl font-bold text-Dark'>{item.name}</h2>
-        <h3 className='text-Brand font-semibold text-2xl py-2'>${item.price.toFixed(2)}</h3>
-        <p className='flex items-center gap-1 pt-1 text-[14px] text-Mid font-bold'>
-          {stars} <span className='text-xl px-1'> / </span> {item.numberOfRating} 
-          <span>ratings</span>
-        </p>
-        <p className='text-2xl py-4'>{item.details}</p>
-        <CartBtn
-          cart={cart}
-          item={item}
-          addToCart={addToCart}
-          removeFromCart={removeFromCart}
-          updateItemQuantity={updateItemQuantity}
-          showIncrement={showIncrement}
-          className="w-full mt-6 h-[50px]"
-          quantityBtnStyle='px-[15px]'
-          addToCartBtnInPreview='text-lg'
-        />
-      </section>
+        </section>
+      </div>
     </article>
   );
 }
