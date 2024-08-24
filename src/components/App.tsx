@@ -74,7 +74,7 @@ const App: React.FC = () => {
     setTimeout(() => {
       setSelectedCategory(category);
       setIsFadingOut(true);
-    }, 300); // Match this duration with your CSS animation duration
+    }, 200); // Match this duration with your CSS animation duration
     
   };
   
@@ -158,14 +158,18 @@ const App: React.FC = () => {
   return (
     <div className="bg-Light h-screen font-Nunito  overflow-x-auto">
       
-      <header className='relative px-5 md:px-8 bg-Lightest/85' ref={cartRef}>
+      <header 
+        className='relative px-5 md:px-10 lg:px-12 xl:px-14 bg-Lightest/85' 
+        ref={cartRef}
+      >
         <Header 
           totalCartItem={totalCartItem}
           handleToggleCart={handleToggleCart}
         />
-        <div className={`px-3 absolute z-50 bottom-0 top-20 w-full right-0 left-0
-          md:left-[315px] md:w-[500px]  
-          ${toggleCart ? "animate-fadeForward" : "hidden"}`}>
+        <div className={`px-3 md:px-6 absolute z-50 bottom-0 top-20 w-full
+          right-0 left-0 md:w-[510px] lg:w-[410px] md:ml-auto
+          ${toggleCart ? "animate-fadeForward" : "hidden"}`}
+        >
           <Cart 
             cart={cart}
             totalPrice={totalPrice}
@@ -191,15 +195,16 @@ const App: React.FC = () => {
             />
           </div>
         ) : (
-        <div className={`px-5 md:px-8 mt-8 ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
+        <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-14
+          ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
           <CategoryList
             categories={categories}
             categoryRefs={categoryRefs}
             selectedCategory={selectedCategory}
             handleCategoryClick={handleCategoryClick}
           />
-          <div className={`pb-20 pt-5 flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-5
-            lg:grid-cols-3
+          <div className={`pb-20 pt-5 md:pt-8 flex flex-col gap-5 md:grid 
+            md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4
              ${isFadingOut ? "animate-slideIn" : ""}`}>
             {filteredStoreData.map((item) => (
               <StoreItem 

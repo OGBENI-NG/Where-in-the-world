@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        Brand: "#00884b",
+        Brand: "#c0440d",
         Darkest: "#18181B",
         Dark: "#2A2A2A",
         Mid: "#858594",
@@ -17,13 +17,16 @@ export default {
       fontFamily: {
         Nunito: ["Nunito", "sans-serif"],
       },
+      screens: {
+        xl: {'min': '1200px', 'max': '1440px'}
+      },
       animation: {
         flipinx: 'flipinx .3s ease 0s 1 normal forwards',
-        fadeForward: 'fadeForward .3s ease 0s 1 normal none',
+        fadeForward: 'fadeForward .25s ease 0s 1 normal none',
         slideOut: 'slideOut .3s ease 0s 1 normal none',
-        fadeIn: 'fadeIn .4s ease 0s 1 normal forwards',
-        fadeInBackWard: 'fadeInBackWard .4s ease 0s 1 normal forwards',
-        slideIn: 'slideIn 0.3s ease 0s 1 normal forwards',
+        fadeIn: 'fadeIn 1.5s ease 0s 1 normal forwards',
+        fadeInBackWard: 'fadeInBackWard 1.5s ease 0s 1 normal forwards',
+        slideIn: 'slideIn .2s ease 0s 1 normal forwards',
         slideInLeft: 'slideInLeft 0.3s ease 0s 1 normal forwards'
       },
       keyframes: {

@@ -46,7 +46,7 @@ export const storeData: ThirteenStoreData[] = [
     image: [chairOne, altImgOne, altImgTwo],
     price: 98.80,
     description: 'Creative designer chair.',
-    details: 'Lorem Ipsum is simply the dummy text for print shops and text files.',
+    details: 'This wooden table brings elegance to any dining area.',
     category: 'chair',
   },
   {

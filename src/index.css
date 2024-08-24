@@ -7,17 +7,16 @@
   position: absolute;
   bottom: 0;
   height: 100%;
-  background-color: #00884b12;
-  border-bottom: 2px solid #00884b;
+  background-color: #c0440d08;
+  border-bottom: 3px solid #c0440d;
   left: var(--underline-left, 0);
   width: var(--underline-width, 0);
-  transition: left 0.3s ease, width 0.3s ease;
+  transition: left 0.2s ease, width 0.2s ease;
   z-index: 10;
-  
 }
 
 .active-category {
-  color: #00884b;
+  color: #c0440d;
 }
 
 
