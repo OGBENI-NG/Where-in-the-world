@@ -29,7 +29,7 @@ const CartBtn: React.FC<CartBtnProps> = ({
   }) => {
 
   const quantity = (cart.find(cartItem => cartItem.id === item.id)?.quantity || 1);
-  const btnStyle: string = `lg:hover:bg-Lightest rounded-full border-2 lg:border-[1.5px] border-Lightest p-[1px] lg:hover:text-Brand`
+  const btnStyle: string = `lg:hover:bg-Lightest rounded-full border-2 lg:border-[1.5px] border-Lightest p-[1px] lg:hover:text-Brand`;
 
   return(
     <div className={` block

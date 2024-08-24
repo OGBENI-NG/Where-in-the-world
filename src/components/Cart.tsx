@@ -36,7 +36,7 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
                   className="size-[65px] lg:size-[50px]"
                 />
                 <div className='pl-[10px] text-[14px] font-semibold text-Mid'>
-                  <h3 className="text-lg lg:text-[14px] font-bold text-Dark lg:w-[200px] 
+                  <h3 className="text-lg lg:text-[14px] w-[180px] font-bold text-Dark lg:w-[200px] 
                   overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</h3>
                   <div className='flex items-center gap-3 text-[13px]'>
                     <p className='font-bold text-Brand'>X{item.quantity}</p>
@@ -47,7 +47,7 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
                 <button 
                   type='button' 
                   onClick={() => removeFromCart(item)} 
-                  className=" ml-auto text-Dark/80"
+                  className=" ml-auto text-Dark/80 lg:hover:text-Brand"
                 >
                   <RiDeleteBin2Line className='size-7 lg:size-5'/>
                 </button>

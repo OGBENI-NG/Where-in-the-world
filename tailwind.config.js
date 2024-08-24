@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        Brand: "#c0440d",
+        Brand: "#c54c00",
         Darkest: "#18181B",
         Dark: "#2A2A2A",
         Mid: "#858594",
@@ -18,16 +18,16 @@ export default {
         Nunito: ["Nunito", "sans-serif"],
       },
       screens: {
-        xl: {'min': '1200px', 'max': '1440px'}
+        xl: {'min': '1200px', 'max': '1440px'},
+        xxl: {'min': '1290px', 'max': '1536px'}
       },
       animation: {
         flipinx: 'flipinx .3s ease 0s 1 normal forwards',
         fadeForward: 'fadeForward .25s ease 0s 1 normal none',
         slideOut: 'slideOut .3s ease 0s 1 normal none',
-        fadeIn: 'fadeIn 1.5s ease 0s 1 normal forwards',
-        fadeInBackWard: 'fadeInBackWard 1.5s ease 0s 1 normal forwards',
-        slideIn: 'slideIn .2s ease 0s 1 normal forwards',
-        slideInLeft: 'slideInLeft 0.3s ease 0s 1 normal forwards'
+        fadeIn: 'fadeIn .25s ease 0s 1 normal forwards',
+        fadeInBackWard: 'fadeInBackWard .2s ease 0s 1 normal forwards',
+        slideIn: 'slideIn .25s ease 0s 1 normal forwards',
       },
       keyframes: {
         flipinx: {
@@ -81,16 +81,6 @@ export default {
           '0%': {
             opacity: "0",
             transform: "translateX(-50px)"
-          },
-          '100%': {
-            opacity: "1",
-            transform:" translateX(0)"
-          },
-        },
-        slideInLeft: {
-          '0%': {
-            opacity: "0",
-            transform: "translateX(50px)"
           },
           '100%': {
             opacity: "1",

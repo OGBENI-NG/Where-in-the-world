@@ -7,8 +7,8 @@
   position: absolute;
   bottom: 0;
   height: 100%;
-  background-color: #c0440d08;
-  border-bottom: 3px solid #c0440d;
+  background-color: #c54c0008;
+  border-bottom: 3px solid #c54c00;
   left: var(--underline-left, 0);
   width: var(--underline-width, 0);
   transition: left 0.2s ease, width 0.2s ease;
@@ -16,7 +16,7 @@
 }
 
 .active-category {
-  color: #c0440d;
+  color: #c54c00;
 }
 
 

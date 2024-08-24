@@ -46,12 +46,12 @@ const Footer: React.FC = () => {
   return (
     <footer>
       <section className=' bg-Darkest/95 md:px-10 py-12 md:py-14 
-        text-Lightest leading-none flex lg:px-12 xl:px-14
+        text-Lightest leading-none flex lg:px-12 xl:px-14 xxl:px-24
         flex-col justify-center gap-12 md:gap-0 md:flex-row md:justify-between'>
         {footIcons}
       </section>
       <section 
-        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Darkest py-12 overflow-x-hidden 
+        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Darkest py-12 overflow-x-hidden xxl:px-24
           text-center  text-Light flex gap-5 flex-col 
           items-center justify-center text-[14px] md:justify-between'
         >
