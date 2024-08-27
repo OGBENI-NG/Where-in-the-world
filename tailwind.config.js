@@ -22,11 +22,11 @@ export default {
         xxl: {'min': '1290px', 'max': '1536px'}
       },
       animation: {
-        flipinx: 'flipinx .3s ease 0s 1 normal forwards',
+        flipinx: 'flipinx .25s ease 0s 1 normal forwards',
         fadeForward: 'fadeForward .25s ease 0s 1 normal none',
-        slideOut: 'slideOut .3s ease 0s 1 normal none',
+        slideOut: 'slideOut .25s ease 0s 1 normal none',
         fadeIn: 'fadeIn .25s ease 0s 1 normal forwards',
-        fadeInBackWard: 'fadeInBackWard .2s ease 0s 1 normal forwards',
+        fadeInBackWard: 'fadeInBackWard .25s ease 0s 1 normal forwards',
         slideIn: 'slideIn .25s ease 0s 1 normal forwards',
       },
       keyframes: {

@@ -8,10 +8,19 @@ type CartProps = {
   totalPrice: string;
   removeFromCart: (item: ThirteenStoreData) => void;
   toggleCart: boolean;
-  isRemoving: { [key: string]: boolean }
+  isRemoving: { [key: string]: boolean };
+  handleConfirmOrder: () => void
 };
 
-const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCart }) => {
+const Cart: React.FC<CartProps> = (
+  { 
+    cart, 
+    totalPrice, 
+    isRemoving, 
+    removeFromCart, 
+    handleConfirmOrder
+  }
+) => {
   return (
     <div className={``}>
       {cart.length === 0 ? (
@@ -36,9 +45,10 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
                   className="size-[65px] lg:size-[50px]"
                 />
                 <div className='pl-[10px] text-[14px] font-semibold text-Mid'>
-                  <h3 className="text-lg lg:text-[14px] w-[180px] font-bold text-Dark lg:w-[200px] 
+                  <h3 className="text-lg lg:text-[14px] w-[180px] font-bold text-Dark 
+                  lg:w-[190px] 
                   overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</h3>
-                  <div className='flex items-center gap-3 text-[13px]'>
+                  <div className='flex items-center gap-3 text-[13px] pt-[1px]'>
                     <p className='font-bold text-Brand'>X{item.quantity}</p>
                     <p>@{item.price.toFixed(2)}</p>
                     <p >${((item.quantity || 1) * item.price).toFixed(2)}</p>
@@ -55,7 +65,10 @@ const Cart: React.FC<CartProps> = ({ cart, totalPrice, isRemoving, removeFromCar
             </div>
           ))}
           <h4 className='flex items-center py-6 lg:py-4 text-xl lg:text-[14px] font-bold text-Dark'>Order Total <span className='ml-auto'>${totalPrice}</span></h4>
-          <button type='button' className='bg-Brand w-full text-Lightest py-2 text-xl rounded-lg font-bold lg:text-[14px] lg:py-1'>Confirm Order</button>
+          <button 
+            onClick={() => handleConfirmOrder() }
+            type='button' 
+            className='bg-Brand w-full text-Lightest py-2 text-xl rounded-lg font-bold lg:text-[14px] lg:py-1'>Confirm Order</button>
         </div>
       )}
     </div>

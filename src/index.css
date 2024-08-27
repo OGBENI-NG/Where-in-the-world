@@ -11,7 +11,7 @@
   border-bottom: 3px solid #c54c00;
   left: var(--underline-left, 0);
   width: var(--underline-width, 0);
-  transition: left 0.2s ease, width 0.2s ease;
+  transition: left 0.1s ease, width 0.1s ease;
   z-index: 10;
 }
 
