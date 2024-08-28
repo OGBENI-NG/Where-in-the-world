@@ -18,7 +18,6 @@ const App: React.FC = () => {
   const [toggleCart, setToggleCart] = useState<boolean>(false)
   const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false)
   const cartRef = useRef<HTMLDivElement>(null)
-  const confirmOrderRef = useRef<HTMLDivElement>(null)
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
@@ -35,6 +34,10 @@ const App: React.FC = () => {
     setToggleCart(false);
   };
 
+  const handleContinueShopping = () => {
+    setToggleConfirmOrder(false)
+  }
+
   useEffect(() => {
     const handleClickOutsideCartModal = (event: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
@@ -48,18 +51,9 @@ const App: React.FC = () => {
     };
   }, [cartRef, toggleCart]);
   
-  useEffect(() => {
-    const handleClickOutsideConfirmOrderModal = (event: MouseEvent) => {
-      if (confirmOrderRef.current && !confirmOrderRef.current.contains(event.target as Node)) {
-        setToggleConfirmOrder(false); 
-      }
-    };
 
-    document.addEventListener('mousedown', handleClickOutsideConfirmOrderModal);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutsideConfirmOrderModal);
-    };
-  }, [confirmOrderRef]);
+
+  const PADDING = 8; // Adjust the padding as needed
 
   useEffect(() => {
     const activeIndex = categories.findIndex(
@@ -67,8 +61,8 @@ const App: React.FC = () => {
     );
     const activeElement = categoryRefs.current[activeIndex];
     if (activeElement) {
-      const left = activeElement.offsetLeft;
-      const width = activeElement.offsetWidth;
+      const left = activeElement.offsetLeft - PADDING;
+      const width = activeElement.offsetWidth + PADDING * 2;
 
       document.documentElement.style.setProperty('--underline-left', `${left}px`);
       document.documentElement.style.setProperty('--underline-width', `${width}px`);
@@ -173,12 +167,13 @@ const App: React.FC = () => {
         </div>
       </header>
       <section
-        className={`absolute inset-0 bg-Darkest/70 h-full z-[10] 
+        className={`absolute inset-0  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Dark via-Mid to-Light h-full z-[100] 
           ${toggleConfirmOrder ? 'block' : 'hidden'}`}
       >
         <ConfirmOrder 
           cart={cart}
           totalPrice={totalPrice} 
+          handleContinueShopping={handleContinueShopping}
         />
       </section>
       <main className='overflow-x-hidden'>

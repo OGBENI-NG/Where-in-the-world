@@ -34,7 +34,7 @@ const Cart: React.FC<CartProps> = (
         </div>
       ) : (
         <div className="w-full bg-Lightest shadow-xl lg:shadow-2xl shadow-Mid/50 p-5 pb-6  rounded-lg overflow-x-hidden md:p-8 lg:p-[25px]">
-          <h4 className="text-center text-xl lg:text-lg font-semibold leading-none pb-3 text-Dark">Your Cart Item</h4>
+          <h4 className="text-center text-3xl lg:text-lg font-semibold leading-none pb-3 text-Dark">Your Cart Item</h4>
           {cart.map((item) => (
             <div key={item.id} 
               className={`${isRemoving[item.id] && "animate-slideOut"}`} >
