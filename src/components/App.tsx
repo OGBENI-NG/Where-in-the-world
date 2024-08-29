@@ -53,9 +53,9 @@ const App: React.FC = () => {
   
 
 
-  const PADDING = 8; // Adjust the padding as needed
-
   useEffect(() => {
+    const PADDING = 6; // Adjust the padding as needed
+
     const activeIndex = categories.findIndex(
       (category) => category.toLowerCase() === selectedCategory.toLowerCase()
     );
