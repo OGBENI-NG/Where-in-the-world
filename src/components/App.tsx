@@ -8,6 +8,7 @@ import Cart from './Cart';
 import Footer from './Footer';
 import Preview from './Preview';
 import ConfirmOrder from './ConfirmOrder';
+import TruckLoader from './TruckLoader';
 
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
@@ -18,7 +19,8 @@ const App: React.FC = () => {
   const [toggleCart, setToggleCart] = useState<boolean>(false)
   const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false)
   const cartRef = useRef<HTMLDivElement>(null)
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
+  const [truckLoading, setTruckLoading] = useState<boolean>(false)
 
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
@@ -30,14 +32,19 @@ const App: React.FC = () => {
   };
 
   const handleConfirmOrder = () => {
+    setTruckLoading(true)
     setToggleConfirmOrder(true);  // Open ConfirmOrder when this function is called
-    setToggleCart(false);
+    setTimeout(() => {
+      setToggleCart(false);
+      setTruckLoading(false)
+    },3000)
   };
 
   const handleContinueShopping = () => {
     setToggleConfirmOrder(false)
   }
 
+  
   useEffect(() => {
     const handleClickOutsideCartModal = (event: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
@@ -167,15 +174,25 @@ const App: React.FC = () => {
         </div>
       </header>
       <section
-        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Dark via-Mid to-Light h-screen z-[100]
+        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Mid via-slate-500 to-Dark h-screen z-[100]
           overflow-hidden
           ${toggleConfirmOrder ? 'block' : 'hidden'}`}
       >
-        <ConfirmOrder 
-          cart={cart}
-          totalPrice={totalPrice} 
-          handleContinueShopping={handleContinueShopping}
-        />
+        {truckLoading ? (
+          <div className='relative flex items-center justify-center h-full w-max m-auto'>
+            <p className='absolute left-11 z-50 font-bold text-Brand'>Loading....</p>
+            <TruckLoader/>
+          </div>
+        ) : (
+          <div className={truckLoading ? "" : " h-full animate-fadeIn"}>
+            <ConfirmOrder 
+            cart={cart}
+            totalPrice={totalPrice} 
+            handleContinueShopping={handleContinueShopping}
+            />
+          </div>
+        )}
+        
       </section>
       <main className='overflow-x-hidden'>
         {selectedItemForReview ? (

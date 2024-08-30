@@ -22,26 +22,5 @@
   color: #c54c00;
 }
 
-/* Scrollbar styles */
-* {
-  scrollbar-width: thin !important;
-  scrollbar-color: #858594 white !important; /* Foreground (thumb) and background (track) color */
-}
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 8px !important;
-}
-
-*::-webkit-scrollbar-track {
-  background: white !important;
-  border-radius: 5px;
-  
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: white !important;
-  border-radius: 15px !important;
-  border: 2px solid #c54c00;
-}
  

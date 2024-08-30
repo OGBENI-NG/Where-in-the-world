@@ -28,12 +28,14 @@ export default {
         fadeIn: 'fadeIn .25s ease 0s 1 normal forwards',
         fadeInBackWard: 'fadeInBackWard .25s ease 0s 1 normal forwards',
         slideIn: 'slideIn .25s ease 0s 1 normal forwards',
+        truckMotion: 'truckMotion 1s linear infinite',
+        roadAnimation: 'roadAnimation 1.4s linear infinite',
       },
       keyframes: {
         flipinx: {
           '0%': {
             opacity: "0",
-		        transform: "scale(0.7)",
+            transform: "scale(0.7)",
           },
           '100%': {
             opacity: "1",
@@ -43,21 +45,21 @@ export default {
         fadeForward: {
           '0%': {
             opacity: "0",
-		        transform: "scale(0.6)",
+            transform: "scale(0.6)",
           },
           '100%': {
             opacity: "1",
-		        transform: "scale(1)",
+            transform: "scale(1)",
           },
         },
         slideOut: {
           '0%': {
             opacity: "1",
-		        transform: "translateX(0)",
+            transform: "translateX(0)",
           },
           '100%': {
             opacity: "0",
-		        transform: "translateX(-250px)",
+            transform: "translateX(-250px)",
           },
         },
         fadeIn: {
@@ -66,7 +68,6 @@ export default {
           },
           '100%': {
             opacity: "1",
-		       
           },
         },
         fadeInBackWard: {
@@ -87,7 +88,25 @@ export default {
             transform:" translateX(0)"
           },
         },
-        
+        truckMotion: {
+          '0%': {
+            transform: "translateY(0px)",
+          },
+          '50%': {
+            transform: "translateY(3px)",
+          },
+          '100%': {
+            transform: "translateY(0px)",
+          },
+        },
+        roadAnimation: {
+          '0%': {
+            transform: "translateX(0px)",
+          },
+          '100%': {
+            transform: "translateX(-350px)",
+          },
+        },
       },
     },
   },
