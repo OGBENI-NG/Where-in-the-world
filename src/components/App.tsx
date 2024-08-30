@@ -143,7 +143,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="bg-Light h-screen font-Nunito overflow-x-auto">
+    <div className="bg-Light h-screen font-Nunito overflow-x-auto scrollable-container">
       <header 
         className='relative px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24 bg-Lightest/85' 
         ref={cartRef}
@@ -167,7 +167,8 @@ const App: React.FC = () => {
         </div>
       </header>
       <section
-        className={`absolute inset-0  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Dark via-Mid to-Light h-full z-[100] 
+        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Dark via-Mid to-Light h-screen z-[100]
+          overflow-hidden
           ${toggleConfirmOrder ? 'block' : 'hidden'}`}
       >
         <ConfirmOrder 
