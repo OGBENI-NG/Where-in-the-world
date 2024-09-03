@@ -20,14 +20,14 @@ const TruckLoader: React.FC = () => {
             ></path>
             <path
               strokeWidth="3"
-              stroke="#2A2A2A80"
-              fill="#7D7C7C"
+              stroke="#FFFCAB80"
+              fill="#7D7000"
               d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z"
             ></path>
             <path
               strokeWidth="2"
               stroke="#282828"
-              fill="#282828"
+              fill="#FFFCAB"
               d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z"
             ></path>
             <rect
@@ -43,7 +43,7 @@ const TruckLoader: React.FC = () => {
             <rect
               strokeWidth="2"
               stroke="#282828"
-              fill="#282828"
+              fill="#FFFCAB"
               rx="1"
               height="11"
               width="4"
@@ -110,9 +110,9 @@ const TruckLoader: React.FC = () => {
         </div>
 
         {/* Road */}
-        <div className="relative w-full h-[1.5px] bg-Darkest rounded-[3px] bottom-0">
-          <div className="absolute w-[20px] h-full bg-Darkest rounded-[3px] right-[-50%] border-l-[10px] border-Lightest animate-roadAnimation"></div>
-          <div className="absolute w-[10px] h-full bg-Darkest rounded-[3px] right-[-65%] border-l-[4px] border-Lightest animate-roadAnimation"></div>
+        <div className="relative w-full h-[1.5px] bg-Light/50 rounded-[3px] bottom-0">
+          <div className="absolute w-[20px] h-full bg-Light/50 rounded-[3px] right-[-50%] border-l-[10px] border-Lightest animate-roadAnimation"></div>
+          <div className="absolute w-[10px] h-full bg-Light/50 rounded-[3px] right-[-65%] border-l-[4px] border-Lightest animate-roadAnimation"></div>
         </div>
 
         {/* Lamp Post */}
@@ -123,7 +123,7 @@ const TruckLoader: React.FC = () => {
           xmlns="http://www.w3.org/2000/svg"
           id="Capa_1"
           version="1.1"
-          fill="#2A2A2A"
+          fill="#DFDFDF"
           className="absolute bottom-0 right-[-90%] h-[90px] animate-roadAnimation"
         >
           <path

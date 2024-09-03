@@ -34,8 +34,8 @@ const App: React.FC = () => {
   const handleConfirmOrder = () => {
     setTruckLoading(true)
     setToggleConfirmOrder(true);  // Open ConfirmOrder when this function is called
+    setToggleCart(false);
     setTimeout(() => {
-      setToggleCart(false);
       setTruckLoading(false)
     },3000)
   };
@@ -149,6 +149,13 @@ const App: React.FC = () => {
     setSelectedItemForReview(null);
   }
 
+  const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
+    // Ensure only the overlay click closes the modal, not the ConfirmOrder
+    if (e.target === e.currentTarget) {
+      setToggleConfirmOrder(false)
+    }
+  };
+
   return (
     <div className="bg-Light h-screen font-Nunito overflow-x-auto scrollable-container">
       <header 
@@ -173,30 +180,34 @@ const App: React.FC = () => {
           />
         </div>
       </header>
-      <section
-        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Mid via-slate-500 to-Dark h-screen z-[100]
-          overflow-hidden
-          ${toggleConfirmOrder ? 'block' : 'hidden'}`}
-      >
-        {truckLoading ? (
-          <div className='relative flex items-center justify-center h-full w-max m-auto'>
-            <p className='absolute left-11 z-50 font-bold text-Brand'>Loading....</p>
-            <TruckLoader/>
-          </div>
-        ) : (
-          <div className={truckLoading ? "" : " h-full animate-fadeIn"}>
-            <ConfirmOrder 
-            cart={cart}
-            totalPrice={totalPrice} 
-            handleContinueShopping={handleContinueShopping}
-            />
-          </div>
-        )}
-        
+      {toggleConfirmOrder && (
+        <section
+        onClick={handleOverlayClick}
+        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Darkest/95 via-Darkest/70 to-Darkest/60
+          h-screen z-[50]  flex justify-center items-center `}
+        >
+        <div className='w-full block mx-5 md:w-max md:mx-0'>
+          {truckLoading ? (
+            <div className='relative flex items-center justify-center h-full w-max m-auto'>
+              <p className='absolute text-[15px] left-[45px] z-10 font-bold text-Lightest'>Loading...</p>
+              <TruckLoader />
+            </div>
+          ) : (
+            <div className={`w-full ${!truckLoading ? "animate-fadeIn " : ""}`}>
+              <ConfirmOrder 
+                cart={cart}
+                totalPrice={totalPrice} 
+                handleContinueShopping={handleContinueShopping}
+              />
+            </div>
+          )}
+        </div>
       </section>
+     )}
+
       <main className='overflow-x-hidden'>
         {selectedItemForReview ? (
-          <div className={`${selectedItemForReview ? "animate-fadeIn" : ""}`}>
+          <div className={`${selectedItemForReview ? "animate-fadeInAnim" : ""}`}>
             <Preview 
               item={selectedItemForReview} 
               onBack={handleBackFromReview}

@@ -35,11 +35,12 @@ const Cart: React.FC<CartProps> = (
       ) : (
         <div className="w-full bg-Lightest shadow-xl lg:shadow-2xl shadow-Mid/50 p-5 pb-6  rounded-lg overflow-hidden md:p-8 lg:p-[25px]">
           <h4 className="text-center text-2xl lg:text-lg font-semibold leading-none pb-3 text-Dark">Your Cart Item</h4>
-          <div className={`overflow-hidden ${cart.length > 2 ? "h-[270px] md:h-[250px] lg:h-[205px] overflow-y-auto" : "h-auto"}`}>
-            {cart.map((item) => (
+          <div className={`overflow-hidden rounded-lg ${cart.length > 3 ? "h-[280px] lg:h-[205px] overflow-y-auto " : "h-auto"}`}>
+            {cart.map((item, index) => (
               <div key={item.id} 
                 className={`${isRemoving[item.id] && "animate-slideOut"}`} >
-                <div className='flex items-center py-2  border-b-2 border-Mid/25'>
+                <div className={`flex items-center py-2 border-b-2 border-dotted border-Mid/60 
+                   `}>
                   <img 
                     src={item.image[0]} 
                     alt={item.name} 
@@ -58,7 +59,7 @@ const Cart: React.FC<CartProps> = (
                   <button 
                     type='button' 
                     onClick={() => removeFromCart(item)} 
-                    className=" ml-auto text-Dark/80 lg:hover:text-Brand"
+                    className="ml-auto text-Dark/80 lg:hover:text-Brand"
                   >
                     <RiDeleteBin2Line className='size-7 lg:size-5'/>
                   </button>
@@ -66,11 +67,11 @@ const Cart: React.FC<CartProps> = (
               </div>
             ))}
           </div>
-          <h4 className='flex items-center py-4 pb-5 lg:py-4 text-lg lg:text-[14px] font-bold text-Dark'>Order Total <span className='ml-auto text-Brand'>${totalPrice}</span></h4>
+          <h4 className='flex items-center pt-5 pb-7 lg:py-4 text-lg lg:text-[14px] font-bold text-Dark'>Order Total <span className='ml-auto text-Brand'>${totalPrice}</span></h4>
           <button 
             onClick={() => handleConfirmOrder() }
             type='button' 
-            className='bg-Brand w-full text-Lightest py-2 text-base rounded-lg font-bold lg:text-[14px] lg:py-1'>Confirm Order</button>
+            className='bg-Brand shadow-lg shadow-Brand/35 w-full text-Lightest py-2 text-base rounded-lg font-bold lg:text-[14px] lg:py-1'>Confirm Order</button>
         </div>
       )}
     </div>
