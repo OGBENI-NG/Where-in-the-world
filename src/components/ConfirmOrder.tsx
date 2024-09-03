@@ -34,7 +34,8 @@ const ConfirmOrder: React.FC<ConfirmOrderProp> = ({cart, totalPrice, handleConti
                   className='size-12'
                 />
                 <div>
-                  <h2 className='text-[15px] md:text-[13px] w-[120px] font-bold text-Dark lg:w-[170px] overflow-hidden text-ellipsis whitespace-nowrap tracking-wide'>
+                  <h2 className='text-[15px] md:text-[13px] w-[120px] font-bold text-Dark 
+                    lg:w-[130px] overflow-hidden text-ellipsis whitespace-nowrap tracking-wide'>
                     {item.name}
                   </h2>
                   <p className={`${flexDiv} gap-4 text-Brand font-bold text-[13px] pt-[3px]`}>

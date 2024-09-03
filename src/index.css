@@ -7,19 +7,19 @@
   position: absolute;
   bottom: 0;
   height: 100%;
-  background-color: #c54c0008;
-  border-bottom: 2px solid #c54c00;
+  background-color: #135aaf08;
+  border-bottom: 2px solid #135aaf;
   left: var(--underline-left, 0);
   width: var(--underline-width, 0);
   transition: left 0.1s ease, width 0.1s ease;
   z-index: 10;
   border-top-right-radius:  8px;
   border-top-left-radius:  8px;
-  box-shadow: 0px 0px 2px 0px #c54c0075 inset;
+  box-shadow: 0px 0px 2px 0px #135aaf75 inset;
 }
 
 .active-category {
-  color: #c54c00;
+  color: #135aaf;
 }
 
 
