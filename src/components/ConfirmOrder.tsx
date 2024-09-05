@@ -56,7 +56,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProp> = ({cart, totalPrice, handleConti
           <div  className={`${flexDiv} justify-between gap-3 w-full pt-0 `}>
             <button type='button' className={`${btnStyle} bg-[#FFC439] text-[#2a0d9f]`}>
               <FaPaypal className='size-5 text-Dark'/>
-              Pay<span className='text-[#0C76EF] leading-none -ml-[3px]'>Pal</span>
+              Pay<span className='text-Brand leading-none -ml-[3px]'>Pal</span>
             </button>
             <button type='button' className={`${btnStyle} bg-Darkest`}>
               <FaApple className='size-5'/>Apple

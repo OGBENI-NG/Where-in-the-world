@@ -65,9 +65,9 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 onClick={() => handleShowReview(item)} 
                 type='button'
                 aria-label="Preview-btn"
-                className='block m-auto mt-[50px] md:mt-[100px] lg:mt-[60px]'
+                className='block m-auto mt-[60px] md:mt-[100px] lg:mt-[60px]'
               >
-                <TbListDetails className='size-12'/>
+                <TbListDetails className='size-12 hover:text-Brand'/>
               </button>
               <div className='absolute bottom-1 left-5 md:left-8 w-[280px] lg:w-[220px] lg:left-5'>
                 <h2 className='text-xl lg:text-[14px] font-medium overflow-hidden'>{item.name}</h2>

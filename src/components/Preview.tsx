@@ -69,7 +69,6 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
       <div className='py-24 pt-20'>
         <button 
           onClick={onBack}
-
           type='button' 
           className='flex items-center text-lg gap-[2px] text-Dark/65 hover:text-Dark 
             font-semibold leading-none mb-5'
@@ -78,9 +77,8 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
         </button>
         <div className='md:grid md:grid-cols-2 '>
           <section className='flex flex-col justify-center items-center
-             bg-Lightest rounded-b-[10px] border-b-[1px]
-            border-Brand/60 overflow-x-hidden p-5 py-6 md:rounded-none 
-            md:rounded-e-[15px] md:border-r-[1px] md:border-b-0 md:p-6 md:py-9
+             bg-Lightest rounded-lg border-b-[1px]
+            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9
             lg:p-14'>
             <div className={`size-[230px]  md:size-[250px] lg:size-[300px]
              mb-6 mt-5 md:mt-4 lg:m-0 transition-opacity duration-${transitionDuration} overflow-hidden 
@@ -96,9 +94,9 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
             </div>
           </section> 
           <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9
-            bg-Lightest  rounded-t-[10px] border-t-[1px] lg:p-14 lg:pt-24
-            border-Brand/60 -mt-[1px] md:-ml-[1px] md:rounded-none lg:gap-8
-            md:border-l-[1px] md:border-t-0 md:rounded-s-[15px] overflow-x-hidden'
+            bg-Lightest rounded-lg border-t-[1px] lg:p-14 lg:pt-24
+            border-Brand/40 -mt-[1px]  lg:gap-8
+            md:border-l-[1px] md:border-t-0 overflow-x-hidden'
           >
             <h2 className='text-2xl md:text-[28px] font-bold text-Dark md:pt-8 lg:p-0'>{item.name}</h2>
             <h3 className='text-Brand font-bold text-2xl md:text-[28px] md:pt-2 lg:pt-0'>

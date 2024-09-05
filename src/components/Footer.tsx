@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
             <h1 className='text-2xl font-bold text-Brand'>Thirteen
               <span className='text-Light font-medium text-xl'>store</span>
             </h1>
-            <p className='hidden md:block text-left pt-6'>&copy; 2024</p>
+            <p className='hidden md:block text-left pt-4'>&copy; 2024</p>
           </div>
           <div className=''>
             <p>Payment methods</p>

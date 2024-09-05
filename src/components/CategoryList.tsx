@@ -22,7 +22,7 @@ const CategoryList: React.FC<CategoryListProps> = ({
           ref={(el) => {
             categoryRefs.current[index] = el;
           }}
-          className={`cursor-pointer font-semibold ${
+          className={`cursor-pointer font-semibold hover:text-Brand ${
             selectedCategory.toLowerCase() === category.toLowerCase() ? 'active-category' : ''
           }`}
           onClick={() => handleCategoryClick(category)}

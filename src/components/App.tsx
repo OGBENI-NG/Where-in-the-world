@@ -10,6 +10,7 @@ import Preview from './Preview';
 import ConfirmOrder from './ConfirmOrder';
 import TruckLoader from './TruckLoader';
 
+
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
   const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -58,10 +59,8 @@ const App: React.FC = () => {
     };
   }, [cartRef, toggleCart]);
   
-
-
   useEffect(() => {
-    const PADDING = 6; // Adjust the padding as needed
+    const PADDING = 8; // Adjust the padding as needed
 
     const activeIndex = categories.findIndex(
       (category) => category.toLowerCase() === selectedCategory.toLowerCase()
@@ -186,68 +185,69 @@ const App: React.FC = () => {
         className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Darkest/95 via-Darkest/70 to-Darkest/60
           h-screen z-[50]  flex justify-center items-center `}
         >
-        <div className='w-full block mx-5 md:w-max md:mx-0'>
-          {truckLoading ? (
-            <div className='relative flex items-center justify-center h-full w-max m-auto'>
-              <p className='absolute text-[15px] left-[45px] z-10 font-bold text-Lightest'>Loading...</p>
-              <TruckLoader />
-            </div>
-          ) : (
-            <div className={`w-full ${!truckLoading ? "animate-fadeIn " : ""}`}>
-              <ConfirmOrder 
-                cart={cart}
-                totalPrice={totalPrice} 
-                handleContinueShopping={handleContinueShopping}
-              />
-            </div>
-          )}
-        </div>
-      </section>
-     )}
-
+          <div className='w-full block mx-5 md:w-max md:mx-0'>
+            {truckLoading ? (
+              <div className='relative flex items-center justify-center h-full w-max m-auto'>
+                <p className='absolute text-[15px] left-[45px] z-10 font-bold text-Lightest'>Loading...</p>
+                <TruckLoader />
+              </div>
+            ) : (
+              <div className={`w-full ${!truckLoading ? "animate-fadeIn " : ""}`}>
+                <ConfirmOrder 
+                  cart={cart}
+                  totalPrice={totalPrice} 
+                  handleContinueShopping={handleContinueShopping}
+                />
+              </div>
+            )}
+          </div>
+        </section>
+      )}
       <main className='overflow-x-hidden'>
         {selectedItemForReview ? (
           <div className={`${selectedItemForReview ? "animate-fadeInAnim" : ""}`}>
-            <Preview 
-              item={selectedItemForReview} 
-              onBack={handleBackFromReview}
-              showIncrement={showIncrement} 
-              updateItemQuantity={updateItemQuantity}
-              addToCart={addToCart}
-              removeFromCart={removeItemQuantity}
-              cart={cart}
-              className=""
-              quantityBtnStyle=""
-            />
+              <Preview 
+                item={selectedItemForReview} 
+                onBack={handleBackFromReview}
+                showIncrement={showIncrement} 
+                updateItemQuantity={updateItemQuantity}
+                addToCart={addToCart}
+                removeFromCart={removeItemQuantity}
+                cart={cart}
+                className=""
+                quantityBtnStyle=""
+              />
+         
           </div>
         ) : (
-        <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-14 xxl:px-24
-          ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
-          <CategoryList
-            categories={categories}
-            categoryRefs={categoryRefs}
-            selectedCategory={selectedCategory}
-            handleCategoryClick={handleCategoryClick}
-          />
-          <div className={`pb-20 pt-5 md:pt-14 flex flex-col gap-5 md:grid 
-            md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4
-             ${isFadingOut ? "animate-slideIn" : ""}`}>
-            {filteredStoreData.map((item) => (
-              <StoreItem 
-                key={item.id} 
-                item={item} 
-                showIncrement={showIncrement}
-                cart={cart}
-                addToCart={addToCart}
-                updateItemQuantity={updateItemQuantity}
-                removeFromCart={removeItemQuantity}
-                handleShowReview={handleShowReview}
-                quantityBtnStyle=''
-                addToCartBtnInPreview=''
-              />
-            ))}
+          <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-14 xxl:px-24
+            ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
+            <CategoryList
+              categories={categories}
+              categoryRefs={categoryRefs}
+              selectedCategory={selectedCategory}
+              handleCategoryClick={handleCategoryClick}
+            />
+            <div className={`pb-20 pt-5 md:pt-14 flex flex-col gap-5 md:grid 
+              md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4
+              ${isFadingOut ? "animate-slideIn" : ""}`}>
+              {filteredStoreData.map((item) => (
+                <StoreItem 
+                  key={item.id} 
+                  item={item} 
+                  showIncrement={showIncrement}
+                  cart={cart}
+                  addToCart={addToCart}
+                  updateItemQuantity={updateItemQuantity}
+                  removeFromCart={removeItemQuantity}
+                  handleShowReview={handleShowReview}
+                  quantityBtnStyle=''
+                  addToCartBtnInPreview=''
+                />
+              ))}
+            </div>
           </div>
-        </div>)}
+        )}
       </main>
       <Footer/>
     </div>
