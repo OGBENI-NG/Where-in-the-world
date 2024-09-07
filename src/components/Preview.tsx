@@ -65,21 +65,22 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
   ));
 
   return (
-    <article className='h-auto px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24 overflow-x-auto'>
+    <article className='h-auto px-5 md:px-10 lg:px-14 xl:px-16 
+      xxl:px-24 overflow-x-auto'>
       <div className='py-24 pt-20'>
         <button 
           onClick={onBack}
           type='button' 
           className='flex items-center text-lg gap-[2px] text-Dark/65 hover:text-Dark 
-            font-semibold leading-none mb-5'
+            font-semibold leading-none mb-5 lg:pl-[115px]'
         >
           <IoArrowBack />Back to store
         </button>
-        <div className='md:grid md:grid-cols-2 '>
+        <div className='md:grid md:grid-cols-2 lg:flex lg:items-center lg:justify-center md:gap-2'>
           <section className='flex flex-col justify-center items-center
-             bg-Lightest rounded-lg border-b-[1px]
-            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9
-            lg:p-20'>
+             bg-Lightest/75 rounded-lg border-b-[1px]
+            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[450px] lg:h-[500px]
+            lg:p-12'>
             <div className={`size-[230px]  md:size-[250px] lg:size-[300px]
              mb-6 mt-5 md:mt-4 lg:m-0 transition-opacity duration-${transitionDuration} overflow-hidden 
               ${isFading ? "opacity-0" : "opacity-100"}`}>
@@ -94,8 +95,8 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
             </div>
           </section> 
           <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9
-            bg-Lightest rounded-lg border-t-[1px] lg:p-20 lg:pt-24
-            border-Brand/40 -mt-[1px]  lg:gap-8
+            bg-Lightest/75 rounded-lg border-t-[1px] lg:p-12 
+            border-Brand/40 -mt-[1px]  lg:gap-8 lg:w-[450px] lg:h-[500px]
             md:border-l-[1px] md:border-t-0 overflow-x-hidden'
           >
             <h2 className='text-2xl md:text-[28px] font-bold text-Dark md:pt-8 lg:p-0'>{item.name}</h2>

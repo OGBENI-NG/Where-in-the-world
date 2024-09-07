@@ -227,7 +227,7 @@ const App: React.FC = () => {
             />
           </div>
         ) : (
-          <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-14 xxl:px-24
+          <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-16 xxl:px-24
             ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
             <CategoryList
               categories={categories}
@@ -236,7 +236,7 @@ const App: React.FC = () => {
               handleCategoryClick={handleCategoryClick}
             />
             <div className={`pb-20 pt-5 md:pt-14 flex flex-col gap-5 md:grid 
-              md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4
+              md:grid-cols-2 md:gap-5 lg:gap-4 lg:grid-cols-3 xl:grid-cols-4
               ${isFadingOut ? "animate-slideIn" : ""}`}>
               {filteredStoreData.map((item) => (
                 <StoreItem 

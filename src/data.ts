@@ -46,7 +46,7 @@ export const storeData: ThirteenStoreData[] = [
     image: [chairOne, altImgOne, altImgTwo],
     price: 98.80,
     description: 'Creative designer chair.',
-    details: 'This wooden table brings elegance to any dining area.',
+    details: 'This wooden table brings elegance to any dining area. This wooden table brings elegance to any dining area. ',
     category: 'chair',
   },
   {

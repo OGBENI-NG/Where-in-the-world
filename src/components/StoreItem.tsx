@@ -71,7 +71,9 @@ const StoreItem: React.FC<StoreItemProps> = ({
               </button>
               <div className='absolute bottom-1 left-5 md:left-8 w-[280px] lg:w-[220px] lg:left-5'>
                 <h2 className='text-xl lg:text-[14px] font-medium overflow-hidden'>{item.name}</h2>
-                <p className='text-2xl lg:text-[18px] font-bold pt-3 lg:pt-0 leading-[1.5]'>{item.description}</p>
+                <p className='text-2xl lg:text-[18px] font-bold pt-3 lg:pt-0 leading-[1.5]'>
+                  {item.description}
+                </p>
               </div>
             </div>
           </div>
