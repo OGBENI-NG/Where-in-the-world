@@ -79,7 +79,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
           <section className='flex flex-col justify-center items-center
              bg-Lightest rounded-lg border-b-[1px]
             border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9
-            lg:p-14'>
+            lg:p-20'>
             <div className={`size-[230px]  md:size-[250px] lg:size-[300px]
              mb-6 mt-5 md:mt-4 lg:m-0 transition-opacity duration-${transitionDuration} overflow-hidden 
               ${isFading ? "opacity-0" : "opacity-100"}`}>
@@ -89,12 +89,12 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
                 className='w-full h-full object-cover'
               />
             </div>
-            <div className='flex items-center justify-between w-full mt-auto lg:justify-center lg:gap-6 lg:pt-4'>
+            <div className='flex items-center justify-between w-full mt-auto lg:justify-center lg:gap-6 lg:pt-7'>
               {imgThumbnail}
             </div>
           </section> 
           <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9
-            bg-Lightest rounded-lg border-t-[1px] lg:p-14 lg:pt-24
+            bg-Lightest rounded-lg border-t-[1px] lg:p-20 lg:pt-24
             border-Brand/40 -mt-[1px]  lg:gap-8
             md:border-l-[1px] md:border-t-0 overflow-x-hidden'
           >

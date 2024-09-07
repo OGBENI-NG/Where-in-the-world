@@ -162,7 +162,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-Light h-full font-Nunito scroll-smooth">
+    <div className={`bg-Light font-Nunito scroll-smooth 
+      ${toggleConfirmOrder ? "h-screen overflow-x-hidden" : "h-full"}`}>
       <header 
         className='relative px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24 bg-Lightest/85' 
         ref={cartRef}
@@ -188,7 +189,7 @@ const App: React.FC = () => {
       {toggleConfirmOrder && (
         <section
         onClick={handleOverlayClick}
-        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]
+        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
            from-Darkest/95 via-Darkest/70 to-Darkest/60
           h-screen z-[50] flex justify-center items-center `}
         >
