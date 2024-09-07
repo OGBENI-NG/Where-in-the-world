@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Header from './Header';
 import StoreItem from './StoreItem';
 import { storeData, ThirteenStoreData } from '../data';
@@ -10,46 +10,46 @@ import Preview from './Preview';
 import ConfirmOrder from './ConfirmOrder';
 import TruckLoader from './TruckLoader';
 
-
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
   const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [cart, setCart] = useState<ThirteenStoreData[]>([]);
   const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>({});
-  const [isRemoving, setIsRemoving] = useState<{[key: string]: boolean}>({});
-  const [toggleCart, setToggleCart] = useState<boolean>(false)
-  const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false)
-  const cartRef = useRef<HTMLDivElement>(null)
+  const [isRemoving, setIsRemoving] = useState<{ [key: string]: boolean }>({});
+  const [toggleCart, setToggleCart] = useState<boolean>(false);
+  const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false);
+  const cartRef = useRef<HTMLDivElement>(null);
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
-  const [truckLoading, setTruckLoading] = useState<boolean>(false)
+  const [truckLoading, setTruckLoading] = useState<boolean>(false);
 
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
+  const [scrollPosition, setScrollPosition] = useState<number>(0); // Save scroll position
+  
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
-  const totalCartItem = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  const totalItemInCartQuantity = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
   const handleToggleCart = () => {
     setToggleCart(prevState => !prevState);
   };
 
   const handleConfirmOrder = () => {
-    setTruckLoading(true)
-    setToggleConfirmOrder(true);  // Open ConfirmOrder when this function is called
+    setTruckLoading(true);
+    setToggleConfirmOrder(true); // Open ConfirmOrder when this function is called
     setToggleCart(false);
     setTimeout(() => {
-      setTruckLoading(false)
-    },3000)
+      setTruckLoading(false);
+    }, 3000);
   };
 
   const handleContinueShopping = () => {
-    setToggleConfirmOrder(false)
-  }
+    setToggleConfirmOrder(false);
+  };
 
-  
   useEffect(() => {
     const handleClickOutsideCartModal = (event: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-        setToggleCart(false); 
+        setToggleCart(false);
       }
     };
 
@@ -58,7 +58,7 @@ const App: React.FC = () => {
       document.removeEventListener('mousedown', handleClickOutsideCartModal);
     };
   }, [cartRef, toggleCart]);
-  
+
   useEffect(() => {
     const PADDING = 8; // Adjust the padding as needed
 
@@ -80,9 +80,9 @@ const App: React.FC = () => {
     setTimeout(() => {
       setSelectedCategory(category);
       setIsFadingOut(true);
-    }, 250); 
+    }, 250);
   };
-  
+
   const filteredStoreData = React.useMemo(() => {
     return selectedCategory === 'All Category'
       ? storeData
@@ -97,7 +97,7 @@ const App: React.FC = () => {
       setCart([{ ...item, quantity: 1 }, ...cart]);
       setShowIncrement({ ...showIncrement, [item.id]: true });
     }
-    setToggleCart(false)
+    setToggleCart(false);
   }
 
   function updateItemQuantity(item: ThirteenStoreData) {
@@ -108,7 +108,7 @@ const App: React.FC = () => {
           : cartItem
       )
     );
-    setToggleCart(false)
+    setToggleCart(false);
   }
 
   function removeItemQuantity(item: ThirteenStoreData) {
@@ -124,7 +124,7 @@ const App: React.FC = () => {
           )
         );
       } else {
-        setToggleCart(false)
+        setToggleCart(false);
         setShowIncrement({ ...showIncrement, [item.id]: false });
         setCart(cart.filter(cartItem => cartItem.id !== item.id));
       }
@@ -141,28 +141,34 @@ const App: React.FC = () => {
   }
 
   function handleShowReview(item: ThirteenStoreData) {
+    // Save the current scroll position before showing the preview
+    setScrollPosition(window.scrollY);
     setSelectedItemForReview(item);
+    // Scroll to the top when showing the preview
+    window.scrollTo(0, 0);
   }
 
   function handleBackFromReview() {
     setSelectedItemForReview(null);
+    // Restore the previous scroll position when going back
+    window.scrollTo(0, scrollPosition);
   }
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
     // Ensure only the overlay click closes the modal, not the ConfirmOrder
     if (e.target === e.currentTarget) {
-      setToggleConfirmOrder(false)
+      setToggleConfirmOrder(false);
     }
   };
 
   return (
-    <div className="bg-Light h-screen font-Nunito overflow-x-auto scrollable-container">
+    <div className="bg-Light h-full font-Nunito scroll-smooth">
       <header 
         className='relative px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24 bg-Lightest/85' 
         ref={cartRef}
       >
         <Header 
-          totalCartItem={totalCartItem}
+          totalItemInCartQuantity={totalItemInCartQuantity}
           handleToggleCart={handleToggleCart}
         />
         <div className={`px-3 md:px-6 xxl:px-12 absolute z-50 bottom-0 top-20 w-full
@@ -182,8 +188,9 @@ const App: React.FC = () => {
       {toggleConfirmOrder && (
         <section
         onClick={handleOverlayClick}
-        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-Darkest/95 via-Darkest/70 to-Darkest/60
-          h-screen z-[50]  flex justify-center items-center `}
+        className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]
+           from-Darkest/95 via-Darkest/70 to-Darkest/60
+          h-screen z-[50] flex justify-center items-center `}
         >
           <div className='w-full block mx-5 md:w-max md:mx-0'>
             {truckLoading ? (
@@ -203,21 +210,20 @@ const App: React.FC = () => {
           </div>
         </section>
       )}
-      <main className='overflow-x-hidden'>
+      <main className='overflow-x-hidden '>
         {selectedItemForReview ? (
           <div className={`${selectedItemForReview ? "animate-fadeInAnim" : ""}`}>
-              <Preview 
-                item={selectedItemForReview} 
-                onBack={handleBackFromReview}
-                showIncrement={showIncrement} 
-                updateItemQuantity={updateItemQuantity}
-                addToCart={addToCart}
-                removeFromCart={removeItemQuantity}
-                cart={cart}
-                className=""
-                quantityBtnStyle=""
-              />
-         
+            <Preview 
+              item={selectedItemForReview} 
+              onBack={handleBackFromReview}
+              showIncrement={showIncrement} 
+              updateItemQuantity={updateItemQuantity}
+              addToCart={addToCart}
+              removeFromCart={removeItemQuantity}
+              cart={cart}
+              className=""
+              quantityBtnStyle=""
+            />
           </div>
         ) : (
           <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-14 xxl:px-24

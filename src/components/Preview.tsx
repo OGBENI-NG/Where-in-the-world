@@ -65,7 +65,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
   ));
 
   return (
-    <article className='h-auto px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24'>
+    <article className='h-auto px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24 overflow-x-auto'>
       <div className='py-24 pt-20'>
         <button 
           onClick={onBack}
