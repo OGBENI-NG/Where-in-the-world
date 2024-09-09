@@ -32,7 +32,7 @@ const footerData: FooterType[] = [
 const Footer: React.FC = () => {
 
   const footIcons = footerData.map((item, index) => (
-    <div key={index} className='flex items-center flex-col'>
+    <div key={index} className='flex items-center flex-col text-Dark'>
       <img 
         src={item.img} 
         alt="illus-icon" 
@@ -44,28 +44,28 @@ const Footer: React.FC = () => {
   ))
 
   return (
-    <footer>
-      <section className=' bg-Darkest/95 md:px-10 py-12 md:py-14 
+    <footer className='bg-Lightest mt-4'>
+      <section className=' bg-Lightest md:px-10 py-14 md:py-14 
         text-Lightest leading-none flex lg:px-12 xl:px-14 xxl:px-24
         flex-col justify-center gap-12 md:gap-0 md:flex-row md:justify-between'>
         {footIcons}
       </section>
       <section 
-        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Darkest py-12 overflow-x-hidden xxl:px-24
-          text-center  text-Light flex gap-5 flex-col 
+        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Lightest py-14 overflow-x-hidden xxl:px-24
+          text-center  text-Dark flex gap-5 flex-col 
           items-center justify-center text-[14px] md:justify-between'
         >
         <div className='flex flex-col justify-center gap-5 md:flex-row  
           md:items-start md:gap-[0] w-full md:justify-between '>
           <div>
             <h1 className='text-2xl font-bold text-Brand'>Thirteen
-              <span className='text-Light font-medium text-xl'>store</span>
+              <span className='text-Dark font-medium text-xl'>store</span>
             </h1>
             <p className='hidden md:block text-left pt-4'>&copy; 2024</p>
           </div>
           <div className=''>
             <p>Payment methods</p>
-            <div className='flex items-center justify-center gap-5 text-Mid/75 pt-1'>
+            <div className='flex items-center justify-center gap-5 text-Dark pt-1 lg:pt-2'>
               <FaCcMastercard className='size-10'/>
               <FaCcVisa className='size-10'/>
               <FaCcPaypal className='size-10'/>

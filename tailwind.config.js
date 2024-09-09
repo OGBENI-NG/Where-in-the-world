@@ -13,6 +13,7 @@ export default {
         Mid: "#858594",
         Light: "#E2E8F0",
         Lightest: "#FFFFFF",
+        MidTwo: "#e7e7ee"
       },
       fontFamily: {
         Nunito: ["Nunito", "sans-serif"],
