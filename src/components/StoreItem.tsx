@@ -55,7 +55,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 src={item.image[0]}
                 alt={`${item.name}-image`}
                 className='h-full w-full object-cover'
-                loading='lazy'
+                
               />
             </div>
             <div className={`absolute top-0 left-0 right-0 bottom-[85px] w-full
