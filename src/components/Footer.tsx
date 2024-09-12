@@ -32,28 +32,32 @@ const footerData: FooterType[] = [
 const Footer: React.FC = () => {
 
   const footIcons = footerData.map((item, index) => (
-    <div key={index} className='flex items-center flex-col text-Dark'>
+    <div key={index} className='flex items-center flex-col 
+      lg:flex-row lg:items-center leading-none lg:gap-2
+       text-Dark'>
       <img 
         src={item.img} 
         alt="illus-icon" 
-        className={`size-[65px] ${index === 0 && '-mb-3 md:m-0'}`} 
+        className={`size-[60px] lg:size-[50px] ${index === 0 && 'lg:mb-4 md:m-0'}`} 
       />
-      <h3 className='text-[14px] font-bold pt-3 pb-[3px] uppercase'>{item.title}</h3>
-      <p className='text-[13px]'>{item.description}</p>
+      <div className='text-[13px] text-center  lg:text-left'>
+        <h3 className=' font-bold pt-3 pb-[3px]  lg:p-0 lg:pb-2 uppercase'>{item.title}</h3>
+        <p>{item.description}</p>
+      </div>
     </div>
   ))
 
   return (
-    <footer className='bg-Lightest mt-4'>
-      <section className=' bg-Lightest md:px-10 py-14 md:py-14 
+    <footer className='bg-MidTwo mt-4'>
+      <section className=' bg-Lightest/50 md:px-10 py-14 md:py-12 
         text-Lightest leading-none flex lg:px-12 xl:px-14 xxl:px-24
         flex-col justify-center gap-12 md:gap-0 md:flex-row md:justify-between'>
         {footIcons}
       </section>
       <section 
-        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Lightest py-14 overflow-x-hidden xxl:px-24
+        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Lightest/85 py-16 overflow-x-hidden xxl:px-24
           text-center  text-Dark flex gap-5 flex-col 
-          items-center justify-center text-[14px] md:justify-between'
+          items-center justify-center text-[14px] md:justify-between '
         >
         <div className='flex flex-col justify-center gap-5 md:flex-row  
           md:items-start md:gap-[0] w-full md:justify-between '>
@@ -63,18 +67,18 @@ const Footer: React.FC = () => {
             </h1>
             <p className='hidden md:block text-left pt-4'>&copy; 2024</p>
           </div>
-          <div className=''>
-            <p>Payment methods</p>
-            <div className='flex items-center justify-center gap-5 text-Dark pt-1 lg:pt-2'>
+          <div className='lg:pl-[130px]'>
+            <p className='text-center md:text-left'>Payment methods</p>
+            <div className='flex items-center justify-center gap-5 text-Dark pt-1 lg:pt-3'>
               <FaCcMastercard className='size-10'/>
               <FaCcVisa className='size-10'/>
               <FaCcPaypal className='size-10'/>
               <FaCcStripe className='size-10'/>
             </div>
           </div>
-          <div>
+          <div className='md:text-left lg:pr-16'>
             <p>Terms & Conditions | About Us</p>
-            <p className='pt-6'>All Right Reserved.</p>
+            <p className='pt-5'>All Right Reserved.</p>
           </div>
           <p className='md:hidden'>&copy; 2024</p>
         </div>

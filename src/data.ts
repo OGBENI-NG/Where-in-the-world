@@ -1,17 +1,17 @@
-import bedOne from './assets/img/bed-one.png';
-import bedTwo from './assets/img/bed-two.png';
-import bedThree from './assets/img/bed-three.png';
-import tableOne from './assets/img/table-one.png';
-import tableTwo from './assets/img/table-four.png';
-import tableThree from './assets/img/table-three.png';
-import chairOne from './assets/img/chair-one.png';
-import chairTwo from './assets/img/chair-two.png';
-import chairThree from './assets/img/chair-three.png';
-import shelveOne from './assets/img/shelves-one.png';
-import shelveTwo from './assets/img/shelves-two.png';
-import shelveThree from './assets/img/shelves-three.png';
-import altImgOne from './assets/img/alt-one.png';
-import altImgTwo from './assets/img/alt-two.png';
+import bedOne from './assets/img/webp/bed-one.webp';
+import bedTwo from './assets/img/webp/bed-two.webp';
+import bedThree from './assets/img/webp/bed-three.webp';
+import tableOne from './assets/img/webp/table-one.webp';
+import tableTwo from './assets/img/webp/table-four.webp';
+import tableThree from './assets/img/webp/table-three.webp';
+import chairOne from './assets/img/webp/chair-one.webp';
+import chairTwo from './assets/img/webp/chair-two.webp';
+import chairThree from './assets/img/webp/chair-three.webp';
+import shelveOne from './assets/img/webp/shelves-one.webp';
+import shelveTwo from './assets/img/webp/shelves-two.webp';
+import shelveThree from './assets/img/webp/shelves-three.webp';
+import altImgOne from './assets/img/webp/alt-one.webp';
+import altImgTwo from './assets/img/webp/alt-two.webp';
 
 export type ThirteenStoreData = {
   id: number;

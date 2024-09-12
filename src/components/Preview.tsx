@@ -67,7 +67,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
   return (
     <article className='h-auto px-5 md:px-10 lg:px-14 xl:px-16 
       xxl:px-24 overflow-x-auto'>
-      <div className='py-24 pt-20'>
+      <div className='py-24 pt-12'>
         <button 
           onClick={onBack}
           type='button' 
@@ -78,7 +78,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
         </button>
         <div className='md:grid md:grid-cols-2 lg:flex lg:items-center lg:justify-center md:gap-2'>
           <section className='flex flex-col justify-center items-center
-             bg-Lightest/75 rounded-lg border-b-[1px]
+             bg-Lightest/65 rounded-lg border-b-[1px]
             border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[450px] lg:h-[500px]
             lg:p-12'>
             <div className={`size-[230px]  md:size-[250px] lg:size-[300px]
@@ -95,7 +95,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
             </div>
           </section> 
           <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9
-            bg-Lightest/75 rounded-lg border-t-[1px] lg:p-12 
+            bg-Lightest/65 rounded-lg border-t-[1px] lg:p-12 
             border-Brand/40 -mt-[1px]  lg:gap-8 lg:w-[450px] lg:h-[500px]
             md:border-l-[1px] md:border-t-0 overflow-x-hidden'
           >
@@ -107,7 +107,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
               {stars} <span className='text-xl px-1'> / </span> {item.numberOfRating} 
               <span>ratings</span>
             </p>
-            <p className='text-2xl md:text-[28px] leading-9 md:pt-4 lg:p-0'>{item.details}</p>
+            <p className='text-2xl md:text-[28px] leading-9 md:pt-4 lg:p-0 sh'>{item.details}</p>
             <CartBtn
               cart={cart}
               item={item}
@@ -115,9 +115,9 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
               removeFromCart={removeFromCart}
               updateItemQuantity={updateItemQuantity}
               showIncrement={showIncrement}
-              className="w-full mt-5 md:mt-auto h-[50px] lg:w-[200px] lg:h-[45px]"
-              quantityBtnStyle='px-[15px] lg:px-[12px]'
-              addToCartBtnInPreview='text-lg'
+              className="w-full mt-5 md:mt-auto h-[50px] lg:w-[200px] lg:h-[45px] "
+              quantityBtnStyle='px-[15px] lg:px-[12px] '
+              addToCartBtnInPreview='text-lg shadow-md shadow-Brand/30'
             />
           </section>
         </div>

@@ -47,9 +47,7 @@ const Cart: React.FC<CartProps> = (
                     className="size-[65px] lg:size-[50px]"
                   />
                   <div className='pl-[10px] text-[14px] font-semibold text-Mid'>
-                    <h3 className="text-[15px] tracking-wide lg:text-[14px] w-[180px] font-bold text-Dark 
-                    lg:w-[190px] 
-                    overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</h3>
+                    <h3 className="text-[15px] tracking-wide lg:text-[14px] w-[180px] font-bold text-DarK overflow-hidden text-ellipsis whitespace-nowrap">{item.name}</h3>
                     <div className='flex items-center gap-3 text-[13px] pt-[1px]'>
                       <p className='font-bold text-Brand'>X{item.quantity}</p>
                       <p>@{item.price.toFixed(2)}</p>
