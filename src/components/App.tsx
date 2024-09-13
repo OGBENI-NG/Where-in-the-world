@@ -215,7 +215,12 @@ const App: React.FC = () => {
       <main className='overflow-x-hidden '>
         {selectedItemForReview ? (
           <div className={`${selectedItemForReview ? "animate-fadeInAnim" : ""}`}>
-            <Suspense fallback={<div>Loading preview...</div>}>
+            <Suspense fallback={
+             <div className='relative flex items-center justify-center h-full w-max m-auto'>
+             <p className='absolute text-[15px] left-[45px] z-10 font-bold text-Lightest'>Loading...</p>
+             <TruckLoader />
+            </div>
+            }>
               <Preview 
                 item={selectedItemForReview} 
                 onBack={handleBackFromReview}
