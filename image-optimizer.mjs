@@ -14,7 +14,7 @@ const resizeImage = async (inputPath, outputPath, width) => {
   const files = await imagemin(['assets/img/*.{jpg,png}'], {
     destination: 'assets/img',
     plugins: [
-      imageminWebp({ quality: 75 })
+      imageminWebp({ quality: 60 })
     ]
   });
 
