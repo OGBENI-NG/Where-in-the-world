@@ -65,21 +65,21 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
   ));
 
   return (
-    <article className='h-auto px-5 md:px-10 lg:px-14 xl:px-16 
-      xxl:px-24 overflow-x-auto'>
+    <article className='h-auto px-5 ml:px-6 md:px-10 lg:px-14 xl:px-16 
+      xxl:px-28 overflow-x-auto md:pt-[29px]'>
       <div className='py-24 pt-12'>
         <button 
           onClick={onBack}
           type='button' 
           className='flex items-center text-lg gap-[2px] text-Dark/65 hover:text-Dark 
-            font-semibold leading-none mb-5 xl:pl-[115px]'
+            font-semibold leading-none mb-5 xl:pl-[110px] xxl:pl-[105px]'
         >
           <IoArrowBack />Back to store
         </button>
         <div className='md:grid md:grid-cols-2 lg:flex lg:items-center lg:justify-center md:gap-2'>
           <section className='flex flex-col justify-center items-center
              bg-Lightest/65 rounded-lg border-b-[1px]
-            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[450px] lg:h-[500px]
+            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[450px] lg:h-[500px] xxl:w-[500px]
             lg:p-12'>
             <div className={`size-[230px]  md:size-[250px] lg:size-[300px]
              mb-6 mt-5 md:mt-4 lg:m-0 transition-opacity duration-${transitionDuration} overflow-hidden 
@@ -97,7 +97,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
           <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9
             bg-Lightest/65 rounded-lg border-t-[1px] lg:p-12 
             border-Brand/40 -mt-[1px]  lg:gap-8 lg:w-[450px] lg:h-[500px]
-            md:border-l-[1px] md:border-t-0 overflow-x-hidden'
+            md:border-l-[1px] md:border-t-0 overflow-x-hidden xxl:w-[500px]'
           >
             <h2 className='text-2xl md:text-[28px] font-bold text-Dark md:pt-8 lg:p-0'>{item.name}</h2>
             <h3 className='text-Brand font-bold text-2xl md:text-[28px] md:pt-2 lg:pt-0'>

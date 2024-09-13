@@ -50,13 +50,12 @@ const Footer: React.FC = () => {
   return (
     <footer className='bg-MidTwo mt-4'>
       <section className=' bg-Lightest/50 md:px-10 py-14 md:py-12 
-        text-Lightest leading-none flex lg:px-12 xl:px-14 xxl:px-24
+        text-Lightest leading-none flex lg:px-12 xl:px-16 xxl:px-28
         flex-col justify-center gap-12 md:gap-0 md:flex-row md:justify-between'>
         {footIcons}
       </section>
       <section 
-        className='md:relative md:px-10 lg:px-12 xl:px-14 bg-Lightest/85 py-16 overflow-x-hidden xxl:px-24
-          text-center  text-Dark flex gap-5 flex-col 
+        className='md:relative md:px-10 lg:px-12 xl:px-16 bg-Lightest/85 py-16 overflow-x-hidden xxl:px-28 text-center  text-Dark flex gap-5 flex-col 
           items-center justify-center text-[14px] md:justify-between '
         >
         <div className='flex flex-col justify-center gap-5 md:flex-row  
@@ -67,7 +66,7 @@ const Footer: React.FC = () => {
             </h1>
             <p className='hidden md:block text-left pt-4'>&copy; 2024</p>
           </div>
-          <div className='lg:pl-[130px]'>
+          <div className='lg:pl-[130px] xl:pl-[145px] xxl:pl-[135px]'>
             <p className='text-center md:text-left'>Payment methods</p>
             <div className='flex items-center justify-center gap-5 text-Dark pt-1 lg:pt-3'>
               <FaCcMastercard className='size-10'/>

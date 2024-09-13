@@ -19,6 +19,7 @@ export default {
         Nunito: ["Nunito", "sans-serif"],
       },
       screens: {
+        ml: {'min': '379px', 'max': '450px'},
         xl: {'min': '1200px', 'max': '1440px'},
         xxl: {'min': '1290px', 'max': '1536px'}
       },

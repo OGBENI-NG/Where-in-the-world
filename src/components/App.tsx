@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, lazy, Suspense } from 'react';
 import Header from './Header';
 import StoreItem from './StoreItem';
 import { storeData, ThirteenStoreData } from '../data';
@@ -6,9 +6,11 @@ import '../../src/index.css'; // Ensure you have this file set up
 import CategoryList from './CategoryList';
 import Cart from './Cart';
 import Footer from './Footer';
-import Preview from './Preview';
 import ConfirmOrder from './ConfirmOrder';
 import TruckLoader from './TruckLoader';
+
+// Lazy load the Preview component
+const Preview = lazy(() => import('./Preview'));
 
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
@@ -24,7 +26,7 @@ const App: React.FC = () => {
 
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0); // Save scroll position
-  
+
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
   const totalItemInCartQuantity = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
@@ -161,10 +163,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`bg-Light font-Nunito scroll-smooth 
+    <div className={`bg-Light font-Nunito scroll-smooth
       ${toggleConfirmOrder ? "h-screen overflow-x-hidden" : "h-full"}`}>
       <header 
-        className='relative px-5 md:px-10 lg:px-12 xl:px-14 xxl:px-24 bg-Lightest/85' 
+        className='relative px-5 ml:px-6 md:px-10 lg:px-12 xl:px-16 xxl:px-28 bg-Lightest/85' 
         ref={cartRef}
       >
         <Header 
@@ -213,20 +215,22 @@ const App: React.FC = () => {
       <main className='overflow-x-hidden '>
         {selectedItemForReview ? (
           <div className={`${selectedItemForReview ? "animate-fadeInAnim" : ""}`}>
-            <Preview 
-              item={selectedItemForReview} 
-              onBack={handleBackFromReview}
-              showIncrement={showIncrement} 
-              updateItemQuantity={updateItemQuantity}
-              addToCart={addToCart}
-              removeFromCart={removeItemQuantity}
-              cart={cart}
-              className=""
-              quantityBtnStyle=""
-            />
+            <Suspense fallback={<div>Loading preview...</div>}>
+              <Preview 
+                item={selectedItemForReview} 
+                onBack={handleBackFromReview}
+                showIncrement={showIncrement} 
+                updateItemQuantity={updateItemQuantity}
+                addToCart={addToCart}
+                removeFromCart={removeItemQuantity}
+                cart={cart}
+                className=""
+                quantityBtnStyle=""
+              />
+            </Suspense>
           </div>
         ) : (
-          <div className={`px-5 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-16 xxl:px-24
+          <div className={`px-5 ml:px-6 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-16 xxl:px-28
             ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
             <CategoryList
               categories={categories}
@@ -235,7 +239,7 @@ const App: React.FC = () => {
               handleCategoryClick={handleCategoryClick}
             />
             <div className={`pb-20 pt-5 md:pt-14 flex flex-col gap-5 md:grid 
-              md:grid-cols-2 md:gap-5 lg:gap-4 lg:grid-cols-3 xl:grid-cols-4
+              md:grid-cols-2 md:gap-5 lg:gap-4 lg:grid-cols-3 xl:grid-cols-4 xxl:gap-5
               ${isFadingOut ? "animate-slideIn" : ""}`}>
               {filteredStoreData.map((item) => (
                 <StoreItem 
