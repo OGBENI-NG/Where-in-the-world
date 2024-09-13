@@ -62,7 +62,6 @@ const StoreItem: React.FC<StoreItemProps> = ({
                   alt={`${item.name}-image`}
                   className="object-cover size-[230px] md:size-[250px] 
                   lg:size-[180px]"
-                  loading='lazy'
                 />
               </picture>
              </div>
