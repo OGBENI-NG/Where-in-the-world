@@ -36,13 +36,13 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
   const imgThumbnail = item.image.map((img, index) => (
     <div 
       key={index} 
-      className={`cursor-pointer relative size-[80px] md:size-[100px] border-2 border-Brand/15
+      className={`cursor-pointer relative size-[80px] md:size-[100px] lg:size-[70px] border-2 border-Brand/15 xxl:size-[100px]
         ${currentIndex === index ? `
           before:absolute before:content-[""] before:bg-Brand/15 before:inset-0 
           before:border-2 before:border-Brand before:rounded-[6px] 
           before:transition-all before:duration-${transitionDuration} 
           before:delay-${transitionDuration}` : ''}
-        overflow-x-hidden rounded-lg p-2`}
+        overflow-x-hidden rounded-lg p-2 lg:p-1`}
       onClick={() => handleThumbnailClick(index)}
     >
       <img 
@@ -72,22 +72,22 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
           onClick={onBack}
           type='button' 
           className='flex items-center text-lg gap-[2px] text-Dark/65 hover:text-Dark 
-            font-semibold leading-none mb-5 xl:pl-[110px] xxl:pl-[105px]'
+            font-semibold leading-none mb-5 lg:pl-[50px] xl:pl-[158px] xxl:pl-[154px]'
         >
           <IoArrowBack />Back to store
         </button>
         <div className='md:grid md:grid-cols-2 lg:flex lg:items-center lg:justify-center md:gap-2'>
           <section className='flex flex-col justify-center items-center
              bg-Lightest/65 rounded-lg border-b-[1px]
-            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[450px] lg:h-[500px] xxl:w-[500px]
-            lg:p-12'>
-            <div className={`
+            border-Brand/40 overflow-x-hidden p-5 py-6  md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[400px] lg:h-[450px] xxl:w-[450px]
+            lg:p-8'>
+            <div className={` size-[230px] md:size-[250px] lg:size-[300px]
              mb-6 mt-5 md:mt-4 lg:m-0 transition-opacity duration-${transitionDuration} overflow-hidden 
               ${isFading ? "opacity-0" : "opacity-100"}`}>
               <img 
                 src={item.image[currentIndex]} 
                 alt={`${item.name}-image`} 
-                className='size-[230px] md:size-[250px] lg:size-[300px] object-cover'
+                className=' object-cover h-full w-full'
               />
             </div>
             <div className='flex items-center justify-between w-full mt-auto lg:justify-center lg:gap-6 lg:pt-7'>
@@ -95,9 +95,9 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
             </div>
           </section> 
           <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9
-            bg-Lightest/65 rounded-lg border-t-[1px] lg:p-12 
-            border-Brand/40 -mt-[1px]  lg:gap-8 lg:w-[450px] lg:h-[500px]
-            md:border-l-[1px] md:border-t-0 overflow-x-hidden xxl:w-[500px]'
+            bg-Lightest/65 rounded-lg border-t-[1px] lg:p-8 
+            border-Brand/40 -mt-[1px]  lg:gap-8 lg:w-[400px] lg:h-[450px]
+            md:border-l-[1px] md:border-t-0 overflow-x-hidden xxl:w-[450px]'
           >
             <h2 className='text-2xl md:text-[28px] font-bold text-Dark md:pt-8 lg:p-0'>{item.name}</h2>
             <h3 className='text-Brand font-bold text-2xl md:text-[28px] md:pt-2 lg:pt-0'>
@@ -115,7 +115,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
               removeFromCart={removeFromCart}
               updateItemQuantity={updateItemQuantity}
               showIncrement={showIncrement}
-              className="w-full mt-5 md:mt-auto h-[50px] lg:w-[200px] lg:h-[45px] "
+              className="w-full mt-5 md:mt-auto h-[50px] lg:w-[200px] lg:h-[40px] "
               quantityBtnStyle='px-[15px] lg:px-[12px] '
               addToCartBtnInPreview='text-lg shadow-md shadow-Brand/30'
             />

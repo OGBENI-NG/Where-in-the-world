@@ -39,6 +39,7 @@ const Footer: React.FC = () => {
         src={item.img} 
         alt="illus-icon" 
         className={`size-[60px] lg:size-[50px] ${index === 0 && 'lg:mb-4 md:m-0'}`} 
+        loading='lazy'
       />
       <div className='text-[13px] text-center  lg:text-left'>
         <h3 className=' font-bold pt-3 pb-[3px]  lg:p-0 lg:pb-2 uppercase'>{item.title}</h3>

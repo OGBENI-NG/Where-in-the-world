@@ -35,7 +35,7 @@ const App: React.FC = () => {
 
   const handleConfirmOrder = () => {
     setTruckLoading(true);
-    setToggleConfirmOrder(true); // Open ConfirmOrder when this function is called
+    setToggleConfirmOrder(true);
     setToggleCart(false);
     setTimeout(() => {
       setTruckLoading(false);
@@ -259,5 +259,4 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 export default App;
