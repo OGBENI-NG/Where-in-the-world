@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Header from './Header';
 import StoreItem from './StoreItem';
 import { storeData, ThirteenStoreData } from '../data';
@@ -6,11 +6,9 @@ import '../../src/index.css'; // Ensure you have this file set up
 import CategoryList from './CategoryList';
 import Cart from './Cart';
 import Footer from './Footer';
+import Preview from './Preview';
 import ConfirmOrder from './ConfirmOrder';
 import TruckLoader from './TruckLoader';
-
-// Lazy load the Preview component
-const Preview = lazy(() => import('./Preview'));
 
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
@@ -26,7 +24,7 @@ const App: React.FC = () => {
 
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0); // Save scroll position
-
+  
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
   const totalItemInCartQuantity = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
@@ -215,24 +213,17 @@ const App: React.FC = () => {
       <main className='overflow-x-hidden '>
         {selectedItemForReview ? (
           <div className={`${selectedItemForReview ? "animate-fadeInAnim" : ""}`}>
-            <Suspense fallback={
-             <div className='relative flex items-center justify-center h-full w-max m-auto'>
-             <p className='absolute text-[15px] left-[45px] z-10 font-bold text-Lightest'>Loading...</p>
-             <TruckLoader />
-            </div>
-            }>
-              <Preview 
-                item={selectedItemForReview} 
-                onBack={handleBackFromReview}
-                showIncrement={showIncrement} 
-                updateItemQuantity={updateItemQuantity}
-                addToCart={addToCart}
-                removeFromCart={removeItemQuantity}
-                cart={cart}
-                className=""
-                quantityBtnStyle=""
-              />
-            </Suspense>
+            <Preview 
+              item={selectedItemForReview} 
+              onBack={handleBackFromReview}
+              showIncrement={showIncrement} 
+              updateItemQuantity={updateItemQuantity}
+              addToCart={addToCart}
+              removeFromCart={removeItemQuantity}
+              cart={cart}
+              className=""
+              quantityBtnStyle=""
+            />
           </div>
         ) : (
           <div className={`px-5 ml:px-6 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-16 xxl:px-28

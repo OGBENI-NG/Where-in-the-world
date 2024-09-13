@@ -49,8 +49,8 @@ const StoreItem: React.FC<StoreItemProps> = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className='size-[230px]  md:size-[250px]
-             mb-2 md:mt-10 lg:mt-2 lg:size-[180px]'>
+            <div className='
+             mb-2 md:mt-10 lg:mt-2 '>
               <picture>
                 <source
                   srcSet={`${item.image[0]} 1200w, ${item.image[0]} 600w, ${item.image[0]} 300w`}
@@ -60,7 +60,9 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 <img
                   src={item.image[0]} // Fallback to the smallest image
                   alt={`${item.name}-image`}
-                  className="h-full w-full object-cover"
+                  className="object-cover size-[230px] md:size-[250px] 
+                  lg:size-[180px]"
+                  loading='lazy'
                 />
               </picture>
              </div>
