@@ -72,7 +72,7 @@ const Preview: React.FC<ReviewProps> = ({ item, onBack, showIncrement, addToCart
           onClick={onBack}
           type='button' 
           className='flex items-center text-lg gap-[2px] text-Dark/65 hover:text-Dark 
-            font-semibold leading-none mb-5 lg:pl-[115px]'
+            font-semibold leading-none mb-5 xl:pl-[115px]'
         >
           <IoArrowBack />Back to store
         </button>

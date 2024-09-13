@@ -51,12 +51,19 @@ const StoreItem: React.FC<StoreItemProps> = ({
           >
             <div className='size-[230px]  md:size-[250px]
              mb-2 md:mt-10 lg:mt-2 lg:size-[180px]'>
-              <img
-                src={item.image[0]}
-                alt={`${item.name}-image`}
-                className='h-full w-full object-cover'
-                
-              />
+               <picture>
+                {/* Define various resolutions using srcSet */}
+                <source
+                  srcSet={`${item.image[0]} 1200w, ${item.image[0]} 600w, ${item.image[0]} 300w`}
+                  sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
+                  type="image/webp"
+                />
+                <img
+                  src={item.image[0]} // Fallback to the smallest image
+                  alt={`${item.name}-image`}
+                  className="h-full w-full object-cover"
+                />
+              </picture>
             </div>
             <div className={`absolute top-0 left-0 right-0 bottom-[85px] w-full
               text-Darkest bg-Lightest/85 rounded-t-lg -z-0 transition-opacity duration-300

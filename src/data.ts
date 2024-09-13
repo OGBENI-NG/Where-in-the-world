@@ -16,7 +16,7 @@ import altImgTwo from './assets/img/webp/alt-two.webp';
 export type ThirteenStoreData = {
   id: number;
   name: string;
-  image: [] | string[];
+  image: string[]; // array of image URLs
   price: number;
   description: string;
   category: string;
@@ -28,7 +28,7 @@ export type ThirteenStoreData = {
 
 export const storeData: ThirteenStoreData[] = [
   {
-    id: 5,  
+    id: 5,
     rating: 4,
     numberOfRating: 1222,
     name: 'Deluxe King Bed',
@@ -39,18 +39,18 @@ export const storeData: ThirteenStoreData[] = [
     category: 'bed',
   },
   {
-    id: 1,  
+    id: 1,
     rating: 4,
     numberOfRating: 672,
     name: 'Modern Designer Chair',
     image: [chairOne, altImgOne, altImgTwo],
     price: 98.80,
     description: 'Creative designer chair.',
-    details: 'This wooden table brings elegance to any dining area. This wooden table brings elegance to any dining area. ',
+    details: 'This chair brings elegance to any room.',
     category: 'chair',
   },
   {
-    id: 7,  
+    id: 7,
     rating: 5,
     numberOfRating: 850,
     name: 'Contemporary Dining Table',
@@ -61,7 +61,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'table',
   },
   {
-    id: 4,  
+    id: 4,
     rating: 3,
     numberOfRating: 432,
     name: 'Cozy Comfort Bed',
@@ -72,7 +72,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'bed',
   },
   {
-    id: 11,  
+    id: 11,
     rating: 4,
     numberOfRating: 378,
     name: 'Sleek Metal Shelves',
@@ -83,7 +83,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'shelve',
   },
   {
-    id: 3,  
+    id: 3,
     rating: 3,
     numberOfRating: 122,
     name: 'Minimalist Modern Chair',
@@ -94,7 +94,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'chair',
   },
   {
-    id: 2,  
+    id: 2,
     rating: 5,
     numberOfRating: 879,
     name: 'Elegant Comfort Chair',
@@ -105,7 +105,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'chair',
   },
   {
-    id: 12,  
+    id: 12,
     rating: 4,
     numberOfRating: 642,
     name: 'Versatile Shelving Unit',
@@ -116,7 +116,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'shelve',
   },
   {
-    id: 10,  
+    id: 10,
     rating: 3,
     numberOfRating: 782,
     name: 'Sturdy Wooden Shelves',
@@ -127,7 +127,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'shelve',
   },
   {
-    id: 8,  
+    id: 8,
     rating: 5,
     numberOfRating: 532,
     name: 'Elegant Wooden Table',
@@ -138,7 +138,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'table',
   },
   {
-    id: 6,  
+    id: 6,
     rating: 5,
     numberOfRating: 652,
     name: 'Stylish Budget Bed',
@@ -149,7 +149,7 @@ export const storeData: ThirteenStoreData[] = [
     category: 'bed',
   },
   {
-    id: 9,  
+    id: 9,
     rating: 3,
     numberOfRating: 762,
     name: 'Compact Space-Saver Table',
