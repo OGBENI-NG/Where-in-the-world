@@ -49,8 +49,9 @@ const ConfirmOrder: React.FC<ConfirmOrderProp> = ({cart, totalPrice, handleConti
             ))}
 
           </div>
-          <p className={`pt-5 ${flexDiv} justify-between text-[17px] font-bold`}>Total price
-            <span className='text-Brand'>${totalPrice}</span></p>
+          <p className={`mt-2 p-2 rounded-lg ${flexDiv} justify-between text-[17px] font-bold bg-Brand/5`}>Total price
+            <span className='text-Brand'>${totalPrice}</span>
+          </p>
         </div> 
         <div className='w-full text-base font-bold text-Lightest tracking-wide pt-6'>
           <div  className={`${flexDiv} justify-between gap-3 w-full pt-0 `}>
