@@ -5,14 +5,40 @@
     <meta name="description" content="Thirteen Store">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thirteen Store</title>
+
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+  
+    <!-- Defer non-critical CSS -->
     <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'">
+
+    <!-- Async load web fonts -->
+    <script>
+      WebFontConfig = {
+        google: { families: ['Nunito:400,700'] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+
 </head>
 <body>
 
     <div id="root"></div>
+
+    <!-- Defer the main React script -->
     <script src="/src/index.tsx" type="module" defer></script>
 </body>
 </html>
