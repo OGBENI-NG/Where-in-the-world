@@ -28,7 +28,7 @@ export default {
         fadeForward: 'fadeForward .25s ease 0s 1 normal none',
         slideOut: 'slideOut .25s ease 0s 1 normal none',
         fadeIn: 'fadeIn .25s ease 0s 1 normal forwards',
-        fadeInAnim: 'fadeInAnim 1s ease 0s 1 normal forwards',
+        fadeInAnim: 'fadeInAnim .6s ease 0s 1 normal none',
         fadeInBackWard: 'fadeInBackWard .25s ease 0s 1 normal forwards',
         slideIn: 'slideIn .25s ease 0s 1 normal forwards',
         truckMotion: 'truckMotion 1s linear infinite',
@@ -75,7 +75,7 @@ export default {
         },
         fadeInAnim: {
           '0%': {
-            opacity: "0",
+            opacity: "0.4",
           },
           '100%': {
             opacity: "1",

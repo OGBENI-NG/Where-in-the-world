@@ -9,156 +9,197 @@ import Footer from './Footer';
 import Preview from './Preview';
 import ConfirmOrder from './ConfirmOrder';
 import TruckLoader from './TruckLoader';
+import ScrollToTopButton from './ScrollToTop';
+
 
 const App: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
-  const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [cart, setCart] = useState<ThirteenStoreData[]>([]);
-  const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>({});
-  const [isRemoving, setIsRemoving] = useState<{ [key: string]: boolean }>({});
-  const [toggleCart, setToggleCart] = useState<boolean>(false);
-  const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false);
-  const cartRef = useRef<HTMLDivElement>(null);
-  const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
-  const [truckLoading, setTruckLoading] = useState<boolean>(false);
-
-  const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
-  const [scrollPosition, setScrollPosition] = useState<number>(0); // Save scroll position
+    // Selected category for filtering items, default is 'All Category'
+    const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
   
-  const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
-  const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
-  const totalItemInCartQuantity = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
-
-  const handleToggleCart = () => {
-    setToggleCart(prevState => !prevState);
-  };
-
-  const handleConfirmOrder = () => {
-    setTruckLoading(true);
-    setToggleConfirmOrder(true);
-    setToggleCart(false);
-    setTimeout(() => {
-      setTruckLoading(false);
-    }, 3000);
-  };
-
-  const handleContinueShopping = () => {
-    setToggleConfirmOrder(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutsideCartModal = (event: MouseEvent) => {
-      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-        setToggleCart(false);
+    // Refs to keep track of category elements in the DOM for styling the underline
+    const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
+  
+    // Cart state to manage the items added to the shopping cart
+    const [cart, setCart] = useState<ThirteenStoreData[]>([]);
+  
+    // Manages visibility of the increment button for each item
+    const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>({});
+  
+    // Manages whether an item is in the process of being removed
+    const [isRemoving, setIsRemoving] = useState<{ [key: string]: boolean }>({});
+  
+    // Controls visibility of the cart modal
+    const [toggleCart, setToggleCart] = useState<boolean>(false);
+  
+    // Controls visibility of the order confirmation modal
+    const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false);
+  
+    // Ref to the cart element to detect clicks outside of it
+    const cartRef = useRef<HTMLDivElement>(null);
+  
+    // Controls the fading animation when switching categories
+    const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
+  
+    // Manages truck loading animation when confirming an order
+    const [truckLoading, setTruckLoading] = useState<boolean>(false);
+  
+    // Holds the selected item for review (detailed view)
+    const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
+  
+    // Saves the current scroll position to restore it when exiting the review
+    const [scrollPosition, setScrollPosition] = useState<number>(0);
+  
+    // Categories available for filtering
+    const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
+  
+    // Total price of the items in the cart, calculated dynamically
+    const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
+  
+    // Total number of items in the cart
+    const totalItemInCartQuantity = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  
+    // Toggles cart modal visibility
+    const handleToggleCart = () => {
+      setToggleCart(prevState => !prevState);
+    };
+  
+    // Handles order confirmation process and triggers truck loading animation
+    const handleConfirmOrder = () => {
+      setTruckLoading(true);
+      setToggleConfirmOrder(true);
+      setToggleCart(false);
+      setTimeout(() => {
+        setTruckLoading(false);
+      }, 3000); // Simulates loading delay
+    };
+  
+    // Closes the confirmation modal and continues shopping
+    const handleContinueShopping = () => {
+      setToggleConfirmOrder(false);
+    };
+  
+    // Adds an event listener to close the cart when clicking outside the modal
+    useEffect(() => {
+      const handleClickOutsideCartModal = (event: MouseEvent) => {
+        if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+          setToggleCart(false);
+        }
+      };
+  
+      document.addEventListener('mousedown', handleClickOutsideCartModal);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutsideCartModal);
+      };
+    }, [cartRef, toggleCart]);
+  
+    // Adjusts the underline position and width when a category is selected
+    useEffect(() => {
+      const PADDING = 8;
+      const activeIndex = categories.findIndex(
+        (category) => category.toLowerCase() === selectedCategory.toLowerCase()
+      );
+      const activeElement = categoryRefs.current[activeIndex];
+      if (activeElement) {
+        const left = activeElement.offsetLeft - PADDING;
+        const width = activeElement.offsetWidth + PADDING * 2;
+  
+        // Apply calculated left and width to CSS variables for the underline
+        document.documentElement.style.setProperty('--underline-left', `${left}px`);
+        document.documentElement.style.setProperty('--underline-width', `${width}px`);
       }
+    }, [selectedCategory, categories]);
+  
+    // Handles category selection with fade-in/out animation
+    const handleCategoryClick = (category: string) => {
+      setIsFadingOut(false);
+      setTimeout(() => {
+        setSelectedCategory(category);
+        setIsFadingOut(true);
+      }, 100); // Adds a delay before switching the category
     };
-
-    document.addEventListener('mousedown', handleClickOutsideCartModal);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutsideCartModal);
-    };
-  }, [cartRef, toggleCart]);
-
-  useEffect(() => {
-    const PADDING = 8; // Adjust the padding as needed
-    const activeIndex = categories.findIndex(
-      (category) => category.toLowerCase() === selectedCategory.toLowerCase()
-    );
-    const activeElement = categoryRefs.current[activeIndex];
-    if (activeElement) {
-      const left = activeElement.offsetLeft - PADDING;
-      const width = activeElement.offsetWidth + PADDING * 2;
-
-      document.documentElement.style.setProperty('--underline-left', `${left}px`);
-      document.documentElement.style.setProperty('--underline-width', `${width}px`);
-    }
-  }, [selectedCategory, categories]);
-
-  const handleCategoryClick = (category: string) => {
-    setIsFadingOut(false);
-    setTimeout(() => {
-      setSelectedCategory(category);
-      setIsFadingOut(true);
-    }, 250);
-  };
-
-  const filteredStoreData = React.useMemo(() => {
-    return selectedCategory === 'All Category'
-      ? storeData
-      : storeData.filter(item => item.category.toLowerCase() === selectedCategory.toLowerCase());
-  }, [selectedCategory]);
-
-  function addToCart(item: ThirteenStoreData) {
-    const existingItem = cart.find(cartItem => cartItem.id === item.id);
-    if (existingItem) {
-      updateItemQuantity(item);
-    } else {
-      setCart([{ ...item, quantity: 1 }, ...cart]);
-      setShowIncrement({ ...showIncrement, [item.id]: true });
-    }
-    setToggleCart(false);
-  }
-
-  function updateItemQuantity(item: ThirteenStoreData) {
-    setCart(
-      cart.map(cartItem =>
-        cartItem.id === item.id
-          ? { ...cartItem, quantity: (cartItem.quantity || 1) + 1 }
-          : cartItem
-      )
-    );
-    setToggleCart(false);
-  }
-
-  function removeItemQuantity(item: ThirteenStoreData) {
-    const existingItem = cart.find(cartItem => cartItem.id === item.id);
-    if (existingItem) {
-      const newQuantity = (existingItem.quantity || 1) - 1;
-      if (newQuantity > 0) {
-        setCart(
-          cart.map(cartItem =>
-            cartItem.id === item.id
-              ? { ...cartItem, quantity: newQuantity }
-              : cartItem
-          )
-        );
+  
+    // Filters store data based on the selected category
+    const filteredStoreData = React.useMemo(() => {
+      return selectedCategory === 'All Category'
+        ? storeData
+        : storeData.filter(item => item.category.toLowerCase() === selectedCategory.toLowerCase());
+    }, [selectedCategory]);
+  
+    // Adds an item to the cart or updates its quantity if it's already in the cart
+    function addToCart(item: ThirteenStoreData) {
+      const existingItem = cart.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        updateItemQuantity(item); // If item exists, update its quantity
       } else {
-        setToggleCart(false);
+        setCart([{ ...item, quantity: 1 }, ...cart]);
+        setShowIncrement({ ...showIncrement, [item.id]: true });
+      }
+      setToggleCart(false);
+    }
+  
+    // Increments the quantity of an existing cart item
+    function updateItemQuantity(item: ThirteenStoreData) {
+      setCart(
+        cart.map(cartItem =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: (cartItem.quantity || 1) + 1 }
+            : cartItem
+        )
+      );
+      setToggleCart(false);
+    }
+  
+    // Decreases the quantity of an item, removes it if the quantity is 0
+    function removeItemQuantity(item: ThirteenStoreData) {
+      const existingItem = cart.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        const newQuantity = (existingItem.quantity || 1) - 1;
+        if (newQuantity > 0) {
+          setCart(
+            cart.map(cartItem =>
+              cartItem.id === item.id
+                ? { ...cartItem, quantity: newQuantity }
+                : cartItem
+            )
+          );
+        } else {
+          // If quantity is 0, remove the item from the cart
+          setToggleCart(false);
+          setShowIncrement({ ...showIncrement, [item.id]: false });
+          setCart(cart.filter(cartItem => cartItem.id !== item.id));
+        }
+      }
+    }
+  
+    // Removes an item from the cart with a fade-out animation
+    function removeItemFromCart(item: ThirteenStoreData) {
+      setIsRemoving((prev) => ({ ...prev, [item.id]: true }));
+      setTimeout(() => {
         setShowIncrement({ ...showIncrement, [item.id]: false });
         setCart(cart.filter(cartItem => cartItem.id !== item.id));
+        setIsRemoving((prev) => ({ ...prev, [item.id]: false }));
+      }, 250); // Animation delay before removing item
+    }
+  
+    // Shows the review modal for the selected item and saves the current scroll position
+    function handleShowReview(item: ThirteenStoreData) {
+      setScrollPosition(window.scrollY);
+      setSelectedItemForReview(item);
+      window.scrollTo(0, 0); // Scroll to top when showing the preview
+    }
+  
+    // Goes back from the review and restores the previous scroll position
+    function handleBackFromReview() {
+      setSelectedItemForReview(null);
+      window.scrollTo(0, scrollPosition); // Restore scroll position
+    }
+  
+    // Handles closing the confirmation modal when clicking outside of it
+    const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
+      if (e.target === e.currentTarget) {
+        setToggleConfirmOrder(false); // Only close when clicking on the overlay, not the modal content
       }
-    }
-  }
-
-  function removeItemFromCart(item: ThirteenStoreData) {
-    setIsRemoving((prev) => ({ ...prev, [item.id]: true }));
-    setTimeout(() => {
-      setShowIncrement({ ...showIncrement, [item.id]: false });
-      setCart(cart.filter(cartItem => cartItem.id !== item.id));
-      setIsRemoving((prev) => ({ ...prev, [item.id]: false }));
-    }, 250);
-  }
-
-  function handleShowReview(item: ThirteenStoreData) {
-    // Save the current scroll position before showing the preview
-    setScrollPosition(window.scrollY);
-    setSelectedItemForReview(item);
-    // Scroll to the top when showing the preview
-    window.scrollTo(0, 0);
-  }
-
-  function handleBackFromReview() {
-    setSelectedItemForReview(null);
-    // Restore the previous scroll position when going back
-    window.scrollTo(0, scrollPosition);
-  }
-
-  const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
-    // Ensure only the overlay click closes the modal, not the ConfirmOrder
-    if (e.target === e.currentTarget) {
-      setToggleConfirmOrder(false);
-    }
-  };
+    };
 
   return (
     <div className={`bg-Light font-Nunito scroll-smooth
@@ -254,6 +295,7 @@ const App: React.FC = () => {
             </div>
           </div>
         )}
+        <ScrollToTopButton/>
       </main>
       <Footer/>
     </div>
