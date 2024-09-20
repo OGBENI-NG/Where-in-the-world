@@ -53,7 +53,9 @@ const StoreItem: React.FC<StoreItemProps> = ({
             onMouseLeave={handleMouseLeave}
           >
             {/* Image container with responsive sizing */}
-            <div className='mb-2 md:mt-10 lg:mt-2 size-[230px] md:size-[250px] lg:size-[180px]'>
+            <div
+             
+              className='mb-2 md:mt-10 lg:mt-2 size-[230px] md:size-[250px] lg:size-[180px]'>
               <picture>
                 <source
                   srcSet={`${item.image[0]} 1200w, ${item.image[0]} 600w, ${item.image[0]} 300w`}
@@ -64,13 +66,14 @@ const StoreItem: React.FC<StoreItemProps> = ({
                   src={item.image[0]} 
                   alt={`${item.name}-image`}  
                   className="object-cover w-full h-full"  
+                 
                 />
               </picture>
              </div>
             {/* Hover effect content (hidden unless hovered) */}
             <div
-              className={`absolute inset-0 bottom-[85px] text-Darkest 
-                bg-Lightest/85 rounded-t-lg -z-0 transition-[.6s_ease] duration-500 
+              className={`absolute inset-0  text-Darkest 
+                bg-Lightest/85 rounded-lg -z-0 transition-[.6s_ease] duration-500 
                 ${isHovered ? 'w-full' : 'w-0'} overflow-hidden`}
             >
               {/* Button to show item reviews */}
@@ -78,11 +81,11 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 onClick={() => handleShowReview(item)}
                 type="button"
                 aria-label="Preview-btn"
-                className="block m-auto mt-[60px] md:mt-[100px] lg:mt-[60px]"
+                className="block m-auto mt-[80px] md:mt-[100px] lg:mt-[60px]"
               >
                 <TbListDetails className="size-12 hover:text-Brand" />
               </button>
-              <div className="absolute bottom-1 left-5 md:left-8 w-[280px] lg:w-[220px] lg:left-5">
+              <div className="absolute bottom-16 left-5 md:left-8 w-[280px] lg:w-[220px] lg:left-5">
                 <h2 className={`${isHovered && "animate-textIn"} text-xl lg:text-[14px] font-medium overflow-hidden`}>
                   {item.name}
                 </h2>
@@ -126,7 +129,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
           </div>
         </div>
         {/* Item price */}
-        <p className="px-5 md:px-8 pb-5 lg:pl-5 pt-1 md:pt-4 text-xl md:text-lg 
+        <p className="relative z-10 px-5 md:px-8 pb-5 lg:pl-5  md:pt-4 text-xl md:text-lg 
           font-bold text-Brand lg:text-[15px]">
           ${item.price.toFixed(2)}
         </p>
