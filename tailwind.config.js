@@ -33,6 +33,8 @@ export default {
         slideIn: 'slideIn .25s ease 0s 1 normal forwards',
         truckMotion: 'truckMotion 1s linear infinite',
         roadAnimation: 'roadAnimation 1.4s linear infinite',
+        textIn: 'textIn .5s ease 0s 1 normal forwards',
+        textInTwo: 'textIn .9s ease 0s 1 normal forwards'
       },
       keyframes: {
         flipinx: {
@@ -44,6 +46,26 @@ export default {
             opacity: "1",
             transform: "scale(1)",
           },
+        },
+        textIn: {
+          '0%': {
+            transform: 'translateY(15px)'
+          },
+        
+          '100%': {
+            transform: 'translateY(0)'
+          }
+        },
+        textInTwo: {
+          '0%': {
+            
+            transform: 'translateY(0)'
+          },
+        
+          '100%': {
+            
+            transform: 'translateY(25px)'
+          }
         },
         fadeForward: {
           '0%': {

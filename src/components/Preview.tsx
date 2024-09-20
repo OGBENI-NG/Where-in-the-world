@@ -46,10 +46,10 @@ const Preview: React.FC<ReviewProps> = ({
   const imgThumbnail = item.image.map((img, index) => (
     <div 
       key={index} 
-      className={`cursor-pointer relative size-[80px] md:size-[100px] lg:size-[70px] border-2
+      className={`cursor-pointer relative size-[80px] md:size-[100px] lg:size-[70px] border-[1.5px]
          border-Brand/15 xxl:size-[100px] transition-[0.6s_ease]
         ${currentIndex === index ? ` before:absolute before:content-[""] before:bg-Brand/15 before:inset-0 
-        before:border-2 before:border-Brand before:rounded-[6px] before:transition-[0.6s_ease]
+        before:border-[1.5px] before:border-Brand before:rounded-[6px] before:transition-opacity
         before:duration-${transitionDuration} before:delay-${transitionDuration}` : ''}
         overflow-x-hidden rounded-lg p-2 lg:p-1`}
       onClick={() => handleThumbnailClick(index)}  // Change image on thumbnail click
