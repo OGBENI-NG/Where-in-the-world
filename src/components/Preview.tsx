@@ -25,7 +25,7 @@ const Preview: React.FC<ReviewProps> = ({
   updateItemQuantity, 
   removeFromCart 
 }) => {
-  // State to track current thumbnail index and fading animation status
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFading, setIsFading] = useState<boolean>(false);
 
@@ -52,7 +52,7 @@ const Preview: React.FC<ReviewProps> = ({
         before:border-[1.5px] before:border-Brand before:rounded-[6px] before:transition-opacity
         before:duration-${transitionDuration} before:delay-${transitionDuration}` : ''}
         overflow-x-hidden rounded-lg p-2 lg:p-1`}
-      onClick={() => handleThumbnailClick(index)}  // Change image on thumbnail click
+      onClick={() => handleThumbnailClick(index)} 
     >
       <img 
         className='object-cover h-full w-full bg-Lightest/20 rounded-[3px]' 
@@ -74,22 +74,21 @@ const Preview: React.FC<ReviewProps> = ({
   ));
 
   return (
-    <article className='h-auto px-5 ml:px-6 md:px-10 lg:px-14 xl:px-16 xxl:px-28 overflow-x-auto md:pt-[29px]'>
-      <div className='py-24 pt-12'>
-        {/* Back button to return to store */}
+    <article className='h-auto px-3 ml:px-4 md:px-6 lg:px-14 xl:px-16 xxl:px-28 
+      overflow-x-auto md:pt-[29px] flex justify-center'>
+      <div className='py-24 pt-12 flex flex-col items-start'>
         <button 
           onClick={onBack}
           type='button' 
           className='flex items-center text-lg gap-[2px] text-Dark/65 hover:text-Dark 
-            font-semibold leading-none mb-5 lg:pl-[50px] xl:pl-[163px] xxl:pl-[154px]'
+            font-semibold leading-none mb-5 '
         >
           <IoArrowBack />Back to store
         </button>
 
         <div className='md:grid md:grid-cols-2 lg:flex lg:items-center lg:justify-center md:gap-2'>
-          {/* Image preview and thumbnails section */}
           <section className='flex flex-col justify-center items-center bg-Lightest/65 rounded-lg border-b-[1px] 
-            border-Brand/40 overflow-x-hidden p-5 py-6 md:border-r-[1px] md:border-b-0 md:p-6 md:py-9 lg:w-[400px] 
+            border-Brand/40 overflow-x-hidden p-5 py-6 md:border-r-[1px] md:border-b-0 md:p-7 md:py-9 lg:w-[400px] 
             lg:h-[450px] xxl:w-[450px] lg:p-8'
           >
             {/* Main image with fade effect */}
@@ -104,11 +103,11 @@ const Preview: React.FC<ReviewProps> = ({
               />
             </div>
             {/* Thumbnails below the main image */}
-            <div className='flex items-center justify-between w-full mt-auto lg:justify-center lg:gap-6 lg:pt-7'>
+            <div className='flex items-center justify-center gap-5 w-full mt-auto lg:justify-center lg:gap-6 lg:pt-7'>
               {imgThumbnail}
             </div>
           </section>
-          <section className='flex flex-col gap-4 p-5 py-6 md:p-6 md:py-9 bg-Lightest/65 rounded-lg border-t-[1px] 
+          <section className='flex flex-col gap-4 p-5 py-6 md:p-7 md:py-9 bg-Lightest/65 rounded-lg border-t-[1px] 
             lg:p-8 overflow-hidden border-Brand/40 -mt-[1px] lg:gap-7 lg:w-[400px] lg:h-[450px] md:border-l-[1px] 
             md:border-t-0 overflow-x-hidden xxl:w-[450px]'
           >
@@ -134,8 +133,8 @@ const Preview: React.FC<ReviewProps> = ({
               removeFromCart={removeFromCart} 
               updateItemQuantity={updateItemQuantity}  
               showIncrement={showIncrement}  
-              className="w-full mt-5 md:mt-auto h-[50px] lg:w-[200px] lg:h-[40px] xl:h-[40px]"  
-              quantityBtnStyle='px-[15px] lg:px-[12px]'  
+              className="w-full mt-5 md:mt-auto h-[45px] lg:h-[40px] xl:h-[40px] lg:w-[150px]"  
+              quantityBtnStyle='px-[12px] md:px-[14px] lg:px-[12px]'  
               addToCartBtnInPreview='text-lg shadow-md shadow-Brand/30' 
             />
           </section>

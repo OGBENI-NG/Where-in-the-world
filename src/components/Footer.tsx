@@ -30,7 +30,6 @@ const footerData: FooterType[] = [
 
 
 const Footer: React.FC = () => {
-
   const footIcons = footerData.map((item, index) => (
     <div key={index} className='flex items-center flex-col 
       lg:flex-row lg:items-center leading-none lg:gap-2
@@ -56,7 +55,8 @@ const Footer: React.FC = () => {
         {footIcons}
       </section>
       <section 
-        className='md:relative md:px-10 lg:px-12 xl:px-16 bg-Lightest/85 py-16 overflow-x-hidden xxl:px-28 text-center  text-Dark flex gap-5 flex-col 
+        className='md:relative md:px-10 lg:px-12 xl:px-16 bg-Lightest/85 py-16 overflow-x-hidden 
+          xxl:px-28 text-center  text-Dark flex gap-5 flex-col 
           items-center justify-center text-[14px] md:justify-between '
         >
         <div className='flex flex-col justify-center gap-5 md:flex-row  

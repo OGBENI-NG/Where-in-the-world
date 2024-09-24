@@ -44,7 +44,7 @@ const Cart: React.FC<CartProps> = (
                   <img 
                     src={item.image[0]} 
                     alt={item.name} 
-                    className="size-[65px] lg:size-[50px]"
+                    className="size-[50px] lg:size-[50px]"
                   />
                   <div className='pl-[10px] text-[14px] font-semibold'>
                     <h3 className="text-[15px] tracking-wide lg:text-[14px] w-[180px] 

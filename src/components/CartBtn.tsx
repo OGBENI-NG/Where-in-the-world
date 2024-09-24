@@ -16,15 +16,15 @@ type CartBtnProps = {
 }
 
 const CartBtn: React.FC<CartBtnProps> = ({
-  className = "",  // Default empty string for className if not provided
-  item,  // The item passed as a prop
-  cart,  // Array of cart items
-  addToCart,  // Function to add the item to the cart
-  showIncrement,  // Controls visibility of quantity increment buttons
-  removeFromCart,  // Function to remove item from the cart
-  updateItemQuantity,  // Function to update item quantity in the cart
-  quantityBtnStyle,  // Custom style for quantity buttons
-  addToCartBtnInPreview  // Custom style for the "Add to Cart" button
+  className = "",  
+  item, 
+  cart, 
+  addToCart,  
+  showIncrement,  
+  removeFromCart,  
+  updateItemQuantity,  
+  quantityBtnStyle,  
+  addToCartBtnInPreview  
 }) => {
 
   // Find the quantity of the current item in the cart, default to 1 if not found
@@ -35,17 +35,17 @@ const CartBtn: React.FC<CartBtnProps> = ({
   border-Lightest p-[2px] lg:hover:text-Brand`;
 
   return(
-    <div className={`block z-20 h-[35px] w-[130px] lg:h-[] lg:w-[100px] leading-none ${className}`}>
+    <div className={`block z-20 h-[35px] w-[130px] lg:h-[30px] lg:w-[108px] leading-none ${className}`}>
       {/* If the item is in the cart and increment buttons should be shown */}
       {showIncrement[item.id] ? (
         <div className={`flex items-center justify-between gap-5 bg-Brand lg:gap-4
-          z-50 py-[7px] px-[10px] rounded-lg text-Lightest ${quantityBtnStyle}
+          z-50 py-[7px] px-[8px] rounded-lg text-Lightest ${quantityBtnStyle}
           w-full h-full ${showIncrement[item.id] && "animate-fadeIn" }`}>
           <button
             onClick={() => removeFromCart(item)} 
             type='button' 
             className={btnStyle}>
-            <HiMinus className='size-3' /> 
+            <HiMinus className='size-3 lg:size-[10px]' /> 
           </button>
           <span className='text-[14px] font-bold size-4 pt-[2px] leading-none'>
             {quantity}
@@ -54,7 +54,7 @@ const CartBtn: React.FC<CartBtnProps> = ({
             onClick={() => updateItemQuantity(item)} 
             type='button' 
             className={btnStyle}>
-            <HiPlus className='size-3' /> 
+            <HiPlus className='size-3 lg:size-[10px]' /> 
           </button>
         </div>
       ) : (
@@ -63,7 +63,7 @@ const CartBtn: React.FC<CartBtnProps> = ({
           onClick={() => addToCart(item)}
           type='button' 
           className={`${addToCartBtnInPreview} flex items-center justify-center 
-            gap-[3px] w-full h-full lg:px-2 lg:gap-[3px]  leading-none
+            gap-[3px] w-full h-full lg:px-1 lg:gap-[4px]  leading-none
             text-[14px] font-semibold overflow-x-hidden lg:text-[12px]
             border-[1.5px] border-Brand/50 bg-Lightest py-1 px-4 rounded-lg
             lg:hover:text-Brand lg:hover:border-Brand transition-colors duration-200`}>

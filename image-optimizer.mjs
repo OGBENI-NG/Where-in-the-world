@@ -1,7 +1,7 @@
-import imagemin from 'imagemin'; // Library to optimize images
-import imageminWebp from 'imagemin-webp'; // Plugin to convert images to WebP format
-import sharp from 'sharp'; // Library for image resizing and processing
-import path from 'path'; // Node.js utility to handle file paths
+import imagemin from 'imagemin'; 
+import imageminWebp from 'imagemin-webp'; 
+import sharp from 'sharp'; 
+import path from 'path'; 
 
 // Function to resize an image to a specific width and save it to the specified output path
 const resizeImage = async (inputPath, outputPath, width) => {
@@ -16,7 +16,7 @@ const resizeImage = async (inputPath, outputPath, width) => {
   const files = await imagemin(['assets/img/*.{jpg,png}'], {
     destination: 'assets/img', // Destination for optimized images
     plugins: [
-      imageminWebp({ quality: 80 }) // Convert images to WebP with 75% quality
+      imageminWebp({ quality: 80 }) // Convert images to WebP with 80% quality
     ]
   });
 

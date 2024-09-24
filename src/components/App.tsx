@@ -13,39 +13,17 @@ import ScrollToTopButton from './ScrollToTop';
 
 
 const App: React.FC = () => {
-  // Selected category for filtering items, default is 'All Category'
   const [selectedCategory, setSelectedCategory] = useState<string>('All Category');
-
-  // Refs to keep track of category elements in the DOM for styling the underline
   const categoryRefs = useRef<(HTMLLIElement | null)[]>([]);
-
-  // Manages whether an item is in the process of being removed
   const [isRemoving, setIsRemoving] = useState<{ [key: string]: boolean }>({});
-
-  // Controls visibility of the cart modal
   const [toggleCart, setToggleCart] = useState<boolean>(false);
-
-  // Controls visibility of the order confirmation modal
   const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false);
-
-  // Ref to the cart element to detect clicks outside of it
   const cartRef = useRef<HTMLDivElement>(null);
-
-  // Controls the fading animation when switching categories
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
-
-  // Manages truck loading animation when confirming an order
   const [truckLoading, setTruckLoading] = useState<boolean>(false);
-
-  // Holds the selected item for review (detailed view)
   const [selectedItemForReview, setSelectedItemForReview] = useState<ThirteenStoreData | null>(null);
-
-  // Saves the current scroll position to restore it when exiting the review
   const [scrollPosition, setScrollPosition] = useState<number>(0);
-
-  // Categories available for filtering
   const categories = ['All Category', 'chair', 'table', 'bed', 'shelve'];
-
   const [cart, setCart] = useState<ThirteenStoreData[]>(loadStoredCart);
   const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>(loadStoredShowIncrement);
 
@@ -55,18 +33,19 @@ const App: React.FC = () => {
   // Total number of items in the cart
   const totalItemInCartQuantity = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
   
-  // Retrieve cart and showIncrement from localStorage
+  // Load cart data from localStorage when the app first loads
   function loadStoredCart() {
     const cart = localStorage.getItem('cart');
     return cart ? JSON.parse(cart) : [];
   };
 
-  function loadStoredShowIncrement(){
+  // Load increment visibility from localStorage
+  function loadStoredShowIncrement() {
     const showIncrement = localStorage.getItem('showIncrement');
     return showIncrement ? JSON.parse(showIncrement) : {};
   };
 
-  // Update cart and increment in localStorage when it changes
+  // Store cart and showIncrement in localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
     localStorage.setItem('showIncrement', JSON.stringify(showIncrement));
@@ -92,7 +71,7 @@ const App: React.FC = () => {
     setToggleConfirmOrder(false);
   };
 
-  // Adds an event listener to close the cart when clicking outside the modal
+  // Close cart modal when clicking outside of it
   useEffect(() => {
     const handleClickOutsideCartModal = (event: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
@@ -106,7 +85,7 @@ const App: React.FC = () => {
     };
   }, [cartRef, toggleCart]);
 
-  // Adjusts the underline position and width when a category is selected
+  // Update category underline styling when selectedCategory changes
   useEffect(() => {
     const PADDING = 8;
     const activeIndex = categories.findIndex(
@@ -224,7 +203,7 @@ const App: React.FC = () => {
     <div className={`bg-Light font-Nunito scroll-smooth
       ${toggleConfirmOrder ? "h-screen overflow-x-hidden" : "h-full"}`}>
       <header 
-        className='relative px-5 ml:px-6 md:px-10 lg:px-12 xl:px-16 xxl:px-28 bg-Lightest/85' 
+        className='relative px-3 ml:px-4 md:px-6 lg:px-12 xl:px-16 xxl:px-28 bg-Lightest/85' 
         ref={cartRef}
       >
         <Header 
@@ -286,7 +265,7 @@ const App: React.FC = () => {
             />
           </div>
         ) : (
-          <div className={`px-5 ml:px-6 md:px-10 mt-8 md:mt-10 lg:px-12 xl:px-16 xxl:px-28
+          <div className={`px-3 ml:px-4 md:px-6 mt-8 md:mt-10 lg:px-12 xl:px-16 xxl:px-28
             ${selectedItemForReview === null ? "animate-fadeInBackWard" : ""}`}>
             <CategoryList
               categories={categories}

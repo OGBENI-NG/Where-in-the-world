@@ -8,16 +8,15 @@ type CategoryListProps = {
 }
 
 const CategoryList: React.FC<CategoryListProps> = ({
-  categories,  // List of categories
-  categoryRefs,  // Ref to track the DOM elements of the category items
-  selectedCategory,  // Currently active/selected category
-  handleCategoryClick,  // Function to handle clicks on category items
+  categories, 
+  categoryRefs,  
+  selectedCategory,
+  handleCategoryClick, 
 }) => {
   return (
     <ul className="relative flex justify-center gap-4 md:gap-16 items-center
      text-Dark font-bold text-[15px] leading-none bg-Lightest p-3 md:px-10 ml:gap:8 ml:justify-evenly
     rounded-lg text-center md:w-max md:m-auto">
-      {/* Mapping over the categories array to render each category as a list item */}
       {categories.map((category, index) => (
         <li
           key={category} 
@@ -28,7 +27,6 @@ const CategoryList: React.FC<CategoryListProps> = ({
           }`}
           onClick={() => handleCategoryClick(category)}  
         >
-          {/* Displaying the category with the first letter capitalized */}
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </li>
       ))}

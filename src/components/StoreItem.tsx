@@ -81,7 +81,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 onClick={() => handleShowReview(item)}
                 type="button"
                 aria-label="Preview-btn"
-                className="block m-auto mt-[80px] md:mt-[100px] lg:mt-[60px]"
+                className="block m-auto mt-[80px] md:mt-[125px] lg:mt-[90px]"
               >
                 <TbListDetails className="size-12 hover:text-Brand" />
               </button>

@@ -13,7 +13,6 @@ export default {
         Mid: "#858594",
         Light: "#E2E8F0",
         Lightest: "#FFFFFF",
-        MidTwo: "#ebf4ff"
       },
       fontFamily: {
         Nunito: ["Nunito", "sans-serif"],
@@ -33,8 +32,8 @@ export default {
         slideIn: 'slideIn .25s ease 0s 1 normal forwards',
         truckMotion: 'truckMotion 1s linear infinite',
         roadAnimation: 'roadAnimation 1.4s linear infinite',
-        textIn: 'textIn .5s ease 0s 1 normal forwards',
-        textInTwo: 'textIn .9s ease 0s 1 normal forwards'
+        textIn: 'textIn .4s ease 0s 1 normal forwards',
+        textInTwo: 'textIn .8s ease 0s 1 normal forwards'
       },
       keyframes: {
         flipinx: {
@@ -49,7 +48,7 @@ export default {
         },
         textIn: {
           '0%': {
-            transform: 'translateY(15px)'
+            transform: 'translateY(25px)'
           },
         
           '100%': {
@@ -64,7 +63,7 @@ export default {
         
           '100%': {
             
-            transform: 'translateY(25px)'
+            transform: 'translateY(35px)'
           }
         },
         fadeForward: {
