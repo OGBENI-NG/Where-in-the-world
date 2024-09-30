@@ -133,7 +133,7 @@ const Preview: React.FC<ReviewProps> = ({
               updateItemQuantity={updateItemQuantity}  
               showIncrement={showIncrement}  
               className="w-full mt-5 md:mt-auto h-[45px] lg:h-[40px] xl:h-[40px] lg:w-[150px]"  
-              quantityBtnStyle='px-[12px] md:px-[14px] lg:px-[12px]'  
+              quantityBtnStyle='px-[14px] md:px-[14px] lg:px-[12px]'  
               addToCartBtnInPreview='text-lg shadow-md shadow-Brand/30' 
             />
           </section>
