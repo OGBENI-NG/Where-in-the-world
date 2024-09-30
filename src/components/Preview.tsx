@@ -124,7 +124,6 @@ const Preview: React.FC<ReviewProps> = ({
             <p className='text-2xl md:text-[28px] leading-9 md:pt-4 lg:pb-1 lg:pt-0 overflow-hidden'>
               {item.details}
             </p>
-
             {/* Cart button for adding/removing/updating quantity */}
             <CartBtn
               cart={cart} 

@@ -35,17 +35,13 @@ setup, and customization processes.
 -Open your terminal and navigate to the project folder.
 -Run the following command to install the required dependencies:
 
-  ```
   npm install
-  ```
 
 ### Step 3: Start the Development Server
 
 -Run the following command to start the server:
 
-  ```
   npm start
-  ```
 
 -Open your browser and navigate to `http://localhost:5173` to view the project.
 
@@ -98,6 +94,7 @@ Here's a breakdown of the folder and file structure:
 - Lightest: "#FFFFFF",
 
 - To customize fonts, edit the `font-family` property inside `tailwind.config.js`.
+- All icon from react icon <https://react-icons.github.io/react-icons/>
 
 ### Customizing Components
 

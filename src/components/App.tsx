@@ -85,7 +85,7 @@ const App: React.FC = () => {
     };
   }, [cartRef, toggleCart]);
 
-  // Update category underline styling when selectedCategory changes
+  // Adjusts the underline position and width when a category is selected
   useEffect(() => {
     const PADDING = 8;
     const activeIndex = categories.findIndex(

@@ -10,6 +10,7 @@ type  FooterType = {
   description: string
 }
 
+//footer data
 const footerData: FooterType[] = [
   {
     title: "This is carbon-neutral delivery",

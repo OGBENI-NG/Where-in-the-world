@@ -59,8 +59,8 @@ const ScrollToTopButton: React.FC = () => {
         <button
           onClick={scrollToTop}
           type='button'
-          className={`fixed bottom-10 right-3 z-50 text-Brand bg-Brand/5 p-[10px]
-            text-3xl rounded-lg shadow-sm shadow-Brand/75 md:p-1 md:right-5 lg:right-4 md:bottom-10 
+          className={`fixed bottom-10 right-3 z-50 text-Lightest bg-Brand p-[10px]
+            text-3xl rounded-lg shadow-sm shadow-Brand/75 md:p-1 md:right-5 lg:right-6 md:bottom-16 
             transition-opacity duration-300 ${isFading ? 'opacity-40 hover:opacity-100' : 'opacity-100'}`}
         >
           <IoMdArrowRoundUp />

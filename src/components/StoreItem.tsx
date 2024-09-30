@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  
-import { TbListDetails } from 'react-icons/tb'; 
+import { IoEyeOutline } from "react-icons/io5"; 
 import { ThirteenStoreData } from '../data';  
 import CartBtn from './CartBtn'; 
 
@@ -44,7 +44,7 @@ const StoreItem: React.FC<StoreItemProps> = ({
 
   return (
     <article>
-      <div className="relative bg-Lightest pt-1 rounded-lg"> 
+      <div className="relative bg-Lightest border-[1px] border-Dark/15 pt-1 rounded-lg"> 
         <div className="flex flex-col justify-center gap-5 items-center group">
           {/* Image wrapper with hover functionality */}
           <div
@@ -81,9 +81,10 @@ const StoreItem: React.FC<StoreItemProps> = ({
                 onClick={() => handleShowReview(item)}
                 type="button"
                 aria-label="Preview-btn"
-                className="block m-auto mt-[80px] md:mt-[125px] lg:mt-[90px]"
+                className="block m-auto mt-[80px] md:mt-[125px] lg:mt-[90px] hover:text-Brand transition-colors duration-300"
               >
-                <TbListDetails className="size-12 hover:text-Brand" />
+                <IoEyeOutline className="size-12 " />
+               <span className='-mt-[10px] block text-center font-medium'>View</span>
               </button>
               <div className="absolute bottom-16 left-5 md:left-8 w-[280px] lg:w-[220px] lg:left-5">
                 <h2 className={`${isHovered && "animate-textIn"} text-xl lg:text-[14px] font-medium overflow-hidden`}>
