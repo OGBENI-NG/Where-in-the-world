@@ -1,0 +1,44 @@
+import React from 'react'
+import { FaChevronUp } from "react-icons/fa";
+
+type RegionProps = {
+  region: string[];
+  theme: string;
+  elementTheme: string;
+  toggleRegionBtn: () => void; 
+  toggledRegionEl: boolean;  
+  selectedRegion: string;
+  selectRegion: (region: string) => void;   
+}
+
+export const Region: React.FC<RegionProps> = ({region, theme, toggleRegionBtn, elementTheme, toggledRegionEl, selectRegion}) => {
+
+  const regionEl = region.map((regionName) => (
+    <p 
+      key={regionName} 
+      onClick={() => selectRegion(regionName)}
+      className='py-2 px-4 text-base cursor-pointer  hover:bg-slate-500/40 rounded-lg'>
+       {regionName === "All" ? "All Countries": regionName}
+    </p>
+  ))  
+
+  return (
+    <section className={`pt-12 w-[280px] z-50`}>
+      <div className='w-full relative'>
+        <button 
+          type='button' 
+          onClick={toggleRegionBtn}
+          className={`w-full ${elementTheme} text-base font-medium py-4 px-7 
+          text-left flex items-center rounded-lg`}>
+          Filter by Region 
+          <FaChevronUp className={`transition-all  ${toggledRegionEl ? 'rotate-180' : '-rotate-0'} ml-auto size-[14px]`}/>
+        </button>  
+        <div className={`absolute w-full overflow-hidden transition-all 
+          ${toggledRegionEl ? ' h-[265px] opacity-100' : 'h-0 opacity-0'} ${elementTheme} mt-[5px] px-3 py-3 rounded-lg`}>
+        {regionEl}
+        </div>
+
+      </div>
+    </section>
+  )
+}
