@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Nunito:  ["Nunito", "serif"] 
+        Nunito: ["Nunito", "serif"],
       },
       colors: {
         DarkBlue: "hsl(209, 23%, 22%)",
@@ -16,8 +16,20 @@ export default {
         DarkGray: "hsl(0, 0%, 52%)",
         VeryLightGray: "hsl(0, 0%, 98%)",
         White: "hsl(0, 0%, 100%)",
-      }
-    }
+      },
+      keyframes: {
+        spinEarth: {
+          '0%': { backgroundPositionX: '0px' },
+          '100%': { backgroundPositionX: '380px' },
+        },
+      },
+      animation: {
+        spinEarth: 'spinEarth 2.5s linear infinite', // Define the spin animation with desired duration
+      },
+      backgroundSize: {
+        custom: '380px', // Add custom background-size
+      },
+    }, // <-- Close the extend object here
   },
-  plugins: [],
-}
+  plugins: [], // Move this outside the extend object
+};

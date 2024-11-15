@@ -53,7 +53,7 @@ export const PreviewCountry: React.FC<CountryPreviewProps> = ({ country, onClose
     const detailsTxt = theme === 'light' ? 'text-VeryDarkBlueTwo' : 'text-White';
 
   return (
-    <section className="py-10">
+    <section className="pt-10 pb-28">
       <div className='pb-16'>
         <button 
           type='button' 

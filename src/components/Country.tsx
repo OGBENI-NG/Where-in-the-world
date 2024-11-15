@@ -11,13 +11,13 @@ interface CountryListProps {
 export const CountryList: React.FC<CountryListProps> = ({filteredCountries, elementTheme, onPreview}) => {
  
   return (
-    <section className={`w-full px-8 mt-8 pb-28`}>
+    <section className={`w-full px-7 mt-8 pb-28`}>
       <ul className={`w-full rounded-lg flex flex-col gap-12 text-base `}>
         {filteredCountries.map(country => (
-          <li key={country.name.common}>
+          <li key={country.name.common} onClick={() => onPreview(country)}>
             <div className='w-full h-[185px]'>
               <img 
-                onClick={() => onPreview(country)}
+                
                 className='w-full h-full object-fill rounded-t-lg' 
                 src={country.flags.png}  
                 alt={`${country.name.common} flag`} 

@@ -8,10 +8,11 @@ type RegionProps = {
   toggleRegionBtn: () => void; 
   toggledRegionEl: boolean;  
   selectedRegion: string;
-  selectRegion: (region: string) => void;   
+  selectRegion: (region: string) => void;  
+  regionRef: React.RefObject<HTMLDivElement>
 }
 
-export const Region: React.FC<RegionProps> = ({region, theme, toggleRegionBtn, elementTheme, toggledRegionEl, selectRegion}) => {
+export const Region: React.FC<RegionProps> = ({region, theme, toggleRegionBtn, elementTheme, toggledRegionEl, selectRegion, regionRef}) => {
 
   const regionEl = region.map((regionName) => (
     <p 
@@ -23,8 +24,8 @@ export const Region: React.FC<RegionProps> = ({region, theme, toggleRegionBtn, e
   ))  
 
   return (
-    <section className={`pt-12 w-[280px] z-50`}>
-      <div className='w-full relative'>
+    <section className={`pt-12 w-[280px] z-50`} >
+      <div className='w-full relative' ref={regionRef}>
         <button 
           type='button' 
           onClick={toggleRegionBtn}

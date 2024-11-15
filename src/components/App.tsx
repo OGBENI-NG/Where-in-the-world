@@ -6,6 +6,7 @@ import { Region } from './Region';
 import { CountryList } from './Country';
 import { Country } from './types';
 import { PreviewCountry } from './PreviewCountry';
+import earthImg from '../assets//img/earth.png'
 
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
   const [previewCountry, setPreviewCountry] = useState<Country | null>(null); // Selected country for preview
   const [allCountries, setAllCountries] = useState<Country[]>([]);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const regionRef = useRef<HTMLDivElement>(null);
 
   const {theme, toggleTheme} = useTheme();
   const elementTheme = theme === 'light' ? ("bg-White text-VeryDarkBlueTwo shadow-[0px_0px_8px_2px] shadow-DarkBlue/25") 
@@ -69,6 +71,10 @@ const App: React.FC = () => {
 
   function selectRegion(region: string) {
     setSelectedRegion(region)
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    },500);
     setToggedRegionEl(false)
     setSearchQuery('')
   }
@@ -89,11 +95,25 @@ const App: React.FC = () => {
       window.scrollTo(0, scrollPosition);
     }
   }, [previewCountry, scrollPosition]);
+
+  // Close cart modal when clicking outside of it
+  useEffect(() => {
+    const handleClickOutsideRegionModal = (event: MouseEvent) => {
+      if (regionRef.current && !regionRef.current.contains(event.target as Node)) {
+        setToggedRegionEl(false)
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutsideRegionModal);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideRegionModal);
+    };
+  }, [regionRef, toggledRegionEl]);
   
 
 
   return (
-    <div className={`font-Nunito ${theme === "light" ? 'bg-VeryLightGray' : 'bg-VeryDarkBlue'} scroll-smooth h-full`}>
+    <div className={`font-Nunito ${theme === "light" ? 'bg-VeryLightGray' : 'bg-VeryDarkBlue'} scroll-smooth ${loading ? 'h-screen overflow-x-hidden' : 'h-auto'}`}>
       <Header 
         elementTheme={elementTheme}
         theme={theme}
@@ -114,25 +134,34 @@ const App: React.FC = () => {
             </div>
           ) : (
             <section>
-              <Form 
-                elementTheme={elementTheme} 
-                theme={theme}
-                searchCountryInput={searchCountryInput}
-                searchQuery={searchQuery}
-              />
-              <Region
-                region={region}
-                theme={theme}
-                elementTheme={elementTheme}
-                toggleRegionBtn={toggleRegionBtn}
-                toggledRegionEl={toggledRegionEl}
-                selectedRegion={selectedRegion}
-                selectRegion={selectRegion}
-              />
+              <div className={`${loading && 'opacity-0'}`}>
+                <Form 
+                  elementTheme={elementTheme} 
+                  theme={theme}
+                  searchCountryInput={searchCountryInput}
+                  searchQuery={searchQuery}
+                />
+                <Region
+                  region={region}
+                  theme={theme}
+                  elementTheme={elementTheme}
+                  toggleRegionBtn={toggleRegionBtn}
+                  toggledRegionEl={toggledRegionEl}
+                  selectedRegion={selectedRegion}
+                  selectRegion={selectRegion}
+                  regionRef={regionRef}
+                />
+              </div>
               <div>
                 {loading ? 
                   (
-                    <div>loading...</div>
+                    <div className="flex justify-center flex-col items-center h-auto inset-0 overflow-x-hidden">
+                      <div 
+                        className='h-[150px] w-[150px] bg-size-custom bg-cover bg-center animate-spinEarth rounded-full' 
+                      style={{ backgroundImage: `url(${earthImg})` }}>
+                        
+                      </div>
+                    </div>
                   ) : (
                     <div>
                       {error ? 
