@@ -29,7 +29,13 @@ export default {
       backgroundSize: {
         custom: '380px', // Add custom background-size
       },
-    }, // <-- Close the extend object here
+      screens: {
+        'xl': {'min': '1200px', 'max': '1280px'},
+        'ml': {'min': '755px', 'max': '1280px'},
+        'xxl': {'min': '1290px', 'max': '1536px'},
+      }
+    }, 
+
   },
   plugins: [], // Move this outside the extend object
 };

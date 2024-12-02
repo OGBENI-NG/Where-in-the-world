@@ -24,32 +24,33 @@ const App: React.FC = () => {
   const regionRef = useRef<HTMLDivElement>(null);
 
   const {theme, toggleTheme} = useTheme();
-  const elementTheme = theme === 'light' ? ("bg-White text-VeryDarkBlueTwo shadow-[0px_0px_8px_2px] shadow-DarkBlue/25") 
-   : ("bg-DarkBlue shadow-[0px_0px_8px_2px] text-White shadow-VeryDarkBlueTwo/25")
+  const elementTheme = theme === 'light' ? ("bg-White text-VeryDarkBlueTwo shadow-[0px_0px_6px_1px] shadow-DarkBlue/25") 
+   : ("bg-DarkBlue shadow-[0px_0px_6px_1px] text-White shadow-VeryDarkBlueTwo/25")
   ;
 
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        // Fetch data from the REST Countries API
-        const response = await fetch('https://restcountries.com/v3.1/all');
-        // Check if the response is not OK, throw an error
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        // Parse the JSON response into Country type array
-        const data: Country[] = await response.json();
-        setAllCountries(data)
-        // Update state with fetched countries
-        setCountries(data);
-        setLoading(false);
-      } catch (err) {
-        // Handle error by setting error state and stopping loading
-        setError((err as Error).message);
-        setLoading(false);
+  const fetchCountries = async () => {
+    setLoading(true);
+    setError(null); // Clear any previous errors
+    try {
+      const response = await fetch('https://restcountries.com/v3.1/all');
+      if (!response.ok) {
+        throw new Error('Check your internet connection and try again');
       }
-    };
-    
+      const data: Country[] = await response.json();
+      setAllCountries(data);
+      setCountries(data);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
+  useEffect(() => {
     // Call the fetchCountries function to initiate the data fetch
     fetchCountries();
   }, []); // Empty dependency array means this effect runs once on component mount
@@ -113,28 +114,30 @@ const App: React.FC = () => {
 
 
   return (
-    <div className={`font-Nunito ${theme === "light" ? 'bg-VeryLightGray' : 'bg-VeryDarkBlue'} scroll-smooth ${loading ? 'h-screen overflow-x-hidden' : 'h-auto'}`}>
+    <div className={`font-Nunito 
+       
+      ${theme === "light" ? 'bg-VeryLightGray' : 'bg-VeryDarkBlue'} scroll-smooth 
+      ${loading || error ? 'h-screen overflow-x-hidden' : 'h-auto'} scroll-smooth`}
+    >
       <Header 
         elementTheme={elementTheme}
         theme={theme}
         toggled={toggleTheme}
       />
-      <div className=' px-6'>
+      <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px] overflow-auto'>
         {previewCountry ?
          (
-            <div>
-              <PreviewCountry 
-                country={previewCountry}
-                theme={theme}
-                elementTheme={elementTheme}
-                onClose={closePreview}
-                allCountries={allCountries}
-                onCountrySelect={showPreview}
-              />
-            </div>
+            <PreviewCountry 
+              country={previewCountry}
+              theme={theme}
+              elementTheme={elementTheme}
+              onClose={closePreview}
+              allCountries={allCountries}
+              onCountrySelect={showPreview}
+            />
           ) : (
             <section>
-              <div className={`${loading && 'opacity-0'}`}>
+              <div className={`${loading || error  ? 'opacity-0' : ''} lg:flex items-center`}>
                 <Form 
                   elementTheme={elementTheme} 
                   theme={theme}
@@ -155,18 +158,24 @@ const App: React.FC = () => {
               <div>
                 {loading ? 
                   (
-                    <div className="flex justify-center flex-col items-center h-auto inset-0 overflow-x-hidden">
-                      <div 
-                        className='h-[150px] w-[150px] bg-size-custom bg-cover bg-center animate-spinEarth rounded-full' 
-                      style={{ backgroundImage: `url(${earthImg})` }}>
-                        
-                      </div>
+                    <div className='absolute inset-0 h-full'>
+                      <div className="flex justify-center h-full flex-col items-center overflow-x-hidden bg-VeryDarkBlue/35">
+                        <div 
+                          className='h-[150px] w-[150px] bg-size-custom bg-cover bg-center animate-spinEarth rounded-full' 
+                          style={{ backgroundImage: `url(${earthImg})` }}>
+                        </div>
+                    </div>
                     </div>
                   ) : (
                     <div>
                       {error ? 
                         (
-                          <div>{error}</div>
+                          <p className={`
+                            ${theme === 'light' ? 'text-VeryDarkBlueTwo' :'text-White'} 
+                            shadow-none bg-none text-center lg:pt-12 text-2xl font-bold`}>500 Server Error
+                            <span className='block font-medium pt-5'>{error}</span>
+                            <button onClick={fetchCountries} type='button' className='mt-12 text-[14px] border-2 py-1 px-6 '>Back home</button>
+                          </p>
                         ) : (
                           <div>
                             <CountryList

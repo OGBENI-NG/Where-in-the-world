@@ -13,7 +13,7 @@ export const Form: React.FC<FormProps> = ({theme, elementTheme, searchCountryInp
     <form action="" className='pt-10'>
       <label  htmlFor="search" className='relative flex items-center text-DarkGray'>
   
-        <MdOutlineSearch className={`size-7 absolute left-6 ${theme === "light" ? "text-DarkGray" : "text-White"}`}/>
+        <MdOutlineSearch className={`size-7 lg:size-5 absolute left-6 lg:left-4 ${theme === "light" ? "text-DarkGray" : "text-White"}`}/>
         <input 
           onChange={searchCountryInput}
           value={searchQuery}
@@ -22,7 +22,7 @@ export const Form: React.FC<FormProps> = ({theme, elementTheme, searchCountryInp
           type="search"
           placeholder='Search for a country...'
           className={`${elementTheme} capitalize pl-[75px] pr-4 py-[18px] w-full text-base shadow-[0px_0px_10px_1px]
-          rounded-lg outline-none
+          rounded-lg outline-none lg:text-[14px] lg:py-[10px] lg:pl-[50px] lg:w-[350px]
           `} 
         />
       </label>
