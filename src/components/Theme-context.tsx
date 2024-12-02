@@ -23,25 +23,21 @@ export const useTheme = (): ThemeContextType => {
 
 // ThemeProvider component to manage the theme state
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(localStorageTheme);
+
+  function localStorageTheme() {
+    const storeTheme = localStorage.getItem("light");
+    return storeTheme ? JSON.parse(storeTheme) : "light";
+  }
+
+  useEffect(() => {
+    localStorage.setItem("light", JSON.stringify(theme));
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-
-  useEffect(() => {
-    // Optionally, you could add logic to persist the theme to localStorage
-    const storedTheme = localStorage.getItem("theme") as Theme | null;
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save theme to localStorage on change
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
+    
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

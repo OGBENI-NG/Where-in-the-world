@@ -7,6 +7,7 @@ import { CountryList } from './Country';
 import { Country } from './types';
 import { PreviewCountry } from './PreviewCountry';
 import earthImg from '../assets//img/earth.png'
+import ScrollToTopButton from './ScrollToTop';
 
 
 const App: React.FC = () => {
@@ -115,16 +116,15 @@ const App: React.FC = () => {
 
   return (
     <div className={`font-Nunito 
-       
       ${theme === "light" ? 'bg-VeryLightGray' : 'bg-VeryDarkBlue'} scroll-smooth 
-      ${loading || error ? 'h-screen overflow-x-hidden' : 'h-auto'} scroll-smooth`}
+      ${loading || error ? 'h-screen overflow-x-hidden' : 'h-full'}`}
     >
       <Header 
         elementTheme={elementTheme}
         theme={theme}
         toggled={toggleTheme}
       />
-      <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px]'>
+      <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px] lg:h-auto'>
         {previewCountry ?
          (
             <PreviewCountry 
@@ -159,7 +159,7 @@ const App: React.FC = () => {
                 {loading ? 
                   (
                     <div className='absolute inset-0 h-full'>
-                      <div className="flex justify-center h-full flex-col items-center overflow-x-hidden bg-VeryDarkBlue/35">
+                      <div className="flex justify-center h-full flex-col items-center overflow-x-hidden bg-VeryDarkBlue/15">
                         <div 
                           className='h-[150px] w-[150px] bg-size-custom bg-cover bg-center animate-spinEarth rounded-full' 
                           style={{ backgroundImage: `url(${earthImg})` }}>
@@ -194,6 +194,7 @@ const App: React.FC = () => {
           )
         }
       </div>
+      <ScrollToTopButton elementTheme={elementTheme}/>
     </div>
   );
 };

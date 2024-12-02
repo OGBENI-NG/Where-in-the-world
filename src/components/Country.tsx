@@ -22,7 +22,7 @@ export const CountryList: React.FC<CountryListProps> = ({filteredCountries, elem
                 alt={`${country.name.common} flag`} 
               />
             </div>
-            <div className={`p-5 py-7 font-semibold ${elementTheme} rounded-b-lg `}>
+            <div className={`p-5 py-7 font-semibold ${elementTheme} rounded-b-lg lg:text-[13px]`}>
               <h2 className='pb-3 font-bold lg:text-[15px]'>{country.name.common}</h2>
               <p>Population: <span className='font-[300]'>{country.population}</span></p>
               <p>Region: <span className='font-[300]'>{country.region}</span></p>
