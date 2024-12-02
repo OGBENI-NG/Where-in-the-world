@@ -53,9 +53,9 @@ export const PreviewCountry: React.FC<CountryPreviewProps> = ({ country, onClose
   const detailsTxt = theme === 'light' ? 'text-VeryDarkBlueTwo' : 'text-White';
 
   return (
-    <section className="pb-8 h-screen overflow-x-hidden">
+    <section className="pb-8">
       <div className='lg:mt-8'>
-        <div className='pb-16 lg:pb-12 lg:pl-1'>
+        <div className='pb-16 lg:pb-12 pl-1'>
           <button 
             type='button' 
             onClick={onClose} 

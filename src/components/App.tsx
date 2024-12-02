@@ -124,7 +124,7 @@ const App: React.FC = () => {
         theme={theme}
         toggled={toggleTheme}
       />
-      <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px] overflow-auto'>
+      <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px]'>
         {previewCountry ?
          (
             <PreviewCountry 
