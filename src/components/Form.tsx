@@ -11,9 +11,10 @@ type FormProps = {
 export const Form: React.FC<FormProps> = ({theme, elementTheme, searchCountryInput, searchQuery}) => {
   return (
     <form action="" className='pt-10'>
-      <label  htmlFor="search" className='relative flex items-center text-DarkGray'>
+      <label  htmlFor="search" id='search' className='relative flex items-center text-DarkGray'>
         <MdOutlineSearch className={`size-7 lg:size-5 absolute left-6 lg:left-4 ${theme === "light" ? "text-DarkGray" : "text-White"}`}/>
         <input 
+          aria-label="Search"
           onChange={searchCountryInput}
           value={searchQuery}
           id='search' 
