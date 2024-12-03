@@ -34,7 +34,7 @@ export const Region: React.FC<RegionProps> = ({region, theme, toggleRegionBtn, e
           Filter by Region 
           <FaChevronUp className={`transition-all ${toggledRegionEl ? 'rotate-180' : '-rotate-0'} ml-auto size-[14px]`}/>
         </button>  
-        <div className={`absolute w-full overflow-hidden transition-all 
+        <div role='search' className={`absolute w-full overflow-hidden transition-all 
           ${toggledRegionEl ? 'h-[265px] opacity-100' : 'h-0 opacity-0'} ${elementTheme} mt-[5px] px-3 py-3 rounded-lg`}>
         {regionEl}
         </div>
