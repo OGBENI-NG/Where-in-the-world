@@ -53,7 +53,7 @@ export const PreviewCountry: React.FC<CountryPreviewProps> = ({ country, onClose
   const detailsTxt = theme === 'light' ? 'text-VeryDarkBlueTwo' : 'text-White';
 
   return (
-    <section className="pb-8 lg:h-screen">
+    <section className="pb-8 md:h-screen">
       <div className='lg:mt-8'>
         <div className='pb-16 lg:pb-12 pl-1'>
           <button 
@@ -65,7 +65,7 @@ export const PreviewCountry: React.FC<CountryPreviewProps> = ({ country, onClose
         </div>
         <div className='h-full xl:h-[420px]'>
           <div className='lg:grid grid-cols-2 gap-14 lg:gap-12 lg:overflow-hidden lg:pb-4 h-full'>
-            <div className='w-full h-[220px] md:w-full md:h-full lg:h-[320px]'>
+            <div className='w-full h-[220px] md:w-full md:h-[450px] lg:h-[320px]'>
               <img src={country.flags.png} alt={`${country.name.common} flag`} className='w-full h-full ' />
             </div>
             <div>

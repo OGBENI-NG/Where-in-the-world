@@ -126,7 +126,7 @@ const App: React.FC = () => {
 
 
   return (
-    <div className={`font-Nunito 
+    <section className={`font-Nunito 
       ${theme === "light" ? 'bg-VeryLightGray' : 'bg-VeryDarkBlue'} scroll-smooth 
       ${loading || error ? 'h-screen overflow-x-hidden' : 'h-full'}`}
     >
@@ -136,7 +136,7 @@ const App: React.FC = () => {
         toggled={toggleTheme}
         home={home}
       />
-      <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px] lg:h-auto'>
+      <section className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px] lg:h-auto'>
         {previewCountry ?
          (
             <PreviewCountry 
@@ -149,7 +149,7 @@ const App: React.FC = () => {
             />
           ) : (
             <section>
-              <div className={`${loading || error  ? 'opacity-0' : ''} lg:flex items-center`}>
+              <section className={`${loading || error  ? 'opacity-0' : ''} lg:flex items-center`}>
                 <Form 
                   elementTheme={elementTheme} 
                   theme={theme}
@@ -166,8 +166,8 @@ const App: React.FC = () => {
                   selectRegion={selectRegion}
                   regionRef={regionRef}
                 />
-              </div>
-              <div>
+              </section>
+              <section>
                 {loading ? 
                   (
                     <div className='absolute inset-0 h-full'>
@@ -179,7 +179,7 @@ const App: React.FC = () => {
                     </div>
                     </div>
                   ) : (
-                    <div>
+                    <section>
                       {error ? 
                         (
                           <p className={`
@@ -198,16 +198,16 @@ const App: React.FC = () => {
                           </div>
                         )
                       }
-                    </div>
+                    </section>
                   )
                 }
-              </div>
+              </section>
             </section>
           )
         }
-      </div>
+      </section>
       <ScrollToTopButton elementTheme={elementTheme}/>
-    </div>
+    </section>
   );
 };
 export default App;
