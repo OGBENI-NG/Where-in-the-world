@@ -184,7 +184,7 @@ const App: React.FC = () => {
                         (
                           <p className={`
                             ${theme === 'light' ? 'text-VeryDarkBlueTwo' :'text-White'} 
-                            shadow-none bg-none text-center lg:pt-12 text-2xl font-bold`}>500 Server Error
+                            shadow-none bg-none text-center md:pt-24 text-2xl font-bold`}>500 Server Error
                             <span className='block font-medium pt-5'>{error}</span>
                             <button onClick={fetchCountries} type='button' className='mt-12 text-[14px] border-2 py-1 px-6 '>Back home</button>
                           </p>
