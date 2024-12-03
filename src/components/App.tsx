@@ -91,6 +91,17 @@ const App: React.FC = () => {
     setPreviewCountry(null);
   };
 
+  const home = () => {
+    // Reset relevant states
+    setPreviewCountry(null);
+    setSearchQuery('');
+    setSelectedRegion('All');
+    // Re-fetch the data
+    fetchCountries();
+  };
+  
+
+
   // Restore scroll position once `previewCountry` is closed
   useEffect(() => {
     if (!previewCountry) {
@@ -123,6 +134,7 @@ const App: React.FC = () => {
         elementTheme={elementTheme}
         theme={theme}
         toggled={toggleTheme}
+        home={home}
       />
       <div className='px-6 py-10 md:px-12 lg:px-[76px] xxl:px-[100px] lg:h-auto'>
         {previewCountry ?
